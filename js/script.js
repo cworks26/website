@@ -98,30 +98,93 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // ----------------------------------------------------------
-// 5. CONTACT FORM HANDLER
-//
-// Prevents default submit and simulates a send.
-// Replace this with a real API call to make it functional
-// (e.g., Formspree, EmailJS, or your own backend).
+// 5. CONTACT FORM — Web3Forms submission with inline feedback
 // ----------------------------------------------------------
-function handleFormSubmit(event) {
-  event.preventDefault();
+(function () {
+  const form      = document.getElementById('contact-form');
+  if (!form) return;
 
-  const btn          = event.target.querySelector('button[type="submit"]');
-  const originalText = btn.innerHTML;
+  const submitBtn   = document.getElementById('form-submit');
+  const feedback    = document.getElementById('form-feedback');
+  const nameInput   = document.getElementById('contact-name');
+  const emailInput  = document.getElementById('contact-email');
+  const nameError   = document.getElementById('name-error');
+  const emailError  = document.getElementById('email-error');
 
-  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
-  btn.disabled  = true;
+  // -- Inline validation helpers --
+  function validateName() {
+    if (!nameInput.value.trim()) {
+      nameError.textContent = 'Please enter your name.';
+      nameInput.classList.add('input-error');
+      return false;
+    }
+    nameError.textContent = '';
+    nameInput.classList.remove('input-error');
+    return true;
+  }
 
-  setTimeout(function () {
-    btn.innerHTML = '<i class="fa-solid fa-check"></i> Message "Sent" (UI Demo)';
-    btn.style.background = 'linear-gradient(135deg, #22d3ee, #34d399)';
+  function validateEmail() {
+    const val = emailInput.value.trim();
+    const ok  = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+    if (!val) {
+      emailError.textContent = 'Please enter your email address.';
+      emailInput.classList.add('input-error');
+      return false;
+    }
+    if (!ok) {
+      emailError.textContent = 'Please enter a valid email address.';
+      emailInput.classList.add('input-error');
+      return false;
+    }
+    emailError.textContent = '';
+    emailInput.classList.remove('input-error');
+    return true;
+  }
 
-    setTimeout(function () {
-      btn.innerHTML        = originalText;
-      btn.disabled         = false;
-      btn.style.background = '';
-      event.target.reset();
-    }, 3000);
-  }, 1200);
-}
+  nameInput.addEventListener('input', validateName);
+  emailInput.addEventListener('input', validateEmail);
+
+  // -- Submission --
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const nameOk  = validateName();
+    const emailOk = validateEmail();
+    if (!nameOk || !emailOk) return;
+
+    const originalHTML = submitBtn.innerHTML;
+    submitBtn.innerHTML  = '<i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i> Sending...';
+    submitBtn.disabled   = true;
+    feedback.hidden      = true;
+    feedback.className   = 'form-feedback';
+
+    try {
+      const formData = new FormData(form);
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body:   formData
+      });
+      const data = await response.json();
+
+      if (response.ok) {
+        feedback.textContent = '✓ Message sent! We\'ll get back to you soon.';
+        feedback.classList.add('form-feedback--success');
+        feedback.hidden = false;
+        form.reset();
+        nameError.textContent  = '';
+        emailError.textContent = '';
+      } else {
+        feedback.textContent = '✗ ' + (data.message || 'Something went wrong. Please try again.');
+        feedback.classList.add('form-feedback--error');
+        feedback.hidden = false;
+      }
+    } catch (err) {
+      feedback.textContent = '✗ Network error. Please check your connection and try again.';
+      feedback.classList.add('form-feedback--error');
+      feedback.hidden = false;
+    } finally {
+      submitBtn.innerHTML = originalHTML;
+      submitBtn.disabled  = false;
+    }
+  });
+})();
