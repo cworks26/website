@@ -335,6 +335,19 @@ button {
   text-align: center;
 }
 
+/* Antigravity canvas — absolute within its section, behind all content */
+#antigravity-hero,
+#antigravity-team,
+#antigravity-contact {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
 .hero-glow {
   position: absolute;
   border-radius: 50%;
@@ -342,6 +355,7 @@ button {
   pointer-events: none;
   opacity: 0.18;
   transition: opacity var(--transition);
+  z-index: 1;
 }
 
 .hero-glow-1 {
@@ -366,7 +380,7 @@ button {
 
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   max-width: 720px;
 }
 
@@ -631,11 +645,17 @@ button {
    ============================================================ */
 .team {
   background: var(--bg-primary);
+  position: relative;
+}
+
+.team .container {
+  position: relative;
+  z-index: 2;
 }
 
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
 }
 
@@ -832,6 +852,12 @@ button {
    ============================================================ */
 .contact {
   background: var(--bg-primary);
+  position: relative;
+}
+
+.contact .container {
+  position: relative;
+  z-index: 2;
 }
 
 .contact-wrapper {
@@ -1062,6 +1088,10 @@ button {
   .contact-wrapper {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
