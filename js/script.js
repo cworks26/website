@@ -4,33 +4,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
   // ----------------------------------------------------------
-  // 1. THEME TOGGLE — Dark / Light Mode
-  //
-  // Stores the user's preference in localStorage so it
-  // persists across page visits.
-  // ----------------------------------------------------------
-  const html        = document.documentElement;
-  const themeToggle = document.getElementById('themeToggle');
-  const themeIcon   = document.getElementById('themeIcon');
-
-  function applyTheme(theme) {
-    html.setAttribute('data-theme', theme);
-    themeIcon.className = theme === 'light' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
-  }
-
-  const savedTheme = localStorage.getItem('codehub-theme') || 'dark';
-  applyTheme(savedTheme);
-
-  themeToggle.addEventListener('click', function () {
-    const current = html.getAttribute('data-theme');
-    const next    = current === 'dark' ? 'light' : 'dark';
-    applyTheme(next);
-    localStorage.setItem('codehub-theme', next);
-  });
-
-
-  // ----------------------------------------------------------
-  // 2. STICKY NAVBAR — Add shadow on scroll
+  // 1. STICKY NAVBAR — Add shadow on scroll
   // ----------------------------------------------------------
   const navbar = document.getElementById('navbar');
 
