@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Website Building — CodeHub</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <!-- SEO -->
+  <meta name="description" content="CodeHub builds clean, responsive websites — from design to hosting. Learn about our process and pricing."/>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- Shared Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAVIGATION BAR
+       ============================================================ -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+
+      <a href="index.html" class="nav-logo" aria-label="CodeHub home">
+        <span class="nav-logo-icon" aria-hidden="true">
+          <img src="favicon.png" alt="CodeHub" class="nav-logo-img"/>
+        </span>
+        CodeHub
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="index.html#about"    class="nav-link">About</a></li>
+        <li><a href="index.html#team"     class="nav-link">Team</a></li>
+        <li><a href="index.html#projects" class="nav-link">Services</a></li>
+        <li><a href="index.html#contact"  class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu" role="menu">
+    <a href="index.html#about"    class="nav-link" role="menuitem">About</a>
+    <a href="index.html#team"     class="nav-link" role="menuitem">Team</a>
+    <a href="index.html#projects" class="nav-link" role="menuitem">Services</a>
+    <a href="index.html#contact"  class="nav-link" role="menuitem">Contact</a>
+  </div>
+
+
+  <!-- ============================================================
+       PAGE HERO
+       ============================================================ -->
+  <section class="hero" id="hero" aria-label="Website Building service">
+    <canvas id="antigravity-hero" aria-hidden="true"></canvas>
+    <div class="hero-glow hero-glow-1" aria-hidden="true"></div>
+    <div class="hero-glow hero-glow-2" aria-hidden="true"></div>
+
+    <div class="container">
+      <div class="hero-content">
+
+        <div class="hero-badge" aria-hidden="true">
+          <span class="hero-badge-dot"></span>
+          <span class="font-code">// services / website-building</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="gradient-text">Website</span> Building
+        </h1>
+
+        <p class="hero-subtitle">From design to hosting, we handle it all.</p>
+
+        <p class="hero-description">
+          A complete end-to-end web development service. We take your idea from
+          a blank page to a live, polished website. Design, code, and deployment included.
+        </p>
+
+        <div class="hero-cta">
+          <a href="#process" class="btn-primary">
+            <i class="fa-solid fa-list-check" aria-hidden="true"></i>
+            Our Process
+          </a>
+          <a href="#pricing" class="btn-secondary">
+            <i class="fa-solid fa-tag" aria-hidden="true"></i>
+            Pricing
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       WHAT'S INCLUDED
+       ============================================================ -->
+  <section class="section about" id="includes" aria-label="What's included">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">// what you get</span>
+        <h2 class="section-title">Everything You<br/><span class="gradient-text">Need, Included</span></h2>
+        <p class="section-description">No hidden extras. Here is exactly what every website build covers.</p>
+        <span class="accent-line" aria-hidden="true"></span>
+      </div>
+
+      <div class="projects-grid reveal">
+
+        <article class="project-card" aria-label="Design">
+          <div class="project-icon" aria-hidden="true"><i class="fa-solid fa-pen-ruler"></i></div>
+          <h3 class="project-name">Design</h3>
+          <p class="project-description">
+            We start with your goals, brand, and inspiration. From there we put together a visual layout (colours, typography, and structure) and share it with you for feedback before a single line of code is written.
+          </p>
+        </article>
+
+        <article class="project-card" aria-label="Development">
+          <div class="project-icon" aria-hidden="true"><i class="fa-solid fa-code"></i></div>
+          <h3 class="project-name">Development</h3>
+          <p class="project-description">
+            Your site is built in HTML, CSS, and JavaScript, no bloat. Every site is built with mobile compatibility, tested across browsers, and optimised for fast load times.
+          </p>
+        </article>
+
+        <article class="project-card" aria-label="Content">
+          <div class="project-icon" aria-hidden="true"><i class="fa-solid fa-file-lines"></i></div>
+          <h3 class="project-name">Content Setup</h3>
+          <p class="project-description">
+            You provide your text and images, and we place and format everything to look its best. We'll let you know exactly what we need and in what format before we get started.
+          </p>
+        </article>
+
+        <article class="project-card" aria-label="Hosting">
+          <div class="project-icon" aria-hidden="true"><i class="fa-solid fa-server"></i></div>
+          <h3 class="project-name">Hosting &amp; Deployment</h3>
+          <p class="project-description">
+            We handle the full deployment, from setting up your hosting environment to connecting your domain. Starter sites go on GitHub Pages; Standard and Super sites are hosted on our server with a custom domain.
+          </p>
+        </article>
+
+        <article class="project-card" aria-label="Handover">
+          <div class="project-icon" aria-hidden="true"><i class="fa-solid fa-handshake"></i></div>
+          <h3 class="project-name">Handover &amp; Support</h3>
+          <p class="project-description">
+            Once the site is live, you receive the full source code. We walk you through how everything works and stay available for a post-launch support window to catch anything that needs fixing.
+          </p>
+        </article>
+
+        <article class="project-card" aria-label="Timeline">
+          <div class="project-icon" aria-hidden="true"><i class="fa-solid fa-clock"></i></div>
+          <h3 class="project-name">Timeline</h3>
+          <p class="project-description">
+            Timelines are agreed upfront and depend on the tier and project complexity. We keep you updated throughout so there are no surprises.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       OUR PROCESS
+       ============================================================ -->
+  <section class="section team process-section" id="process" aria-label="Our process">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">// how it works</span>
+        <h2 class="section-title">Our <span class="gradient-text">Process</span></h2>
+        <p class="section-description">A clear, collaborative workflow from first conversation to launch day.</p>
+        <span class="accent-line" aria-hidden="true"></span>
+      </div>
+
+      <div class="process-steps reveal">
+
+        <div class="process-step">
+          <div class="process-step-number gradient-text">01</div>
+          <div class="process-step-content">
+            <h3 class="process-step-title">Discovery Call</h3>
+            <p class="process-step-desc">
+              We sit down with you, in person or virtually, to understand what you need. We talk through your goals, your audience, any sites you like the look of, and your budget. This gives us everything we need to put together a solid proposal.
+            </p>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="process-step-number gradient-text">02</div>
+          <div class="process-step-content">
+            <h3 class="process-step-title">Proposal &amp; Agreement</h3>
+            <p class="process-step-desc">
+              We send you a clear breakdown of scope, cost, and timeline. Once you're happy, we agree on payment terms and get the project officially started. No hidden fees, no surprises.
+            </p>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="process-step-number gradient-text">03</div>
+          <div class="process-step-content">
+            <h3 class="process-step-title">Design</h3>
+            <p class="process-step-desc">
+              We build out the visual direction of your site (layout, colours, fonts, and structure). You review and give feedback, and we refine until you sign off. Nothing moves to code until the design is approved.
+            </p>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="process-step-number gradient-text">04</div>
+          <div class="process-step-content">
+            <h3 class="process-step-title">Build</h3>
+            <p class="process-step-desc">
+              With the design locked in, we build your site. We share progress along the way and give you a preview link before the final review so you can see exactly how it looks and feels.
+            </p>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="process-step-number gradient-text">05</div>
+          <div class="process-step-content">
+            <h3 class="process-step-title">Review &amp; Revisions</h3>
+            <p class="process-step-desc">
+              You go through the built site and tell us what you'd like adjusted. We work through the agreed revision rounds until everything is exactly as it should be.
+            </p>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="process-step-number gradient-text">06</div>
+          <div class="process-step-content">
+            <h3 class="process-step-title">Launch &amp; Handover</h3>
+            <p class="process-step-desc">
+              We deploy the site, set up the domain, and make sure everything is live and working. You get the full source code, a walkthrough of the site, and a support window to handle anything post-launch.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       PRICING
+       ============================================================ -->
+  <section class="section projects" id="pricing" aria-label="Pricing">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">// pricing</span>
+        <h2 class="section-title">Simple, Transparent<br/><span class="gradient-text">Pricing</span></h2>
+        <p class="section-description">No surprises. Pick a tier that fits your project and budget.</p>
+        <span class="accent-line" aria-hidden="true"></span>
+      </div>
+
+      <div class="pricing-grid reveal">
+
+        <!-- Tier 1 — Starter -->
+        <div class="pricing-card">
+          <div class="pricing-tier-label font-code">// starter</div>
+          <h3 class="pricing-name">Starter Site</h3>
+          <div class="pricing-price">
+            <span class="pricing-amount gradient-text">UGX 150,000</span>
+          </div>
+          <p class="pricing-desc">
+            Perfect for individuals and small projects that need a clean, professional online presence without the complexity.
+          </p>
+          <ul class="pricing-features">
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Single-page website (up to 5 sections)</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Mobile-responsive design</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Basic contact form</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Hosted on GitHub Pages</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Up to 2 revision rounds</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> 1-week delivery</li>
+          </ul>
+          <a href="#contact" class="btn-secondary" style="width:100%; justify-content:center; margin-top:auto;">
+            Get Started
+          </a>
+        </div>
+
+        <!-- Tier 2 — Standard (highlighted) -->
+        <div class="pricing-card pricing-card--featured">
+          <div class="pricing-tier-label font-code">// standard</div>
+          <div class="pricing-popular-badge">Most Popular</div>
+          <h3 class="pricing-name">Standard Site</h3>
+          <div class="pricing-price">
+            <span class="pricing-amount gradient-text">UGX 350,000</span>
+          </div>
+          <p class="pricing-desc">
+            For businesses and creators who need a fully custom, multi-page site with proper hosting and a real domain.
+          </p>
+          <ul class="pricing-features">
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Multi-page website (up to 5 pages)</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Custom design &amp; animations</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Mobile-responsive design</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Contact form with email delivery</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Basic SEO setup</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Custom domain setup</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Up to 3 revision rounds</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> 2–3 week delivery</li>
+          </ul>
+          <a href="#contact" class="btn-primary" style="width:100%; justify-content:center; margin-top:auto;">
+            Get Started
+          </a>
+        </div>
+
+        <!-- Tier 3 — Super -->
+        <div class="pricing-card">
+          <div class="pricing-tier-label font-code">// super</div>
+          <h3 class="pricing-name">Super Site</h3>
+          <div class="pricing-price">
+            <span class="pricing-amount gradient-text">UGX 600,000</span>
+          </div>
+          <p class="pricing-desc">
+            For complex projects that demand advanced functionality, backend capability, and a fully configured server environment.
+          </p>
+          <ul class="pricing-features">
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Unlimited pages</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Full custom design from scratch</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Advanced animations &amp; interactions</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Contact form with email delivery</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Full SEO setup</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Custom domain + SSL certificate</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Priority support</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Up to 5 revision rounds</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Timeline agreed per project</li>
+          </ul>
+          <a href="#contact" class="btn-secondary" style="width:100%; justify-content:center; margin-top:auto;">
+            Get Started
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Pricing notes -->
+      <div class="pricing-notes reveal">
+        <p class="font-code" style="color: var(--text-muted); font-size: 0.8rem; text-align: center; margin-top: 32px;">
+          All prices are in Ugandan Shillings (UGX). A 50% deposit is required to begin work, with the remaining balance due before launch. Domain and hosting costs are not included in the listed prices. For questions about payment or a custom quote, select "Consultation" below.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CTA — GET IN TOUCH
+       ============================================================ -->
+  <section class="section contact" id="contact" aria-label="Get in touch">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">// ready to build?</span>
+        <h2 class="section-title">Let's Build Your<br/><span class="gradient-text">Website</span></h2>
+        <p class="section-description">Have a project in mind? Drop us a message and we'll get the conversation started.</p>
+        <span class="accent-line" aria-hidden="true"></span>
+      </div>
+
+      <div class="contact-wrapper contact-wrapper--wide">
+
+        <div class="contact-info reveal">
+          <h3>Get in touch</h3>
+          <p>
+            Tell us about your project — what you need, your timeline, and your budget.
+            We'll come back to you with a proposal.
+          </p>
+          <a href="https://github.com/the-runner-team" class="contact-link" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-github" aria-hidden="true"></i>
+            GitHub Organization
+          </a>
+          <!-- 
+          <a href="INSTAGRAM_URL_HERE" class="contact-link" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-instagram" style="color: #E1306C;" aria-hidden="true"></i>
+            Follow us on Instagram
+          </a>
+          -->
+
+          <!-- FAQ — inline in left column -->
+          <div class="faq-inline">
+            <p class="faq-inline-label font-code">// faq</p>
+
+            <div class="faq-list-inner">
+
+              <details class="faq-item">
+                <summary class="faq-question">
+                  How long does a website take to build?
+                  <i class="fa-solid fa-chevron-down faq-icon" aria-hidden="true"></i>
+                </summary>
+                <div class="faq-answer"><p>Starter sites take around 1 week, Standard 2–3 weeks, and Super timelines are agreed per project. Content readiness and revision rounds can affect delivery.</p></div>
+              </details>
+
+              <details class="faq-item">
+                <summary class="faq-question">
+                  Do I need to provide the content?
+                  <i class="fa-solid fa-chevron-down faq-icon" aria-hidden="true"></i>
+                </summary>
+                <div class="faq-answer"><p>Yes. You provide your text, images, and branding assets. We can advise on structure and sourcing. Copywriting is available as a paid add-on.</p></div>
+              </details>
+
+              <details class="faq-item">
+                <summary class="faq-question">
+                  Can you update my existing site?
+                  <i class="fa-solid fa-chevron-down faq-icon" aria-hidden="true"></i>
+                </summary>
+                <div class="faq-answer"><p>Yes. Share details about your current site and what you'd like changed and we'll assess and quote from there.</p></div>
+              </details>
+
+              <details class="faq-item">
+                <summary class="faq-question">
+                  What do I need to get started?
+                  <i class="fa-solid fa-chevron-down faq-icon" aria-hidden="true"></i>
+                </summary>
+                <div class="faq-answer"><p>Just a rough idea of what you want, some sites you like the look of, and your budget. We handle the rest from the discovery call onwards.</p></div>
+              </details>
+
+              <details class="faq-item">
+                <summary class="faq-question">
+                  Do you offer ongoing maintenance?
+                  <i class="fa-solid fa-chevron-down faq-icon" aria-hidden="true"></i>
+                </summary>
+                <div class="faq-answer"><p>Yes. Post-launch support is available for updates, fixes, and small changes, either case-by-case or as a retainer. Discuss this during your discovery call.</p></div>
+              </details>
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class="contact-form reveal reveal-delay-2">
+          <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" aria-label="Website enquiry form" novalidate>
+
+            <input type="hidden" name="access_key" value="dd3dd29d-fc75-4ea5-b907-18526ad695c6"/>
+            <input type="hidden" name="redirect" value="false"/>
+            <input type="hidden" name="subject" value="Website Building Enquiry — CodeHub"/>
+            <input type="hidden" name="from_name" value="CodeHub Website Building Page"/>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-name">Your Name</label>
+              <input class="form-input" type="text" id="contact-name" name="name" placeholder="Your name" autocomplete="name" required/>
+              <span class="form-error" id="name-error" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-email">Email Address</label>
+              <input class="form-input" type="email" id="contact-email" name="email" placeholder="your@email.com" autocomplete="email" required/>
+              <span class="form-error" id="email-error" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-phone">Phone Number</label>
+              <input class="form-input" type="tel" id="contact-phone" name="phone" placeholder="+256 700 000 000" autocomplete="tel" required/>
+              <span class="form-error" id="phone-error" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-tier">Service Tier</label>
+              <select class="form-input form-select" id="contact-tier" name="tier" required>
+                <option value="" disabled selected>Select a tier...</option>
+                <option value="Starter Site — UGX 150,000">Starter Site — UGX 150,000</option>
+                <option value="Standard Site — UGX 350,000">Standard Site — UGX 350,000</option>
+                <option value="Super Site — UGX 600,000">Super Site — UGX 600,000</option>
+                <option value="Consultation — Let's discuss pricing">Consultation — Let's discuss pricing</option>
+              </select>
+              <span class="form-error" id="tier-error" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-message">Tell us about your project</label>
+              <textarea class="form-textarea" id="contact-message" name="message" placeholder="What kind of site do you need? Any features in mind? Timeline?" rows="5" required></textarea>
+            </div>
+
+            <div id="form-feedback" class="form-feedback" aria-live="polite" hidden></div>
+
+            <button type="submit" id="form-submit" class="btn-primary" style="width:100%; justify-content:center;">
+              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+              Send Enquiry
+            </button>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer" role="contentinfo" aria-label="Site footer">
+    <div class="container">
+      <div class="footer-inner">
+
+        <div>
+          <div class="footer-logo">
+            <a href="index.html" class="footer-logo-link" aria-label="Back to CodeHub home">
+              <span class="footer-logo-icon" aria-hidden="true">
+                <i class="fa-solid fa-code" style="color:#fff; font-size:0.8rem;"></i>
+              </span>
+              CodeHub
+            </a>
+          </div>
+          <p class="footer-tagline">Learning, Building, and Growing Together.</p>
+        </div>
+
+        <nav aria-label="Footer navigation">
+          <ul class="footer-links" role="list">
+            <li><a href="#includes"  class="footer-link">What's Included</a></li>
+            <li><a href="#process"   class="footer-link">Our Process</a></li>
+            <li><a href="#pricing"   class="footer-link">Pricing</a></li>
+            <li><a href="#contact"   class="footer-link">Get in Touch</a></li>
+            <li>
+              <a href="https://github.com/the-runner-team" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="CodeHub on GitHub">
+                <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+
+      <p class="footer-copy">
+        Built with · HTML · CSS · JavaScript &nbsp;·&nbsp;
+        <a href="index.html" style="color: var(--accent-blue); text-decoration: none;">← Back to CodeHub</a>
+      </p>
+
+    </div>
+  </footer>
+
+
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Antigravity — hero only on this page -->
+  <script src="js/antigravity.js"></script>
+  <!-- Page script -->
+  <script src="js/script.js"></script>
+
+</body>
+</html>

@@ -300,7 +300,8 @@ button {
 /* Antigravity canvas — absolute within its section, behind all content */
 #antigravity-hero,
 #antigravity-team,
-#antigravity-contact {
+#antigravity-contact,
+#antigravity-process {
   position: absolute;
   top: 0;
   left: 0;
@@ -932,6 +933,32 @@ button {
   min-height: 130px;
 }
 
+/* Select dropdown — inherits form-input styles, adds arrow */
+.form-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2360607a' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+.form-select:focus {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px rgba(79, 142, 247, 0.15);
+}
+
+/* Style the placeholder option */
+.form-select option[value=""] {
+  color: var(--text-muted);
+}
+
+.form-select option {
+  background: var(--bg-card);
+  color: var(--text-primary);
+}
+
 /* Inline field validation errors */
 .form-error {
   display: block;
@@ -1168,5 +1195,304 @@ button {
     grid-template-columns: 1fr;
     max-width: 300px;
     margin: 0 auto;
+  }
+}
+
+/* Remove divider lines from contact links on web-development page */
+.contact-wrapper--wide .contact-link {
+  border-bottom: none;
+}
+  grid-template-columns: 1fr 1.2fr;
+  align-items: start;
+}
+
+/* Make left column flex so FAQ can fill remaining space naturally */
+.contact-wrapper--wide .contact-info {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Cap FAQ height to approximate form height — items space out within it */
+.contact-wrapper--wide .faq-inline {
+  flex: 1;
+}
+
+.contact-wrapper--wide .faq-list-inner {
+  max-height: 520px;
+  overflow: hidden;
+}
+
+/* Inline FAQ inside contact left column */
+.faq-inline {
+  margin-top: 28px;
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.faq-inline .faq-list-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  gap: 10px;
+}
+
+.faq-inline-label {
+  font-size: 0.75rem;
+  color: var(--accent-blue);
+  letter-spacing: 0.12em;
+  margin-bottom: 14px;
+  opacity: 0.85;
+}
+
+/* Compact FAQ sizing inside the column */
+.faq-inline .faq-item {
+  border-radius: var(--radius-sm);
+}
+
+.faq-inline .faq-question {
+  padding: 13px 16px;
+  font-size: 0.85rem;
+}
+
+.faq-inline .faq-answer {
+  padding: 0 16px 13px;
+  font-size: 0.83rem;
+}
+
+/* ============================================================
+   ============================================================ */
+
+/* Process steps */
+/* Process section — restore normal section padding */
+.process-section {
+  padding-top: 100px;
+}
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+
+.process-steps::before {
+  content: '';
+  position: absolute;
+  left: 28px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+
+.process-step {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+.process-step:last-child {
+  border-bottom: none;
+}
+
+.process-step-number {
+  font-family: 'Fira Code', monospace;
+  font-size: 2rem;
+  font-weight: 800;
+  min-width: 58px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  background: var(--bg-primary);
+  padding: 4px 0;
+}
+
+.process-step-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.process-step-desc {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+/* Pricing grid */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.pricing-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.pricing-card:hover {
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-card), var(--glow-blue);
+}
+
+.pricing-card--featured {
+  border-color: var(--accent-purple);
+  box-shadow: var(--shadow-card), var(--glow-purple);
+  position: relative;
+}
+
+.pricing-tier-label {
+  font-size: 0.75rem;
+  color: var(--accent-blue);
+  letter-spacing: 0.1em;
+}
+
+.pricing-popular-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent-gradient);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 14px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+.pricing-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.pricing-amount {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.pricing-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.pricing-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.pricing-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.pricing-features li i {
+  color: var(--accent-cyan);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* FAQ accordion */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color var(--transition);
+}
+
+.faq-item[open] {
+  border-color: var(--border-accent);
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+  list-style: none;
+  gap: 16px;
+}
+
+.faq-question::-webkit-details-marker { display: none; }
+
+.faq-icon {
+  color: var(--accent-blue);
+  flex-shrink: 0;
+  transition: transform var(--transition);
+}
+
+.faq-item[open] .faq-icon {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding: 0 22px 18px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  border-top: 1px solid var(--border);
+}
+
+.faq-answer p {
+  padding-top: 16px;
+}
+
+/* Responsive — pricing */
+@media (max-width: 900px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .process-steps::before {
+    display: none;
+  }
+
+  .process-step {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .process-step-number {
+    font-size: 1.4rem;
+    min-width: auto;
   }
 }
