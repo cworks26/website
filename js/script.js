@@ -82,41 +82,72 @@ document.addEventListener('DOMContentLoaded', function () {
   const feedback    = document.getElementById('form-feedback');
   const nameInput   = document.getElementById('contact-name');
   const emailInput  = document.getElementById('contact-email');
+  const phoneInput  = document.getElementById('contact-phone');
+  const tierSelect  = document.getElementById('contact-tier');
   const nameError   = document.getElementById('name-error');
   const emailError  = document.getElementById('email-error');
+  const phoneError  = document.getElementById('phone-error');
+  const tierError   = document.getElementById('tier-error');
 
   // -- Inline validation helpers --
   function validateName() {
-    if (!nameInput.value.trim()) {
-      nameError.textContent = 'Please enter your name.';
-      nameInput.classList.add('input-error');
+    if (!nameInput || !nameInput.value.trim()) {
+      if (nameError) { nameError.textContent = 'Please enter your name.'; }
+      if (nameInput) nameInput.classList.add('input-error');
       return false;
     }
-    nameError.textContent = '';
+    if (nameError) nameError.textContent = '';
     nameInput.classList.remove('input-error');
     return true;
   }
 
   function validateEmail() {
+    if (!emailInput) return true;
     const val = emailInput.value.trim();
     const ok  = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
     if (!val) {
-      emailError.textContent = 'Please enter your email address.';
+      if (emailError) emailError.textContent = 'Please enter your email address.';
       emailInput.classList.add('input-error');
       return false;
     }
     if (!ok) {
-      emailError.textContent = 'Please enter a valid email address.';
+      if (emailError) emailError.textContent = 'Please enter a valid email address.';
       emailInput.classList.add('input-error');
       return false;
     }
-    emailError.textContent = '';
+    if (emailError) emailError.textContent = '';
     emailInput.classList.remove('input-error');
     return true;
   }
 
-  nameInput.addEventListener('input', validateName);
-  emailInput.addEventListener('input', validateEmail);
+  function validatePhone() {
+    if (!phoneInput) return true;
+    if (!phoneInput.value.trim()) {
+      if (phoneError) phoneError.textContent = 'Please enter your phone number.';
+      phoneInput.classList.add('input-error');
+      return false;
+    }
+    if (phoneError) phoneError.textContent = '';
+    phoneInput.classList.remove('input-error');
+    return true;
+  }
+
+  function validateTier() {
+    if (!tierSelect) return true;
+    if (!tierSelect.value) {
+      if (tierError) tierError.textContent = 'Please select a service tier.';
+      tierSelect.classList.add('input-error');
+      return false;
+    }
+    if (tierError) tierError.textContent = '';
+    tierSelect.classList.remove('input-error');
+    return true;
+  }
+
+  if (nameInput)  nameInput.addEventListener('input',  validateName);
+  if (emailInput) emailInput.addEventListener('input',  validateEmail);
+  if (phoneInput) phoneInput.addEventListener('input',  validatePhone);
+  if (tierSelect) tierSelect.addEventListener('change', validateTier);
 
   // -- Submission --
   form.addEventListener('submit', async function (e) {
@@ -124,7 +155,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const nameOk  = validateName();
     const emailOk = validateEmail();
-    if (!nameOk || !emailOk) return;
+    const phoneOk = validatePhone();
+    const tierOk  = validateTier();
+    if (!nameOk || !emailOk || !phoneOk || !tierOk) return;
 
     const originalHTML = submitBtn.innerHTML;
     submitBtn.innerHTML  = '<i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i> Sending...';
@@ -145,8 +178,10 @@ document.addEventListener('DOMContentLoaded', function () {
         feedback.classList.add('form-feedback--success');
         feedback.hidden = false;
         form.reset();
-        nameError.textContent  = '';
-        emailError.textContent = '';
+        if (nameError)  nameError.textContent  = '';
+        if (emailError) emailError.textContent = '';
+        if (phoneError) phoneError.textContent = '';
+        if (tierError)  tierError.textContent  = '';
       } else {
         feedback.textContent = '✗ ' + (data.message || 'Something went wrong. Please try again.');
         feedback.classList.add('form-feedback--error');
