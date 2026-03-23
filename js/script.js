@@ -36,7 +36,25 @@ document.addEventListener('DOMContentLoaded', function () {
   // ----------------------------------------------------------
 // 3. TYPING ANIMATION
 // ----------------------------------------------------------
-const typingPhrases = [
+const typingPhraseMap = {
+  'ui-ux-design.html': [
+    'Designed with intention.',
+    'Interfaces that feel natural.',
+    'From wireframe to high-fidelity.',
+    'User-first, always.',
+    'Beautiful and functional.'
+  ],
+  'web-development.html': [
+    'From idea to live website.',
+    'Clean code. Real results.',
+    'Built for speed and scale.',
+    'Design meets development.',
+    'Shipped and deployed, together.'
+  ]
+};
+
+const currentPage = window.location.pathname.split('/').pop();
+const typingPhrases = typingPhraseMap[currentPage] || [
   'Learning by Building.',
   'Shipping Side Projects.',
   'Debugging Together.',
@@ -65,12 +83,12 @@ if (typingTarget) {
     let delay = isDeleting ? 40 : 80;
 
     if (!isDeleting && charIndex === current.length) {
-      delay = 1800;           // pause at end of word
+      delay = 1800;
       isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
       isDeleting  = false;
       phraseIndex = (phraseIndex + 1) % typingPhrases.length;
-      delay = 400;            // pause before next word
+      delay = 400;
     }
 
     setTimeout(type, delay);
@@ -125,8 +143,9 @@ const sectionObserver = new IntersectionObserver(function (entries) {
       navItems.forEach(function (link) {
         link.classList.remove('active');
       });
+      // Match by hash only so it works on both index and service pages
       const activeLink = document.querySelector(
-        '.nav-links a[href="#' + entry.target.id + '"]'
+        '.nav-links a[href="#' + entry.target.id + '"], .nav-links a[href$="#' + entry.target.id + '"]'
       );
       if (activeLink) activeLink.classList.add('active');
     }
