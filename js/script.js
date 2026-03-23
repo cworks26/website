@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   // ----------------------------------------------------------
-  // 3. MOBILE MENU TOGGLE
+  // 2. MOBILE MENU TOGGLE
   // ----------------------------------------------------------
   const hamburger  = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
@@ -33,6 +33,51 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  // ----------------------------------------------------------
+// 3. TYPING ANIMATION
+// ----------------------------------------------------------
+const typingPhrases = [
+  'Learning by Building.',
+  'Shipping Side Projects.',
+  'Debugging Together.',
+  'Growing Through Code.',
+  'Turning Ideas into Reality.'
+];
+
+const typingTarget = document.getElementById('typing-text');
+
+if (typingTarget) {
+  let phraseIndex = 0;
+  let charIndex   = 0;
+  let isDeleting  = false;
+
+  function type() {
+    const current = typingPhrases[phraseIndex];
+
+    if (isDeleting) {
+      typingTarget.textContent = current.slice(0, charIndex - 1);
+      charIndex--;
+    } else {
+      typingTarget.textContent = current.slice(0, charIndex + 1);
+      charIndex++;
+    }
+
+    let delay = isDeleting ? 40 : 80;
+
+    if (!isDeleting && charIndex === current.length) {
+      delay = 1800;           // pause at end of word
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting  = false;
+      phraseIndex = (phraseIndex + 1) % typingPhrases.length;
+      delay = 400;            // pause before next word
+    }
+
+    setTimeout(type, delay);
+  }
+
+  type();
+}
 
   // ----------------------------------------------------------
   // 4. SCROLL REVEAL ANIMATION
@@ -67,6 +112,32 @@ document.addEventListener('DOMContentLoaded', function () {
       el.classList.add('visible');
     });
   }
+
+  // ----------------------------------------------------------
+// 5. ACTIVE NAV LINK HIGHLIGHTING
+// ----------------------------------------------------------
+const sections = document.querySelectorAll('section[id]');
+const navItems = document.querySelectorAll('.nav-links .nav-link');
+
+const sectionObserver = new IntersectionObserver(function (entries) {
+  entries.forEach(function (entry) {
+    if (entry.isIntersecting) {
+      navItems.forEach(function (link) {
+        link.classList.remove('active');
+      });
+      const activeLink = document.querySelector(
+        '.nav-links a[href="#' + entry.target.id + '"]'
+      );
+      if (activeLink) activeLink.classList.add('active');
+    }
+  });
+}, {
+  threshold: 0.4
+});
+
+sections.forEach(function (section) {
+  sectionObserver.observe(section);
+});
 
 }); // end DOMContentLoaded
 
