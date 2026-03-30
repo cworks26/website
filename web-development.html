@@ -1,71 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
-  <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  
-    <!-- Primary SEO -->
-    <title>Website Building — CodeHub</title>
-    <meta name="description" content="CodeHub builds clean, fast, responsive websites from design to hosting. Affordable website building services based in Kampala, Uganda."/>
-    <meta name="keywords" content="website building Uganda, web development Kampala, affordable websites Uganda, HTML CSS JavaScript, website design and hosting Uganda"/>
-    <meta name="author" content="CodeHub — The Runner Team"/>
-    <meta name="robots" content="index, follow"/>
-    <link rel="canonical" href="https://the-runner-team.github.io/website/web-development.html"/>
-  
-    <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
-    <meta property="og:type" content="website"/>
-    <meta property="og:site_name" content="CodeHub"/>
-    <meta property="og:title" content="Website Building — CodeHub"/>
-    <meta property="og:description" content="Clean, fast, responsive websites from design to hosting. Affordable website building services based in Kampala, Uganda."/>
-    <meta property="og:url" content="https://the-runner-team.github.io/website/web-development.html"/>
-    <meta property="og:image" content="https://opengraph.githubassets.com/1/the-runner-team/website"/>
-    <meta property="og:image:width" content="1200"/>
-    <meta property="og:image:height" content="630"/>
-    <meta property="og:image:alt" content="Website Building services by CodeHub"/>
-    <meta property="og:locale" content="en_UG"/>
-  
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:site" content="@thecodehub26"/>
-    <meta name="twitter:title" content="Website Building — CodeHub"/>
-    <meta name="twitter:description" content="Clean, fast, responsive websites from design to hosting. Based in Kampala, Uganda."/>
-    <meta name="twitter:image" content="https://opengraph.githubassets.com/1/the-runner-team/website"/>
-    <meta name="twitter:image:alt" content="Website Building services by CodeHub"/>
-  
-    <!-- Schema.org structured data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "name": "Website Building",
-      "provider": {
-        "@type": "Organization",
-        "name": "CodeHub",
-        "url": "https://the-runner-team.github.io/website/"
-      },
-      "description": "End-to-end website building including design, development, content setup, hosting, deployment and post-launch support.",
-      "areaServed": {
-        "@type": "Place",
-        "name": "Kampala, Uganda"
-      },
-      "url": "https://the-runner-team.github.io/website/web-development.html"
-    }
-    </script>
-  
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="CodeHub.png"/>
-  
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
-  
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  
-    <!-- Shared Stylesheet -->
-    <link rel="stylesheet" href="css/styles.css"/>
-  </head>
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Website Building — CodeHub</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="CodeHub.png"/>
+
+  <!-- SEO -->
+  <meta name="description" content="CodeHub builds clean, responsive websites — from design to hosting. Learn about our process and pricing."/>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- Shared Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
 
 <body>
 
@@ -312,23 +268,40 @@
         <span class="accent-line" aria-hidden="true"></span>
       </div>
 
+      <!-- ── BILLING TOGGLE — above the cards ── -->
+      <div class="billing-toggle-wrap reveal">
+        <span class="billing-toggle-label active" id="lbl-monthly">Monthly</span>
+        <div class="billing-toggle-track" id="billingToggle" onclick="switchBilling()" role="switch" aria-checked="false" aria-label="Toggle billing period" tabindex="0">
+          <div class="billing-toggle-thumb"></div>
+        </div>
+        <span class="billing-toggle-label" id="lbl-annual">Annual</span>
+        <span class="billing-save-badge" id="saveBadge">2 months free</span>
+      </div>
+
       <div class="pricing-grid reveal">
 
         <!-- Tier 1 — Starter -->
         <div class="pricing-card">
           <div class="pricing-tier-label font-code">// starter</div>
           <h3 class="pricing-name">Starter Site</h3>
-          <div class="pricing-price">
-            <span class="pricing-amount gradient-text">UGX 150,000</span>
+          <!-- price-block: label + build price + hosting line + save note — NO borders here -->
+          <div class="ch-price-block">
+            <div class="ch-price-label">One-time build</div>
+            <div class="ch-price-main gradient-text">UGX 350,000</div>
+            <div class="ch-price-hosting" id="host-starter">+ UGX 80,000 / month hosting</div>
+            <div class="ch-annual-note" id="ann-starter">saves you UGX 160,000 vs monthly</div>
           </div>
+          <!-- divider is a separate element — NEVER moves -->
+          <div class="ch-divider"></div>
           <p class="pricing-desc">
             Perfect for individuals and small projects that need a clean, professional online presence without the complexity.
           </p>
           <ul class="pricing-features">
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> <strong>1 year free hosting included</strong></li>
             <li><i class="fa-solid fa-check" aria-hidden="true"></i> Single-page website (up to 5 sections)</li>
             <li><i class="fa-solid fa-check" aria-hidden="true"></i> Mobile-responsive design</li>
             <li><i class="fa-solid fa-check" aria-hidden="true"></i> Basic contact form</li>
-            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Hosted on GitHub Pages</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Custom domain setup</li>
             <li><i class="fa-solid fa-check" aria-hidden="true"></i> Up to 2 revision rounds</li>
             <li><i class="fa-solid fa-check" aria-hidden="true"></i> 1-week delivery</li>
           </ul>
@@ -342,13 +315,18 @@
           <div class="pricing-tier-label font-code">// standard</div>
           <div class="pricing-popular-badge">Most Popular</div>
           <h3 class="pricing-name">Standard Site</h3>
-          <div class="pricing-price">
-            <span class="pricing-amount gradient-text">UGX 350,000</span>
+          <div class="ch-price-block">
+            <div class="ch-price-label">One-time build</div>
+            <div class="ch-price-main gradient-text">UGX 750,000</div>
+            <div class="ch-price-hosting" id="host-standard">+ UGX 150,000 / month hosting</div>
+            <div class="ch-annual-note" id="ann-standard">saves you UGX 300,000 vs monthly</div>
           </div>
+          <div class="ch-divider"></div>
           <p class="pricing-desc">
             For businesses and creators who need a fully custom, multi-page site with proper hosting and a real domain.
           </p>
           <ul class="pricing-features">
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> <strong>1 year free hosting included</strong></li>
             <li><i class="fa-solid fa-check" aria-hidden="true"></i> Multi-page website (up to 5 pages)</li>
             <li><i class="fa-solid fa-check" aria-hidden="true"></i> Custom design &amp; animations</li>
             <li><i class="fa-solid fa-check" aria-hidden="true"></i> Mobile-responsive design</li>
@@ -367,18 +345,23 @@
         <div class="pricing-card">
           <div class="pricing-tier-label font-code">// super</div>
           <h3 class="pricing-name">Super Site</h3>
-          <div class="pricing-price">
-            <span class="pricing-amount gradient-text">UGX 600,000</span>
+          <div class="ch-price-block">
+            <div class="ch-price-label">One-time build</div>
+            <div class="ch-price-main gradient-text">UGX 1,200,000</div>
+            <div class="ch-price-hosting" id="host-super">+ UGX 250,000 / month hosting</div>
+            <div class="ch-annual-note" id="ann-super">saves you UGX 500,000 vs monthly</div>
           </div>
+          <div class="ch-divider"></div>
           <p class="pricing-desc">
             For complex projects that demand advanced functionality, backend capability, and a fully configured server environment.
           </p>
           <ul class="pricing-features">
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> <strong>1 year free hosting included</strong></li>
             <li><i class="fa-solid fa-check" aria-hidden="true"></i> Unlimited pages</li>
             <li><i class="fa-solid fa-check" aria-hidden="true"></i> Full custom design from scratch</li>
             <li><i class="fa-solid fa-check" aria-hidden="true"></i> Advanced animations &amp; interactions</li>
             <li><i class="fa-solid fa-check" aria-hidden="true"></i> Contact form with email delivery</li>
-            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Full SEO setup</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Advanced SEO setup</li>
             <li><i class="fa-solid fa-check" aria-hidden="true"></i> Custom domain + SSL certificate</li>
             <li><i class="fa-solid fa-check" aria-hidden="true"></i> Priority support</li>
             <li><i class="fa-solid fa-check" aria-hidden="true"></i> Up to 5 revision rounds</li>
@@ -391,15 +374,208 @@
 
       </div>
 
-      <!-- Pricing notes -->
+      <!-- Pricing note -->
       <div class="pricing-notes reveal">
-        <p class="font-code" style="color: var(--text-muted); font-size: 0.8rem; text-align: center; margin-top: 32px;">
-          All prices are in Ugandan Shillings (UGX). A 50% deposit is required to begin work, with the remaining balance due before launch. Domain and hosting costs are not included in the listed prices. For questions about payment or a custom quote, select "Consultation" below.
+        <p class="font-code" id="pricing-note" style="color: var(--text-muted); font-size: 0.8rem; text-align: center; margin-top: 32px;">
+          All prices in UGX. 50% deposit to begin, balance due on launch. Hosting is free for the first year — after that, billed monthly via Mobile Money. Switch to annual above to save 2 months.
         </p>
       </div>
 
     </div>
   </section>
+
+  <!-- ── Billing toggle + price-block styles (mirrors MashCloud pattern exactly) ── -->
+  <style>
+    /* Toggle row */
+    .billing-toggle-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+
+    .billing-toggle-label {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .billing-toggle-label.active { color: var(--text-primary); }
+
+    .billing-toggle-track {
+      width: 52px;
+      height: 28px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      position: relative;
+      cursor: pointer;
+      transition: background 0.25s, border-color 0.25s;
+    }
+
+    .billing-toggle-track.annual {
+      background: rgba(79, 142, 247, 0.12);
+      border-color: var(--accent-blue);
+    }
+
+    .billing-toggle-thumb {
+      width: 20px;
+      height: 20px;
+      background: var(--text-muted);
+      border-radius: 50%;
+      position: absolute;
+      top: 3px;
+      left: 4px;
+      transition: transform 0.25s cubic-bezier(.4,0,.2,1), background 0.25s;
+    }
+
+    .billing-toggle-track.annual .billing-toggle-thumb {
+      transform: translateX(24px);
+      background: var(--accent-blue);
+    }
+
+    .billing-save-badge {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      background: rgba(34, 211, 238, 0.08);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(34, 211, 238, 0.25);
+      padding: 3px 10px;
+      border-radius: 100px;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.3s, transform 0.3s;
+      pointer-events: none;
+    }
+
+    .billing-save-badge.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Price block — no borders, lives above the divider */
+    .ch-price-block {
+      margin-bottom: 20px;
+    }
+
+    .ch-price-label {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .ch-price-main {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    /* Hosting line — fades + slides exactly like MashCloud */
+    .ch-price-hosting {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .ch-price-hosting.switching {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+
+    /* Annual save note — opacity only, ZERO layout impact, never shifts divider */
+    .ch-annual-note {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.72rem;
+      color: var(--accent-cyan);
+      margin-top: 4px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      /* height is always occupied — no reflow */
+      visibility: hidden;
+    }
+
+    .ch-annual-note.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Divider — sits outside the price block, never moves */
+    .ch-divider {
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 20px;
+    }
+  </style>
+
+  <script>
+    (function () {
+      let isAnnual = false;
+
+      const hosting = {
+        starter:  { monthly: 80000,  annual: 800000,  save: 160000  },
+        standard: { monthly: 150000, annual: 1500000, save: 300000  },
+        super:    { monthly: 250000, annual: 2500000, save: 500000  },
+      };
+
+      function fmt(n) { return 'UGX\u00a0' + n.toLocaleString('en-UG'); }
+
+      function switchBilling() {
+        isAnnual = !isAnnual;
+
+        const toggle = document.getElementById('billingToggle');
+        toggle.classList.toggle('annual', isAnnual);
+        toggle.setAttribute('aria-checked', String(isAnnual));
+
+        document.getElementById('lbl-monthly').classList.toggle('active', !isAnnual);
+        document.getElementById('lbl-annual').classList.toggle('active', isAnnual);
+        document.getElementById('saveBadge').classList.toggle('visible', isAnnual);
+
+        const hostIds = ['host-starter', 'host-standard', 'host-super'];
+        const annIds  = ['ann-starter',  'ann-standard',  'ann-super'];
+
+        hostIds.forEach(id => document.getElementById(id).classList.add('switching'));
+
+        setTimeout(function () {
+          if (isAnnual) {
+            document.getElementById('host-starter').textContent  = '+ ' + fmt(hosting.starter.annual)  + ' / year hosting';
+            document.getElementById('host-standard').textContent = '+ ' + fmt(hosting.standard.annual) + ' / year hosting';
+            document.getElementById('host-super').textContent    = '+ ' + fmt(hosting.super.annual)    + ' / year hosting';
+            document.getElementById('ann-starter').textContent   = 'saves you ' + fmt(hosting.starter.save)  + ' vs monthly';
+            document.getElementById('ann-standard').textContent  = 'saves you ' + fmt(hosting.standard.save) + ' vs monthly';
+            document.getElementById('ann-super').textContent     = 'saves you ' + fmt(hosting.super.save)    + ' vs monthly';
+            document.getElementById('pricing-note').textContent  =
+              'All prices in UGX. 50% deposit to begin, balance due on launch. Hosting is free for the first year — after that, billed annually upfront (2 months free vs monthly).';
+          } else {
+            document.getElementById('host-starter').textContent  = '+ ' + fmt(hosting.starter.monthly)  + ' / month hosting';
+            document.getElementById('host-standard').textContent = '+ ' + fmt(hosting.standard.monthly) + ' / month hosting';
+            document.getElementById('host-super').textContent    = '+ ' + fmt(hosting.super.monthly)    + ' / month hosting';
+            document.getElementById('pricing-note').textContent  =
+              'All prices in UGX. 50% deposit to begin, balance due on launch. Hosting is free for the first year — after that, billed monthly via Mobile Money. Switch to annual above to save 2 months.';
+          }
+
+          hostIds.forEach(id => document.getElementById(id).classList.remove('switching'));
+          annIds.forEach(id => document.getElementById(id).classList.toggle('show', isAnnual));
+        }, 200);
+      }
+
+      document.getElementById('billingToggle').addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); switchBilling(); }
+      });
+
+      window.switchBilling = switchBilling;
+    })();
+  </script>
+
 
 
   <!-- ============================================================
