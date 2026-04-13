@@ -34,75 +34,96 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // ----------------------------------------------------------
-// 3. TYPING ANIMATION
-// ----------------------------------------------------------
-const typingPhraseMap = {
-  'ui-ux-design.html': [
-    'Designed with intention.',
-    'Interfaces that feel natural.',
-    'From wireframe to high-fidelity.',
-    'User-first, always.',
-    'Beautiful and functional.'
-  ],
-  'web-development.html': [
-    'From idea to live website.',
-    'Clean code. Real results.',
-    'Built for speed and scale.',
-    'Design meets development.',
-    'Shipped and deployed, together.'
-  ]
-};
+  // 3. TYPING ANIMATION
+  // ----------------------------------------------------------
+  const typingPhraseMap = {
+    'ui-ux-design.html': [
+      'Designed with intention.',
+      'Interfaces that feel natural.',
+      'From wireframe to high-fidelity.',
+      'User-first, always.',
+      'Beautiful and functional.'
+    ],
+    'web-development.html': [
+      'From idea to live website.',
+      'Clean code. Real results.',
+      'Built for speed and scale.',
+      'Design meets development.',
+      'Shipped and deployed, together.'
+    ],
+    'graphic-design.html': [
+      'Visuals that make an impression.',
+      'Logos built to last.',
+      'Your brand, defined.',
+      'Design that communicates.',
+      'Bold. Clean. Memorable.'
+    ],
+    'data-dashboards.html': [
+      'Raw data. Clear decisions.',
+      'From spreadsheets to strategy.',
+      'Dashboards that actually help.',
+      'Numbers you can act on.',
+      'Built for decision-makers.'
+    ],
+    'system-building.html': [
+      'Built exactly for your business.',
+      'Inventory. Bookings. Payroll. More.',
+      'Custom systems that actually fit.',
+      'Off-the-shelf never quite fits.',
+      'Your workflow, in software.'
+    ]
+  };
 
-const currentPage = window.location.pathname.split('/').pop();
-const typingPhrases = typingPhraseMap[currentPage] || [
-  'Learning by Building.',
-  'Shipping Side Projects.',
-  'Debugging Together.',
-  'Growing Through Code.',
-  'Turning Ideas into Reality.'
-];
+  const currentPage = window.location.pathname.split('/').pop();
 
-const typingTarget = document.getElementById('typing-text');
+  // Allow pages to inject override phrases via window._typingOverride
+  const typingPhrases = window._typingOverride
+    || typingPhraseMap[currentPage]
+    || [
+      'Learning by Building.',
+      'Shipping Side Projects.',
+      'Debugging Together.',
+      'Growing Through Code.',
+      'Turning Ideas into Reality.'
+    ];
 
-if (typingTarget) {
-  let phraseIndex = 0;
-  let charIndex   = 0;
-  let isDeleting  = false;
+  const typingTarget = document.getElementById('typing-text');
 
-  function type() {
-    const current = typingPhrases[phraseIndex];
+  if (typingTarget) {
+    let phraseIndex = 0;
+    let charIndex   = 0;
+    let isDeleting  = false;
 
-    if (isDeleting) {
-      typingTarget.textContent = current.slice(0, charIndex - 1);
-      charIndex--;
-    } else {
-      typingTarget.textContent = current.slice(0, charIndex + 1);
-      charIndex++;
+    function type() {
+      const current = typingPhrases[phraseIndex];
+
+      if (isDeleting) {
+        typingTarget.textContent = current.slice(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typingTarget.textContent = current.slice(0, charIndex + 1);
+        charIndex++;
+      }
+
+      let delay = isDeleting ? 40 : 80;
+
+      if (!isDeleting && charIndex === current.length) {
+        delay = 1800;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting  = false;
+        phraseIndex = (phraseIndex + 1) % typingPhrases.length;
+        delay = 400;
+      }
+
+      setTimeout(type, delay);
     }
 
-    let delay = isDeleting ? 40 : 80;
-
-    if (!isDeleting && charIndex === current.length) {
-      delay = 1800;
-      isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-      isDeleting  = false;
-      phraseIndex = (phraseIndex + 1) % typingPhrases.length;
-      delay = 400;
-    }
-
-    setTimeout(type, delay);
+    type();
   }
-
-  type();
-}
 
   // ----------------------------------------------------------
   // 4. SCROLL REVEAL ANIMATION
-  //
-  // Uses IntersectionObserver to detect when .reveal elements
-  // enter the viewport and adds .visible to trigger the CSS
-  // fade-in + slide-up transition.
   // ----------------------------------------------------------
   const revealElements = document.querySelectorAll('.reveal');
 
@@ -132,37 +153,36 @@ if (typingTarget) {
   }
 
   // ----------------------------------------------------------
-// 5. ACTIVE NAV LINK HIGHLIGHTING
-// ----------------------------------------------------------
-const sections = document.querySelectorAll('section[id]');
-const navItems = document.querySelectorAll('.nav-links .nav-link');
+  // 5. ACTIVE NAV LINK HIGHLIGHTING
+  // ----------------------------------------------------------
+  const sections = document.querySelectorAll('section[id]');
+  const navItems = document.querySelectorAll('.nav-links .nav-link');
 
-const sectionObserver = new IntersectionObserver(function (entries) {
-  entries.forEach(function (entry) {
-    if (entry.isIntersecting) {
-      navItems.forEach(function (link) {
-        link.classList.remove('active');
-      });
-      // Match by hash only so it works on both index and service pages
-      const activeLink = document.querySelector(
-        '.nav-links a[href="#' + entry.target.id + '"], .nav-links a[href$="#' + entry.target.id + '"]'
-      );
-      if (activeLink) activeLink.classList.add('active');
-    }
+  const sectionObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        navItems.forEach(function (link) {
+          link.classList.remove('active');
+        });
+        const activeLink = document.querySelector(
+          '.nav-links a[href="#' + entry.target.id + '"], .nav-links a[href$="#' + entry.target.id + '"]'
+        );
+        if (activeLink) activeLink.classList.add('active');
+      }
+    });
+  }, {
+    threshold: 0.4
   });
-}, {
-  threshold: 0.4
-});
 
-sections.forEach(function (section) {
-  sectionObserver.observe(section);
-});
+  sections.forEach(function (section) {
+    sectionObserver.observe(section);
+  });
 
 }); // end DOMContentLoaded
 
 
 // ----------------------------------------------------------
-// 5. CONTACT FORM — Web3Forms submission with inline feedback
+// 6. CONTACT FORM — Web3Forms submission with inline feedback
 // ----------------------------------------------------------
 (function () {
   const form      = document.getElementById('contact-form');
@@ -179,7 +199,6 @@ sections.forEach(function (section) {
   const phoneError  = document.getElementById('phone-error');
   const tierError   = document.getElementById('tier-error');
 
-  // -- Inline validation helpers --
   function validateName() {
     if (!nameInput || !nameInput.value.trim()) {
       if (nameError) { nameError.textContent = 'Please enter your name.'; }
@@ -239,7 +258,6 @@ sections.forEach(function (section) {
   if (phoneInput) phoneInput.addEventListener('input',  validatePhone);
   if (tierSelect) tierSelect.addEventListener('change', validateTier);
 
-  // -- Submission --
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
 
