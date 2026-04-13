@@ -58,12 +58,12 @@ document.addEventListener('DOMContentLoaded', function () {
       'Design that communicates.',
       'Bold. Clean. Memorable.'
     ],
-    'data-dashboards.html': [
-      'Raw data. Clear decisions.',
-      'From spreadsheets to strategy.',
-      'Dashboards that actually help.',
-      'Numbers you can act on.',
-      'Built for decision-makers.'
+    'database-management.html': [
+      'Structured. Fast. Reliable.',
+      'Your data, built to last.',
+      'Schema design that scales.',
+      'From spreadsheets to a real database.',
+      'Built on solid foundations.'
     ],
     'system-building.html': [
       'Built exactly for your business.',
