@@ -255,8 +255,10 @@ sections.forEach(function (section) {
     feedback.hidden      = true;
     feedback.className   = 'form-feedback';
 
-    try {
+   try {
       const formData = new FormData(form);
+
+      // -- Send to Web3Forms (email) --
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         body:   formData
@@ -264,6 +266,35 @@ sections.forEach(function (section) {
       const data = await response.json();
 
       if (response.ok) {
+        // -- Send to Discord webhook --
+        const name    = nameInput  ? nameInput.value.trim()  : 'N/A';
+        const email   = emailInput ? emailInput.value.trim() : 'N/A';
+        const phone   = phoneInput ? phoneInput.value.trim() : 'N/A';
+        const tier    = tierSelect ? tierSelect.value        : 'N/A';
+        const message = form.querySelector('textarea') ? form.querySelector('textarea').value.trim() : 'N/A';
+
+        await fetch('https://discord.com/api/webhooks/1493182368360697886/qFvOa90Rd6nDDHKQYBYwfHauW7_x3P-s-2NKrIAMEsclHcFIXlgeK9pCf3k78zyB7dI3', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username:   'CodeHub Website',
+            avatar_url: 'https://the-runner-team.github.io/website/CodeHub.png',
+            embeds: [{
+              title:  '📬 New Contact Form Submission',
+              color:  0x5227FF,
+              fields: [
+                { name: '👤 Name',         value: name,    inline: true  },
+                { name: '📧 Email',        value: email,   inline: true  },
+                { name: '📞 Phone',        value: phone,   inline: true  },
+                { name: '🎯 Service Tier', value: tier,    inline: true  },
+                { name: '💬 Message',      value: message, inline: false }
+              ],
+              footer:    { text: 'Sent from codehub.github.io' },
+              timestamp: new Date().toISOString()
+            }]
+          })
+        });
+
         feedback.textContent = '✓ Message sent! We\'ll get back to you soon.';
         feedback.classList.add('form-feedback--success');
         feedback.hidden = false;
