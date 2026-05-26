@@ -291,7 +291,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const tier    = tierSelect ? tierSelect.value        : 'N/A';
         const message = form.querySelector('textarea') ? form.querySelector('textarea').value.trim() : 'N/A';
 
-        await fetch('https://discord.com/api/webhooks/1493186929200730232/FEOmFACU4P64xHDYXEieG20kWcHU306K0qlwxspmWnumiJg9VmjxMMXC1oc7inaJst_7', {
+        await fetch('https://discord.com/api/webhooks/1508759138476228620/WHyxbqbaKAlcxxyzbGxTRQN0toUUBdKizIRzzZMu1NsCOhiRAFAhJ3MYbnTs4H8lAR-C', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
