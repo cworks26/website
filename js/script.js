@@ -1,40 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
 
   // ----------------------------------------------------------
-  // 0. DARK MODE TOGGLE
-  // ----------------------------------------------------------
-  const themeToggle = document.getElementById('theme-toggle');
-  const themeIcon = document.getElementById('theme-icon');
-
-  function setTheme(isDark) {
-    if (isDark) {
-      document.body.classList.add('dark-mode');
-      if (themeIcon) themeIcon.classList.replace('fa-moon', 'fa-sun');
-      localStorage.setItem('dark-mode', 'true');
-    } else {
-      document.body.classList.remove('dark-mode');
-      if (themeIcon) themeIcon.classList.replace('fa-sun', 'fa-moon');
-      localStorage.setItem('dark-mode', 'false');
-    }
-  }
-
-  const savedTheme = localStorage.getItem('dark-mode');
-  if (savedTheme !== null) {
-    setTheme(savedTheme === 'true');
-  } else {
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setTheme(prefersDark);
-  }
-
-  if (themeToggle) {
-    themeToggle.addEventListener('click', function () {
-      const isCurrentlyDark = document.body.classList.contains('dark-mode');
-      setTheme(!isCurrentlyDark);
-    });
-  }
-
-
-  // ----------------------------------------------------------
   // 1. NAVBAR - Hide/Show on scroll
   // ----------------------------------------------------------
   const navbar = document.getElementById('navbar');
