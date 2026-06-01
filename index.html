@@ -85,6 +85,15 @@
 
 <body>
 
+  <div class="page-loader" id="page-loader">
+    <div class="page-loader__inner">
+      <img src="logo-icon.svg" alt="Cworks" class="page-loader__logo" />
+      <div class="page-loader__bar">
+        <div class="page-loader__bar-fill"></div>
+      </div>
+    </div>
+  </div>
+
   <nav class="navbar" id="navbar">
     <div class="container nav-inner">
       <a href="#hero" class="nav-logo">
@@ -108,8 +117,8 @@
   <section class="hero" id="hero">
     <div class="container">
       <div class="hero-content">
-        <h1 class="hero-title">Cworks</h1>
-        <p class="hero-subtitle">Learning by Building. Shipping Side Projects. Turning Ideas into Reality.</p>
+        <h1 class="hero-title" id="hero-title">Cworks</h1>
+        <p class="hero-subtitle" id="hero-subtitle">Learning by Building. Shipping Side Projects. Turning Ideas into Reality.</p>
         <p class="hero-location">📍 Based in Kampala, Uganda · Proudly Ugandan 🇺🇬</p>
       </div>
     </div>
@@ -293,182 +302,248 @@
         </div>
         <span class="section-number">[00 - 3]</span>
       </div>
-      <h2 class="section-title reveal">Selected Works</h2>
-      
-      <div class="portfolio-grid">
-        <article class="portfolio-item reveal reveal-delay-1">
-          <div class="portfolio-item-inner">
-            <div class="portfolio-placeholder-icon"><i class="fa-solid fa-laptop-code"></i></div>
-            <h3 class="portfolio-title">E-Commerce Platform</h3>
-            <p class="portfolio-category">Web Development</p>
+      <h2 class="section-title reveal">Selected<br/>Works</h2>
+
+      <div class="portfolio-grid--visual">
+        <div class="portfolio-card reveal-scale reveal-delay-1">
+          <img
+            class="portfolio-card__image"
+            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
+            alt="E-Commerce Platform"
+            loading="lazy"
+          />
+          <div class="portfolio-card__overlay">
+            <p class="portfolio-card__category">Web Development</p>
+            <h3 class="portfolio-card__title">E-Commerce Platform</h3>
+            <div class="portfolio-card__tags">
+              <span class="portfolio-card__tag">HTML</span>
+              <span class="portfolio-card__tag">CSS</span>
+              <span class="portfolio-card__tag">JavaScript</span>
+            </div>
           </div>
-        </article>
-        
-        <article class="portfolio-item reveal reveal-delay-2">
-          <div class="portfolio-item-inner">
-            <div class="portfolio-placeholder-icon"><i class="fa-solid fa-palette"></i></div>
-            <h3 class="portfolio-title">Brand Identity Design</h3>
-            <p class="portfolio-category">Graphic Design</p>
+        </div>
+
+        <div class="portfolio-card reveal-scale reveal-delay-2">
+          <img
+            class="portfolio-card__image"
+            src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&q=80"
+            alt="Brand Identity Design"
+            loading="lazy"
+          />
+          <div class="portfolio-card__overlay">
+            <p class="portfolio-card__category">Graphic Design</p>
+            <h3 class="portfolio-card__title">Brand Identity Design</h3>
+            <div class="portfolio-card__tags">
+              <span class="portfolio-card__tag">Figma</span>
+              <span class="portfolio-card__tag">Branding</span>
+              <span class="portfolio-card__tag">Print</span>
+            </div>
           </div>
-        </article>
-        
-        <article class="portfolio-item reveal reveal-delay-3">
-          <div class="portfolio-item-inner">
-            <div class="portfolio-placeholder-icon"><i class="fa-solid fa-mobile-alt"></i></div>
-            <h3 class="portfolio-title">Mobile App UI</h3>
-            <p class="portfolio-category">UI/UX Design</p>
+        </div>
+
+        <div class="portfolio-card reveal-scale reveal-delay-3">
+          <img
+            class="portfolio-card__image"
+            src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=800&q=80"
+            alt="Mobile App UI"
+            loading="lazy"
+          />
+          <div class="portfolio-card__overlay">
+            <p class="portfolio-card__category">UI/UX Design</p>
+            <h3 class="portfolio-card__title">Mobile App Interface</h3>
+            <div class="portfolio-card__tags">
+              <span class="portfolio-card__tag">Figma</span>
+              <span class="portfolio-card__tag">Prototyping</span>
+              <span class="portfolio-card__tag">Responsive</span>
+            </div>
           </div>
-        </article>
-        
-        <article class="portfolio-item portfolio-placeholder reveal reveal-delay-4">
-          <div class="portfolio-item-inner">
-            <div class="portfolio-placeholder-icon"><i class="fa-solid fa-plus"></i></div>
-            <h3 class="portfolio-title">Your Project Here</h3>
-            <p class="portfolio-category">Future Work</p>
+        </div>
+
+        <div class="portfolio-card reveal-scale reveal-delay-4">
+          <img
+            class="portfolio-card__image"
+            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
+            alt="Analytics Dashboard"
+            loading="lazy"
+          />
+          <div class="portfolio-card__overlay">
+            <p class="portfolio-card__category">System Building</p>
+            <h3 class="portfolio-card__title">Analytics Dashboard</h3>
+            <div class="portfolio-card__tags">
+              <span class="portfolio-card__tag">PHP</span>
+              <span class="portfolio-card__tag">MySQL</span>
+              <span class="portfolio-card__tag">Chart.js</span>
+            </div>
           </div>
-        </article>
-        
-        <article class="portfolio-item portfolio-placeholder reveal reveal-delay-1">
-          <div class="portfolio-item-inner">
-            <div class="portfolio-placeholder-icon"><i class="fa-solid fa-plus"></i></div>
-            <h3 class="portfolio-title">Your Project Here</h3>
-            <p class="portfolio-category">Future Work</p>
-          </div>
-        </article>
-        
-        <article class="portfolio-item portfolio-placeholder reveal reveal-delay-2">
-          <div class="portfolio-item-inner">
-            <div class="portfolio-placeholder-icon"><i class="fa-solid fa-plus"></i></div>
-            <h3 class="portfolio-title">Your Project Here</h3>
-            <p class="portfolio-category">Future Work</p>
-          </div>
-        </article>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section projects" id="projects">
-    <div class="container">
-      <div class="section-header reveal">
-        <div>
-          <span class="section-label">Work</span>
-        </div>
-        <span class="section-number">[00 - 4]</span>
+  <section class="section work-visual-section" id="projects">
+    <div class="section-header reveal" style="padding: 120px 40px 80px 40px; max-width: 1400px; margin: 0 auto;">
+      <div>
+        <span class="section-label">Work</span>
       </div>
-      <h2 class="section-title reveal">Services We Can Build For You</h2>
+      <span class="section-number">[00 - 4]</span>
+    </div>
+    <h2 class="section-title reveal" style="max-width: 1400px; margin: 0 auto 0 auto; padding: 0 40px;">What We<br/>Build</h2>
 
-      <div class="projects-grid" style="margin-top: 60px;">
-        <article class="project-card reveal reveal-delay-1">
-          <div>
-            <div class="project-icon"><i class="fa-solid fa-globe"></i></div>
-            <h3 class="project-name">Website Building</h3>
+    <div style="margin-top: 80px;">
+      <div class="work-visual-row" data-animate>
+        <div class="work-visual-media">
+          <img
+            src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=1000&q=80"
+            alt="Website Building"
+            loading="lazy"
+          />
+        </div>
+        <div class="work-visual-content">
+          <p class="work-visual-number">01</p>
+          <h3 class="work-visual-title">Website<br/>Building</h3>
+          <p class="work-visual-desc">From design to hosting, we build clean, responsive websites tailored to your needs, and get them live on the web. Fast, modern, and built to perform.</p>
+          <div class="work-visual-tags">
+            <span class="tech-tag">HTML</span>
+            <span class="tech-tag">CSS</span>
+            <span class="tech-tag">JavaScript</span>
           </div>
-          <div>
-            <p class="project-description">From design to hosting, we build clean, responsive websites tailored to your needs, and get them live on the web.</p>
-            <div class="project-tags">
-              <span class="tech-tag">HTML</span>
-              <span class="tech-tag">CSS</span>
-              <span class="tech-tag">JavaScript</span>
-            </div>
-            <div class="project-footer">
-              <span class="project-status">Available</span>
-              <a href="web-development.html" class="btn-ghost">Learn More <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
+          <div class="work-visual-link">
+            <a href="web-development.html" class="btn-ghost">Explore Service <i class="fa-solid fa-arrow-right"></i></a>
           </div>
-        </article>
+        </div>
+      </div>
 
-        <article class="project-card reveal reveal-delay-2">
-          <div>
-            <div class="project-icon"><i class="fa-solid fa-mobile-screen"></i></div>
-            <h3 class="project-name">UI / UX Design</h3>
+      <div class="work-visual-row" data-animate style="direction: rtl;">
+        <div class="work-visual-media" style="direction: ltr;">
+          <img
+            src="https://images.unsplash.com/photo-1581291518633-83b4efcf3b27?auto=format&fit=crop&w=1000&q=80"
+            alt="UI/UX Design"
+            loading="lazy"
+          />
+        </div>
+        <div class="work-visual-content" style="direction: ltr;">
+          <p class="work-visual-number">02</p>
+          <h3 class="work-visual-title">UI / UX<br/>Design</h3>
+          <p class="work-visual-desc">Thoughtful interfaces that look great and feel intuitive. Designed with the user in mind from the first sketch to the final prototype.</p>
+          <div class="work-visual-tags">
+            <span class="tech-tag">Figma</span>
+            <span class="tech-tag">Prototyping</span>
+            <span class="tech-tag">Responsive</span>
           </div>
-          <div>
-            <p class="project-description">Thoughtful interfaces that look great and feel intuitive. Designed with the user in mind from the first sketch.</p>
-            <div class="project-tags">
-              <span class="tech-tag">Figma</span>
-              <span class="tech-tag">CSS</span>
-              <span class="tech-tag">Responsive</span>
-            </div>
-            <div class="project-footer">
-              <span class="project-status">Available</span>
-              <a href="ui-ux-design.html" class="btn-ghost">Learn More <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
+          <div class="work-visual-link">
+            <a href="ui-ux-design.html" class="btn-ghost">Explore Service <i class="fa-solid fa-arrow-right"></i></a>
           </div>
-        </article>
+        </div>
+      </div>
 
-        <article class="project-card reveal reveal-delay-3">
-          <div>
-            <div class="project-icon"><i class="fa-solid fa-paintbrush"></i></div>
-            <h3 class="project-name">Graphic Design</h3>
+      <div class="work-visual-row" data-animate>
+        <div class="work-visual-media">
+          <img
+            src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1000&q=80"
+            alt="Graphic Design"
+            loading="lazy"
+          />
+        </div>
+        <div class="work-visual-content">
+          <p class="work-visual-number">03</p>
+          <h3 class="work-visual-title">Graphic<br/>Design</h3>
+          <p class="work-visual-desc">Logos, brand identities, social media assets, and print-ready materials. Visual communication that makes your brand stand out from the crowd.</p>
+          <div class="work-visual-tags">
+            <span class="tech-tag">Figma</span>
+            <span class="tech-tag">Branding</span>
+            <span class="tech-tag">Print</span>
           </div>
-          <div>
-            <p class="project-description">Logos, brand identities, social media assets, and print-ready materials. Visual communication that makes your brand stand out.</p>
-            <div class="project-tags">
-              <span class="tech-tag">Figma</span>
-              <span class="tech-tag">Branding</span>
-              <span class="tech-tag">Print</span>
-            </div>
-            <div class="project-footer">
-              <span class="project-status">Available</span>
-              <a href="graphic-design.html" class="btn-ghost">Learn More <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
+          <div class="work-visual-link">
+            <a href="graphic-design.html" class="btn-ghost">Explore Service <i class="fa-solid fa-arrow-right"></i></a>
           </div>
-        </article>
+        </div>
+      </div>
 
-        <article class="project-card reveal reveal-delay-4">
-          <div>
-            <div class="project-icon"><i class="fa-solid fa-database"></i></div>
-            <h3 class="project-name">Database Management</h3>
+      <div class="work-visual-row" data-animate style="direction: rtl;">
+        <div class="work-visual-media" style="direction: ltr;">
+          <img
+            src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1000&q=80"
+            alt="Database Management"
+            loading="lazy"
+          />
+        </div>
+        <div class="work-visual-content" style="direction: ltr;">
+          <p class="work-visual-number">04</p>
+          <h3 class="work-visual-title">Database<br/>Management</h3>
+          <p class="work-visual-desc">Custom database systems designed, built, and managed for your business. Structured storage, fast queries, and reliable data you can trust.</p>
+          <div class="work-visual-tags">
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">PHP</span>
+            <span class="tech-tag">Python</span>
           </div>
-          <div>
-            <p class="project-description">Custom database systems designed, built, and managed for your business. Structured storage, fast queries, and reliable data you can trust.</p>
-            <div class="project-tags">
-              <span class="tech-tag">MySQL</span>
-              <span class="tech-tag">PHP</span>
-              <span class="tech-tag">Python</span>
-            </div>
-            <div class="project-footer">
-              <span class="project-status">Available</span>
-              <a href="database-management.html" class="btn-ghost">Learn More <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
+          <div class="work-visual-link">
+            <a href="database-management.html" class="btn-ghost">Explore Service <i class="fa-solid fa-arrow-right"></i></a>
           </div>
-        </article>
+        </div>
+      </div>
 
-        <article class="project-card reveal reveal-delay-1">
-          <div>
-            <div class="project-icon"><i class="fa-solid fa-server"></i></div>
-            <h3 class="project-name">System Building</h3>
+      <div class="work-visual-row" data-animate>
+        <div class="work-visual-media">
+          <img
+            src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80"
+            alt="System Building"
+            loading="lazy"
+          />
+        </div>
+        <div class="work-visual-content">
+          <p class="work-visual-number">05</p>
+          <h3 class="work-visual-title">System<br/>Building</h3>
+          <p class="work-visual-desc">Custom desktop and web-based systems — inventory management, booking platforms, internal tools. Built to the exact spec your business needs.</p>
+          <div class="work-visual-tags">
+            <span class="tech-tag">PHP</span>
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">Python</span>
           </div>
-          <div>
-            <p class="project-description">Custom desktop and web-based systems — inventory management, booking platforms, internal tools, and more. Built to the exact spec your business needs.</p>
-            <div class="project-tags">
-              <span class="tech-tag">PHP</span>
-              <span class="tech-tag">MySQL</span>
-              <span class="tech-tag">Python</span>
-            </div>
-            <div class="project-footer">
-              <span class="project-status">Available</span>
-              <a href="system-building.html" class="btn-ghost">Learn More <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
+          <div class="work-visual-link">
+            <a href="system-building.html" class="btn-ghost">Explore Service <i class="fa-solid fa-arrow-right"></i></a>
           </div>
-        </article>
+        </div>
+      </div>
 
-        <article class="project-card reveal reveal-delay-2">
-          <div>
-            <div class="project-icon"><i class="fa-solid fa-handshake"></i></div>
-            <h3 class="project-name">Got Something Else?</h3>
+      <div class="work-visual-row" data-animate style="direction: rtl;">
+        <div class="work-visual-media" style="direction: ltr;">
+          <img
+            src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1000&q=80"
+            alt="Got Something Else"
+            loading="lazy"
+          />
+        </div>
+        <div class="work-visual-content" style="direction: ltr;">
+          <p class="work-visual-number">06</p>
+          <h3 class="work-visual-title">Got Something<br/>Else?</h3>
+          <p class="work-visual-desc">Have a project idea that doesn't fit neatly into a box? Reach out — we're always open to a conversation. Let's build something great together.</p>
+          <div class="work-visual-tags">
+            <span class="tech-tag">Let's Talk</span>
           </div>
-          <div>
-            <p class="project-description">Have a project idea that doesn't fit neatly into a box? Reach out — we're always open to a conversation.</p>
-            <div class="project-tags">
-              <span class="tech-tag">Let's Talk</span>
-            </div>
-            <div class="project-footer">
-              <span class="project-status">Get in Touch</span>
-              <a href="#contact" class="btn-ghost">Contact Us <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
+          <div class="work-visual-link">
+            <a href="#contact" class="btn-primary">Contact Us <i class="fa-solid fa-arrow-right"></i></a>
           </div>
-        </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" style="padding-top: 80px;">
+      <div class="stats-row reveal">
+        <div class="stat-card">
+          <div class="stat-card__number">7</div>
+          <div class="stat-card__label">Team Members</div>
+          <div class="stat-card__desc">A tight-knit team of Ugandan developers, designers, and builders.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__number">∞</div>
+          <div class="stat-card__label">Projects Shipped</div>
+          <div class="stat-card__desc">From concept to deployment — we ship continuously and learn with every build.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__number">∞</div>
+          <div class="stat-card__label">Curiosity</div>
+          <div class="stat-card__desc">We never stop learning. Every project pushes us to explore new technologies and ideas.</div>
+        </div>
       </div>
     </div>
   </section>

@@ -1512,13 +1512,84 @@ button {
 }
 
 /* ============================================================
+   STARTUP LOADER
+   ============================================================ */
+
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
+}
+
+.page-loader--done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.page-loader__inner {
+  text-align: center;
+}
+
+.page-loader__logo {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  animation: loaderPulse 1.2s ease-in-out infinite;
+  margin-bottom: 24px;
+}
+
+@keyframes loaderPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.15); opacity: 0.7; }
+}
+
+.page-loader__bar {
+  width: 120px;
+  height: 2px;
+  background: var(--border);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.page-loader__bar-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: var(--radius-full);
+  width: 0;
+  animation: loaderBar 1.5s ease-out forwards;
+}
+
+@keyframes loaderBar {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+/* ============================================================
    ANIMATIONS
    ============================================================ */
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
   }
   to {
     opacity: 1;
@@ -1531,19 +1602,52 @@ button {
   to { opacity: 1; }
 }
 
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
 
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 /* ============================================================
-   SCROLL REVEAL
+   SCROLL REVEAL — Enhanced
    ============================================================ */
 
 .reveal {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateY(50px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal.visible {
@@ -1556,6 +1660,365 @@ button {
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
 .reveal-delay-5 { transition-delay: 0.5s; }
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Smooth scroll body class (JS toggled) */
+html.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+/* ============================================================
+   HERO — Startup Animation
+   ============================================================ */
+
+.hero-title .char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: charReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes charReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-subtitle .word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: wordReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes wordReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   VISUAL WORK CARDS — Alternating layout
+   ============================================================ */
+
+.work-visual-section {
+  padding: 0;
+  border-top: none;
+}
+
+.work-visual-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 80vh;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+}
+
+.work-visual-row:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.work-visual-media {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-secondary);
+}
+
+.work-visual-media img,
+.work-visual-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.work-visual-row:hover .work-visual-media img,
+.work-visual-row:hover .work-visual-media video {
+  transform: scale(1.05);
+}
+
+.work-visual-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(5, 5, 8, 0.7) 100%);
+  pointer-events: none;
+}
+
+.work-visual-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 64px;
+  position: relative;
+}
+
+.work-visual-number {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.work-visual-number.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.work-visual-title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out 0.1s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+}
+
+.work-visual-title.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.work-visual-desc {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 32px;
+  max-width: 480px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out 0.2s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+}
+
+.work-visual-desc.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.work-visual-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 32px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out 0.3s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+}
+
+.work-visual-tags.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.work-visual-link {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out 0.4s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+}
+
+.work-visual-link.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   PARALLAX BACKGROUND DECORATION
+   ============================================================ */
+
+.parallax-bg {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.04;
+  font-size: 16rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  line-height: 1;
+  white-space: nowrap;
+  z-index: 0;
+  transition: transform 0.1s linear;
+}
+
+/* ============================================================
+   PORTFOLIO — With Images
+   ============================================================ */
+
+.portfolio-grid--visual {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-top: 60px;
+}
+
+@media (max-width: 640px) {
+  .portfolio-grid--visual {
+    grid-template-columns: 1fr;
+  }
+}
+
+.portfolio-card {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  cursor: pointer;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border-hover);
+}
+
+.portfolio-card__image {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+  filter: brightness(0.7);
+}
+
+.portfolio-card:hover .portfolio-card__image {
+  transform: scale(1.04);
+  filter: brightness(0.85);
+}
+
+.portfolio-card__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 32px;
+  background: linear-gradient(transparent, rgba(5, 5, 8, 0.95));
+  pointer-events: none;
+}
+
+.portfolio-card__category {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.portfolio-card__title {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.portfolio-card__tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.portfolio-card__tag {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: rgba(15, 15, 30, 0.8);
+}
+
+/* ============================================================
+   STATS ROW — ICOMAT-style large numbers
+   ============================================================ */
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  margin: 80px 0;
+}
+
+.stat-card {
+  background: var(--bg-card);
+  padding: 48px 40px;
+  text-align: left;
+  transition: background var(--transition);
+}
+
+.stat-card:hover {
+  background: var(--bg-elevated);
+}
+
+.stat-card__number {
+  font-family: var(--font-mono);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+}
+
+.stat-card__label {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+.stat-card__desc {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  margin-top: 8px;
+  line-height: 1.5;
+}
 
 /* ============================================================
    RESPONSIVE — Tablet (≤ 1024px)
@@ -1602,6 +2065,23 @@ button {
   .process-step {
     grid-template-columns: 80px 1fr;
     gap: 32px;
+  }
+
+  .work-visual-row {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .work-visual-media {
+    height: 400px;
+  }
+
+  .work-visual-content {
+    padding: 48px 24px;
+  }
+
+  .stats-row {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1711,6 +2191,35 @@ button {
   .hero-cta .btn-primary,
   .hero-cta .btn-secondary {
     justify-content: center;
+  }
+
+  .work-visual-media {
+    height: 280px;
+  }
+
+  .work-visual-row[style*="rtl"] {
+    direction: ltr;
+  }
+
+  .work-visual-content {
+    padding: 40px 16px;
+  }
+
+  .portfolio-grid--visual {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .portfolio-card__overlay {
+    padding: 24px 16px;
+  }
+
+  .portfolio-card__title {
+    font-size: var(--text-xl);
+  }
+
+  .stat-card {
+    padding: 32px 24px;
   }
 }
 
