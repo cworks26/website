@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cworks — Web Development & Design Agency in Kampala, Uganda</title>
+  <title>Cworks — Building Digital Solutions Without Limits</title>
 
   <link rel="icon" type="image/svg+xml" href="logo-icon.svg"/>
   <link rel="icon" type="image/png" href="favicon.png"/>
@@ -13,16 +13,11 @@
   <meta name="keywords" content="web development Uganda, web design Kampala, UI UX design Uganda, website builder Kampala, graphic design Uganda, affordable websites Uganda, Ugandan developers, Cworks, responsive websites Uganda, hire developer Uganda"/>
   <meta name="author" content="Cworks — The Runner Team"/>
   <meta name="robots" content="index, follow"/>
-  <meta name="theme-color" content="#050508"/>
+  <meta name="theme-color" content="#0A0A0A"/>
   <link rel="canonical" href="https://the-runner-team.github.io/website/"/>
 
-  <meta name="geo.region" content="UG-C"/>
-  <meta name="geo.placename" content="Kampala, Uganda"/>
-  <meta name="geo.position" content="0.3476;32.5825"/>
-  <meta name="ICBM" content="0.3476, 32.5825"/>
-
-  <meta property="og:title" content="Cworks — Web Development & Design Agency in Kampala, Uganda"/>
-  <meta property="og:description" content="A Kampala-based team building responsive websites, sleek interfaces, and bold brand identities. From Uganda to the world — we ship real things for real people."/>
+  <meta property="og:title" content="Cworks — Building Digital Solutions Without Limits"/>
+  <meta property="og:description" content="A Kampala-based team building responsive websites, sleek interfaces, and bold brand identities. From Uganda to the world."/>
   <meta property="og:url" content="https://the-runner-team.github.io/website/"/>
   <meta property="og:type" content="website"/>
   <meta property="og:site_name" content="Cworks"/>
@@ -33,12 +28,9 @@
   <meta property="og:locale" content="en_UG"/>
 
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Cworks — Web Development & Design Agency in Kampala, Uganda"/>
+  <meta name="twitter:title" content="Cworks — Building Digital Solutions Without Limits"/>
   <meta name="twitter:description" content="A Kampala-based team building responsive websites, sleek interfaces, and bold brand identities. From Uganda to the world."/>
   <meta name="twitter:image" content="https://the-runner-team.github.io/website/logo-primary.svg"/>
-  <meta name="twitter:image:alt" content="Cworks — Web Development & Design, Kampala Uganda"/>
-  <meta name="twitter:url" content="https://the-runner-team.github.io/website/"/>
-  <meta name="twitter:site" content="@thecworks26"/>
 
   <script type="application/ld+json">
   {
@@ -48,18 +40,11 @@
     "url": "https://the-runner-team.github.io/website/",
     "logo": "https://the-runner-team.github.io/website/logo-primary.svg",
     "image": "https://the-runner-team.github.io/website/logo-primary.svg",
-    "description": "Cworks is a Kampala-based web development and design agency building responsive websites, UI/UX interfaces, and brand identities for clients across Uganda and beyond.",
+    "description": "Cworks is a Kampala-based web development and design agency building responsive websites, UI/UX interfaces, and brand identities.",
     "telephone": "+256788368997",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Kampala",
-      "addressCountry": "UG"
-    },
+    "address": { "@type": "PostalAddress", "addressLocality": "Kampala", "addressCountry": "UG" },
     "areaServed": ["Uganda", "East Africa"],
-    "sameAs": [
-      "https://github.com/the-runner-team",
-      "https://www.instagram.com/thecworks26/"
-    ],
+    "sameAs": ["https://github.com/the-runner-team", "https://www.instagram.com/thecworks26/"],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Cworks Services",
@@ -75,630 +60,209 @@
   }
   </script>
 
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg:     '#0A0A0A',
+            card:   '#111111',
+            border: '#1F1F1F',
+            muted:  '#888888',
+            accent: '#00E6FF',
+            'accent-glow': 'rgba(0,230,255,0.15)',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
-
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link rel="stylesheet" href="css/styles.css"/>
+
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: #0A0A0A; }
+    body { margin: 0; overflow-x: hidden; cursor: default; }
+
+    /* Custom cursor */
+    .cursor { width: 10px; height: 10px; background: #00E6FF; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; mix-blend-mode: difference; transition: width 0.2s, height 0.2s, background 0.2s; }
+    .cursor-follower { width: 40px; height: 40px; border: 1px solid rgba(0,230,255,0.4); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transition: width 0.3s, height 0.3s, border-color 0.3s; }
+    .cursor-hover { width: 60px; height: 60px; border-color: #00E6FF; background: rgba(0,230,255,0.08); }
+    .cursor-hidden { opacity: 0; }
+
+    /* Animations */
+    @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+    @keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 20px rgba(0,230,255,0.1); } 50% { box-shadow: 0 0 40px rgba(0,230,255,0.25); } }
+    @keyframes gradient-shift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    .animate-glow { animation: pulse-glow 3s ease-in-out infinite; }
+    .animate-gradient { background-size: 200% 200%; animation: gradient-shift 8s ease infinite; }
+
+    /* Smooth reveal from bottom */
+    .reveal { opacity: 0; transform: translateY(60px); }
+    .reveal-left { opacity: 0; transform: translateX(-60px); }
+    .reveal-right { opacity: 0; transform: translateX(60px); }
+    .reveal-scale { opacity: 0; transform: scale(0.9); }
+
+    /* Magnetic area */
+    .magnetic { transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+
+    /* Card hover */
+    .card-lift { transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease, border-color 0.4s ease; }
+    .card-lift:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(0,230,255,0.08); border-color: rgba(0,230,255,0.3); }
+
+    /* Gradient text */
+    .text-gradient { background: linear-gradient(135deg, #00E6FF 0%, #FFFFFF 50%, #00E6FF 100%); background-size: 200% 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: gradient-shift 6s ease infinite; }
+
+    /* Overlay fade */
+    .overlay-gradient { background: linear-gradient(180deg, transparent 0%, rgba(10,10,10,0.7) 60%, #0A0A0A 100%); }
+
+    /* Scroll indicator */
+    .scroll-indicator { width: 24px; height: 40px; border: 2px solid rgba(0,230,255,0.4); border-radius: 12px; position: relative; }
+    .scroll-indicator::after { content: ''; width: 4px; height: 8px; background: #00E6FF; border-radius: 2px; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); animation: scrollDot 2s ease-in-out infinite; }
+    @keyframes scrollDot { 0% { top: 8px; opacity: 1; } 100% { top: 24px; opacity: 0; } }
+
+    /* Tech pill */
+    .tech-pill { transition: all 0.3s ease; }
+    .tech-pill:hover { border-color: #00E6FF; color: #00E6FF; box-shadow: 0 0 20px rgba(0,230,255,0.15); transform: translateY(-2px); }
+
+    /* Line decoration */
+    .section-line { width: 60px; height: 1px; background: #00E6FF; margin-bottom: 24px; }
+
+    /* Link underline */
+    .link-underline { position: relative; }
+    .link-underline::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: #00E6FF; transition: width 0.3s ease; }
+    .link-underline:hover::after { width: 100%; }
+
+    @media (max-width: 768px) {
+      .cursor, .cursor-follower { display: none; }
+    }
+  </style>
 </head>
+<body class="bg-bg text-[#F0F0F0] font-sans antialiased">
 
-<body>
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursor-follower"></div>
 
-  <div class="page-loader" id="page-loader">
-    <div class="page-loader__inner">
-      <img src="logo-icon.svg" alt="Cworks" class="page-loader__logo" />
-      <div class="page-loader__bar">
-        <div class="page-loader__bar-fill"></div>
-      </div>
-    </div>
-  </div>
-
-  <nav class="navbar" id="navbar">
-    <div class="container nav-inner">
-      <a href="#hero" class="nav-logo">
-        <img src="logo-icon.svg" alt="Cworks" class="nav-logo-img" style="width: 32px; height: 32px; object-fit: cover;"/>
-        Cworks
-      </a>
-
-      <div class="nav-links-wrapper">
-        <ul class="nav-links">
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#team" class="nav-link">Team</a></li>
-          <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-          <li><a href="#projects" class="nav-link">Work</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
-
-      </div>
+  <!-- ============================ NAV ============================ -->
+  <nav id="nav" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 py-6 px-8 md:px-16 flex items-center justify-between">
+    <a href="#hero" class="flex items-center gap-3 text-white font-bold text-lg tracking-tight uppercase z-10">
+      <img src="logo-icon.svg" alt="Cworks" class="w-8 h-8 object-cover"/>
+      Cworks
+    </a>
+    <div class="hidden md:flex items-center gap-10 text-sm font-medium uppercase tracking-wider text-[#AAAAAA]">
+      <a href="#about" class="hover:text-accent transition-colors duration-300 link-underline">About</a>
+      <a href="#team" class="hover:text-accent transition-colors duration-300 link-underline">Team</a>
+      <a href="#portfolio" class="hover:text-accent transition-colors duration-300 link-underline">Portfolio</a>
+      <a href="#work" class="hover:text-accent transition-colors duration-300 link-underline">Work</a>
+      <a href="#contact" class="hover:text-accent transition-colors duration-300 link-underline">Contact</a>
     </div>
   </nav>
 
-  <section class="hero" id="hero">
-    <div class="hero-bg-fallback" aria-hidden="true"></div>
+  <!-- ============================ HERO ============================ -->
+  <section id="hero" class="relative min-h-screen flex flex-col justify-center items-center text-center px-6 overflow-hidden">
+    <!-- Ambient glow -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full opacity-20 animate-glow" style="background: radial-gradient(circle, rgba(0,230,255,0.15) 0%, transparent 70%);"></div>
+    <div class="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full opacity-10" style="background: radial-gradient(circle, rgba(0,230,255,0.1) 0%, transparent 70%);"></div>
 
-    <div class="hero-bg-scene" aria-hidden="true">
-      <div class="hero-preview-grid">
-        <div class="hero-preview-track">
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--short"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--long"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--med"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--accent"></span>
-            </div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--long"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--med"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--short"></span>
-            </div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--med"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--accent"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--long"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--short"></span>
-            </div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-        </div>
-        <div class="hero-preview-track">
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--long"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--short"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--accent"></span>
-            </div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--med"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--long"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--accent"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--short"></span>
-            </div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--short"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--med"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--long"></span>
-            </div>
-          </div>
-        </div>
-        <div class="hero-preview-track">
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--long"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--accent"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--short"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--med"></span>
-            </div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--med"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--short"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--accent"></span>
-            </div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--short"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--long"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--med"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--accent"></span>
-            </div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-        </div>
-        <div class="hero-preview-track">
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--accent"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--long"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--med"></span>
-            </div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--long"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--short"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--med"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--accent"></span>
-            </div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--med"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--accent"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--short"></span>
-            </div>
-          </div>
-        </div>
-        <div class="hero-preview-track">
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--short"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--long"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--accent"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--med"></span>
-            </div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--long"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--med"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--short"></span>
-            </div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--med"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--accent"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--long"></span>
-            </div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-        </div>
+    <!-- Subtle grid -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(0,230,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0,230,255,0.3) 1px, transparent 1px); background-size: 80px 80px;"></div>
+
+    <div class="relative z-10 max-w-5xl mx-auto">
+      <p class="text-accent text-xs md:text-sm uppercase tracking-[0.2em] font-medium mb-6" data-animate="fade-up">Kampala, Uganda · Digital Agency</p>
+      <h1 class="text-5xl sm:text-7xl md:text-8xl lg:text-[140px] font-black leading-[0.9] tracking-tighter uppercase mb-8" data-animate="fade-up" data-delay="0.2">
+        <span class="text-gradient">Building Digital<br/>Solutions Without<br/>Limits</span>
+      </h1>
+      <p class="text-base sm:text-lg md:text-xl text-[#AAAAAA] max-w-2xl mx-auto leading-relaxed mb-12" data-animate="fade-up" data-delay="0.5">
+        Learning by Building. Shipping Side Projects. Turning Ideas into Reality.
+      </p>
+      <div data-animate="fade-up" data-delay="0.8" class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#work" class="magnetic inline-flex items-center gap-3 px-8 py-4 bg-accent text-black font-bold text-sm uppercase tracking-wider hover:shadow-[0_0_40px_rgba(0,230,255,0.3)] transition-shadow duration-300">
+          Explore Our Work <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+        <a href="#contact" class="magnetic inline-flex items-center gap-3 px-8 py-4 border border-[#333] text-white font-bold text-sm uppercase tracking-wider hover:border-accent hover:text-accent transition-all duration-300">
+          Get in Touch
+        </a>
       </div>
     </div>
 
-    <div class="hero-bg-overlay" aria-hidden="true"></div>
-
-    <div class="container">
-      <div class="hero-content">
-        <h1 class="hero-title" id="hero-title">Cworks</h1>
-        <p class="hero-subtitle" id="hero-subtitle">Learning by Building. Shipping Side Projects. Turning Ideas into Reality.</p>
-        <p class="hero-location">📍 Based in Kampala, Uganda · Proudly Ugandan 🇺🇬</p>
-      </div>
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
+      <span class="text-[10px] uppercase tracking-[0.2em] text-[#666]">Scroll</span>
+      <div class="scroll-indicator"></div>
     </div>
   </section>
 
-  <section class="section about" id="about">
-    <div class="container">
-      <div class="section-header reveal">
+  <!-- ============================ ABOUT ============================ -->
+  <section id="about" class="relative min-h-screen flex items-center py-24 md:py-32 px-6 md:px-16">
+    <div class="max-w-7xl mx-auto w-full">
+      <div class="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
         <div>
-          <span class="section-label">About</span>
-        </div>
-        <span class="section-number">[00 - 1]</span>
-      </div>
-      <h2 class="section-title reveal">We Build. We Ship.</h2>
-      <div class="about-grid" style="margin-top: 60px;">
-        <div class="about-text reveal reveal-delay-1">
-          <div class="about-body">
+          <span class="text-accent text-xs uppercase tracking-[0.2em] font-medium block mb-4" data-animate="fade-up">[00 — 01]</span>
+          <div class="section-line"></div>
+          <h2 class="text-4xl sm:text-5xl md:text-7xl font-black leading-[0.95] tracking-tighter uppercase mb-8" data-animate="fade-up">We Build.<br/>We Ship.</h2>
+          <div class="space-y-4 text-[#AAAAAA] text-base md:text-lg leading-relaxed" data-animate="fade-up" data-delay="0.2">
             <p>Cworks is a Ugandan team of developers delivering real digital solutions — from building responsive websites and designing clean user interfaces to automating workflows and teaching practical tech skills.</p>
             <p>We began as a group of learners, and that spirit still defines how we work today: with honesty, teamwork, creativity, and genuine care for every project we ship.</p>
             <p>We understand the needs of local businesses, students, startups, and growing brands because we come from the same environment. Whether you're running a small business in Kampala, building a personal brand, or bringing a new idea to life, Cworks is the team to build it with you.</p>
-            <p style="font-weight: 600; margin-top: 24px;">🇺🇬 Built in Uganda — from Kampala to the world.</p>
+            <p class="font-semibold text-white mt-6">🇺🇬 Built in Uganda — from Kampala to the world.</p>
           </div>
         </div>
 
-        <div class="about-visual reveal reveal-delay-2">
-          <p class="about-visual-title">Technologies we use</p>
-          <div class="tech-list">
-            <div class="tech-item"><img class="tech-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python"/> Python</div>
-            <div class="tech-item"><img class="tech-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java"/> Java</div>
-            <div class="tech-item"><img class="tech-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML5"/> HTML</div>
-            <div class="tech-item"><img class="tech-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS3"/> CSS</div>
-            <div class="tech-item"><img class="tech-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript"/> JavaScript</div>
-            <div class="tech-item"><img class="tech-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" alt="Figma"/> Figma</div>
-            <div class="tech-item"><img class="tech-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" alt="PHP"/> PHP</div>
-            <div class="tech-item"><img class="tech-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="MySQL"/> MySQL</div>
-          </div>
-
-          <div class="about-stats">
-            <div class="stat">
-              <div class="stat-value">7</div>
-              <div class="stat-label">Members</div>
+        <div data-animate="fade-up" data-delay="0.4">
+          <p class="text-xs uppercase tracking-[0.2em] text-[#666] font-medium mb-6">Technologies we use</p>
+          <div class="grid grid-cols-2 gap-3 mb-12">
+            <div class="tech-pill flex items-center gap-3 px-4 py-3 border border-[#1F1F1F] text-sm font-medium">
+              <img class="w-5 h-5" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt=""/> Python
             </div>
-            <div class="stat">
-              <div class="stat-value">∞</div>
-              <div class="stat-label">Projects</div>
+            <div class="tech-pill flex items-center gap-3 px-4 py-3 border border-[#1F1F1F] text-sm font-medium">
+              <img class="w-5 h-5" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt=""/> Java
             </div>
-            <div class="stat">
-              <div class="stat-value">∞</div>
-              <div class="stat-label">Curiosity</div>
+            <div class="tech-pill flex items-center gap-3 px-4 py-3 border border-[#1F1F1F] text-sm font-medium">
+              <img class="w-5 h-5" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt=""/> HTML
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section team" id="team">
-    <div class="container">
-      <div class="section-header reveal">
-        <div>
-          <span class="section-label">Team</span>
-        </div>
-        <span class="section-number">[00 - 2]</span>
-      </div>
-      <h2 class="section-title reveal">The People Behind<br/>Cworks</h2>
-
-      <div class="team-grid" style="margin-top: 60px;">
-        <article class="team-card reveal reveal-delay-1">
-          <img class="team-avatar" src="https://github.com/FrostyDot512.png" alt="Avatar for Anwaar Batala" width="120" height="120" loading="lazy"/>
-          <p class="team-role">Member</p>
-          <h3 class="team-name">Anwaar Batala</h3>
-          <p class="team-bio">Passionate about coding. He loves turning ideas into real-life solutions.</p>
-          <div class="team-social">
-            <a href="https://github.com/FrostyDot512" class="team-github" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/anwaar-batala-46069a362/" class="team-linkedin" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
-            </a>
-          </div>
-        </article>
-
-        <article class="team-card reveal reveal-delay-2">
-          <img class="team-avatar" src="https://github.com/GrandMaster142.png" alt="Avatar for Benjamin Ongom" width="120" height="120" loading="lazy"/>
-          <p class="team-role">Member</p>
-          <h3 class="team-name">Benjamin Ongom</h3>
-          <p class="team-bio">UI/UX designer focused on creating simple, intuitive, and meaningful digital experiences.</p>
-          <div class="team-social">
-            <a href="https://github.com/GrandMaster142" class="team-github" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/benjamin-ongom-a2a5672a6/" class="team-linkedin" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
-            </a>
-          </div>
-        </article>
-
-        <article class="team-card reveal reveal-delay-3">
-          <img class="team-avatar" src="https://github.com/eliosha.png" alt="Avatar for Elisha Benjamin" width="120" height="120" loading="lazy"/>
-          <p class="team-role">Member</p>
-          <h3 class="team-name">Elisha Benjamin</h3>
-          <p class="team-bio">Creates responsive websites that combine simplicity, performance, and modern design.</p>
-          <div class="team-social">
-            <a href="https://github.com/eliosha" class="team-github" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/elisha-mukisa-5b5963402/" class="team-linkedin" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
-            </a>
-          </div>
-        </article>
-
-        <article class="team-card reveal reveal-delay-4">
-          <img class="team-avatar" src="https://github.com/Mrj-1007.png" alt="Avatar for Jonathan Miyingo" width="120" height="120" loading="lazy"/>
-          <p class="team-role">Member</p>
-          <h3 class="team-name">Jonathan Miyingo</h3>
-          <p class="team-bio">A curious developer passionate about designing and building things that make an impact.</p>
-          <div class="team-social">
-            <a href="https://github.com/Mrj-1007" class="team-github" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/jonathan-m-a0818a313/" class="team-linkedin" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
-            </a>
-          </div>
-        </article>
-
-        <article class="team-card reveal reveal-delay-1">
-          <img class="team-avatar" src="https://github.com/Trojannetwork.png" alt="Avatar for Mark Lui" width="120" height="120" loading="lazy"/>
-          <p class="team-role">Member</p>
-          <h3 class="team-name">Mark Lui</h3>
-          <p class="team-bio">Software Developer & Cloud Architect building custom desktop apps for small businesses, focused on inventory management and automation.</p>
-          <div class="team-social">
-            <a href="https://github.com/Trojannetwork" class="team-github" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/lui-mark-25259339b/" class="team-linkedin" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
-            </a>
-          </div>
-        </article>
-
-        <article class="team-card reveal reveal-delay-2">
-          <img class="team-avatar" src="https://github.com/MOSES-LEO-tech.png" alt="Avatar for Moses Leo" width="120" height="120" loading="lazy"/>
-          <p class="team-role">Member</p>
-          <h3 class="team-name">Moses Leo</h3>
-          <p class="team-bio">Innovative developer combining creativity and AI to build intelligent, real-world digital solutions.</p>
-          <div class="team-social">
-            <a href="https://github.com/MOSES-LEO-tech" class="team-github" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/moses-leo-04477a336/" class="team-linkedin" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
-            </a>
-          </div>
-        </article>
-
-        <article class="team-card reveal reveal-delay-3">
-          <img class="team-avatar" src="https://github.com/Otwiine.png" alt="Avatar for Otwiine Olweny" width="120" height="120" loading="lazy"/>
-          <p class="team-role">Member</p>
-          <h3 class="team-name">Otwiine Olweny</h3>
-          <p class="team-bio">Passionate about geospatial studies, web development, and building impactful solutions through code.</p>
-          <div class="team-social">
-            <a href="https://github.com/Otwiine" class="team-github" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/otwiine-olweny-60b871402/" class="team-linkedin" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
-            </a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section portfolio" id="portfolio">
-    <div class="container">
-      <div class="section-header reveal">
-        <div>
-          <span class="section-label">Portfolio</span>
-        </div>
-        <span class="section-number">[00 - 3]</span>
-      </div>
-      <h2 class="section-title reveal">Selected<br/>Works</h2>
-
-      <div class="portfolio-grid--visual">
-        <div class="portfolio-card reveal-scale reveal-delay-1">
-          <img
-            class="portfolio-card__image"
-            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
-            alt="E-Commerce Platform"
-            loading="lazy"
-          />
-          <div class="portfolio-card__overlay">
-            <p class="portfolio-card__category">Web Development</p>
-            <h3 class="portfolio-card__title">E-Commerce Platform</h3>
-            <div class="portfolio-card__tags">
-              <span class="portfolio-card__tag">HTML</span>
-              <span class="portfolio-card__tag">CSS</span>
-              <span class="portfolio-card__tag">JavaScript</span>
+            <div class="tech-pill flex items-center gap-3 px-4 py-3 border border-[#1F1F1F] text-sm font-medium">
+              <img class="w-5 h-5" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt=""/> CSS
+            </div>
+            <div class="tech-pill flex items-center gap-3 px-4 py-3 border border-[#1F1F1F] text-sm font-medium">
+              <img class="w-5 h-5" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt=""/> JavaScript
+            </div>
+            <div class="tech-pill flex items-center gap-3 px-4 py-3 border border-[#1F1F1F] text-sm font-medium">
+              <img class="w-5 h-5" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" alt=""/> Figma
+            </div>
+            <div class="tech-pill flex items-center gap-3 px-4 py-3 border border-[#1F1F1F] text-sm font-medium">
+              <img class="w-5 h-5" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" alt=""/> PHP
+            </div>
+            <div class="tech-pill flex items-center gap-3 px-4 py-3 border border-[#1F1F1F] text-sm font-medium">
+              <img class="w-5 h-5" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt=""/> MySQL
             </div>
           </div>
-        </div>
 
-        <div class="portfolio-card reveal-scale reveal-delay-2">
-          <img
-            class="portfolio-card__image"
-            src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&q=80"
-            alt="Brand Identity Design"
-            loading="lazy"
-          />
-          <div class="portfolio-card__overlay">
-            <p class="portfolio-card__category">Graphic Design</p>
-            <h3 class="portfolio-card__title">Brand Identity Design</h3>
-            <div class="portfolio-card__tags">
-              <span class="portfolio-card__tag">Figma</span>
-              <span class="portfolio-card__tag">Branding</span>
-              <span class="portfolio-card__tag">Print</span>
+          <div class="grid grid-cols-3 gap-6 pt-8 border-t border-[#1F1F1F]">
+            <div>
+              <div class="text-4xl md:text-5xl font-black text-accent tracking-tighter">7</div>
+              <div class="text-xs uppercase tracking-[0.1em] text-[#666] mt-2">Members</div>
             </div>
-          </div>
-        </div>
-
-        <div class="portfolio-card reveal-scale reveal-delay-3">
-          <img
-            class="portfolio-card__image"
-            src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=800&q=80"
-            alt="Mobile App UI"
-            loading="lazy"
-          />
-          <div class="portfolio-card__overlay">
-            <p class="portfolio-card__category">UI/UX Design</p>
-            <h3 class="portfolio-card__title">Mobile App Interface</h3>
-            <div class="portfolio-card__tags">
-              <span class="portfolio-card__tag">Figma</span>
-              <span class="portfolio-card__tag">Prototyping</span>
-              <span class="portfolio-card__tag">Responsive</span>
+            <div>
+              <div class="text-4xl md:text-5xl font-black text-accent tracking-tighter">∞</div>
+              <div class="text-xs uppercase tracking-[0.1em] text-[#666] mt-2">Projects</div>
             </div>
-          </div>
-        </div>
-
-        <div class="portfolio-card reveal-scale reveal-delay-4">
-          <img
-            class="portfolio-card__image"
-            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
-            alt="Analytics Dashboard"
-            loading="lazy"
-          />
-          <div class="portfolio-card__overlay">
-            <p class="portfolio-card__category">System Building</p>
-            <h3 class="portfolio-card__title">Analytics Dashboard</h3>
-            <div class="portfolio-card__tags">
-              <span class="portfolio-card__tag">PHP</span>
-              <span class="portfolio-card__tag">MySQL</span>
-              <span class="portfolio-card__tag">Chart.js</span>
+            <div>
+              <div class="text-4xl md:text-5xl font-black text-accent tracking-tighter">∞</div>
+              <div class="text-xs uppercase tracking-[0.1em] text-[#666] mt-2">Curiosity</div>
             </div>
           </div>
         </div>
@@ -706,237 +270,358 @@
     </div>
   </section>
 
-  <section class="section work-visual-section" id="projects">
-    <div class="section-header reveal" style="padding: 120px 40px 80px 40px; max-width: 1400px; margin: 0 auto;">
-      <div>
-        <span class="section-label">Work</span>
-      </div>
-      <span class="section-number">[00 - 4]</span>
-    </div>
-    <h2 class="section-title reveal" style="max-width: 1400px; margin: 0 auto 0 auto; padding: 0 40px;">What We<br/>Build</h2>
+  <!-- ============================ TEAM ============================ -->
+  <section id="team" class="relative min-h-screen py-24 md:py-32 px-6 md:px-16 bg-card">
+    <div class="max-w-7xl mx-auto">
+      <span class="text-accent text-xs uppercase tracking-[0.2em] font-medium block mb-4" data-animate="fade-up">[00 — 02]</span>
+      <div class="section-line"></div>
+      <h2 class="text-4xl sm:text-5xl md:text-7xl font-black leading-[0.95] tracking-tighter uppercase mb-16" data-animate="fade-up">The People<br/>Behind Cworks</h2>
 
-    <div style="margin-top: 80px;">
-      <div class="work-visual-row" data-animate>
-        <div class="work-visual-media">
-          <img
-            src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=1000&q=80"
-            alt="Website Building"
-            loading="lazy"
-          />
-        </div>
-        <div class="work-visual-content">
-          <p class="work-visual-number">01</p>
-          <h3 class="work-visual-title">Website<br/>Building</h3>
-          <p class="work-visual-desc">From design to hosting, we build clean, responsive websites tailored to your needs, and get them live on the web. Fast, modern, and built to perform.</p>
-          <div class="work-visual-tags">
-            <span class="tech-tag">HTML</span>
-            <span class="tech-tag">CSS</span>
-            <span class="tech-tag">JavaScript</span>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#1F1F1F] overflow-hidden">
+        <!-- 1. Anwaar Batala -->
+        <div class="card-lift bg-card p-8 md:p-10 flex flex-col group cursor-pointer" data-animate="fade-up">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-6 ring-2 ring-transparent group-hover:ring-accent transition-all duration-500">
+            <img src="https://github.com/FrostyDot512.png" alt="Anwaar Batala" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy"/>
           </div>
-          <div class="work-visual-link">
-            <a href="web-development.html" class="btn-ghost">Explore Service <i class="fa-solid fa-arrow-right"></i></a>
+          <p class="text-accent text-[10px] uppercase tracking-[0.2em] font-semibold mb-2">Member</p>
+          <h3 class="text-xl font-bold mb-2">Anwaar Batala</h3>
+          <p class="text-sm text-[#888] mb-6 flex-1">Passionate about coding. He loves turning ideas into real-life solutions.</p>
+          <div class="flex gap-4 text-xs uppercase tracking-wider font-semibold">
+            <a href="https://github.com/FrostyDot512" target="_blank" rel="noopener noreferrer" class="text-[#666] hover:text-accent transition-colors"><i class="fa-brands fa-github mr-1"></i> GitHub</a>
+            <a href="https://www.linkedin.com/in/anwaar-batala-46069a362/" target="_blank" rel="noopener noreferrer" class="text-[#666] hover:text-accent transition-colors"><i class="fa-brands fa-linkedin mr-1"></i> LinkedIn</a>
           </div>
         </div>
-      </div>
-
-      <div class="work-visual-row" data-animate style="direction: rtl;">
-        <div class="work-visual-media" style="direction: ltr;">
-          <img
-            src="https://images.unsplash.com/photo-1581291518633-83b4efcf3b27?auto=format&fit=crop&w=1000&q=80"
-            alt="UI/UX Design"
-            loading="lazy"
-          />
-        </div>
-        <div class="work-visual-content" style="direction: ltr;">
-          <p class="work-visual-number">02</p>
-          <h3 class="work-visual-title">UI / UX<br/>Design</h3>
-          <p class="work-visual-desc">Thoughtful interfaces that look great and feel intuitive. Designed with the user in mind from the first sketch to the final prototype.</p>
-          <div class="work-visual-tags">
-            <span class="tech-tag">Figma</span>
-            <span class="tech-tag">Prototyping</span>
-            <span class="tech-tag">Responsive</span>
+        <!-- 2. Benjamin Ongom -->
+        <div class="card-lift bg-card p-8 md:p-10 flex flex-col group" data-animate="fade-up" data-delay="0.1">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-6 ring-2 ring-transparent group-hover:ring-accent transition-all duration-500">
+            <img src="https://github.com/GrandMaster142.png" alt="Benjamin Ongom" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy"/>
           </div>
-          <div class="work-visual-link">
-            <a href="ui-ux-design.html" class="btn-ghost">Explore Service <i class="fa-solid fa-arrow-right"></i></a>
+          <p class="text-accent text-[10px] uppercase tracking-[0.2em] font-semibold mb-2">Member</p>
+          <h3 class="text-xl font-bold mb-2">Benjamin Ongom</h3>
+          <p class="text-sm text-[#888] mb-6 flex-1">UI/UX designer focused on creating simple, intuitive, and meaningful digital experiences.</p>
+          <div class="flex gap-4 text-xs uppercase tracking-wider font-semibold">
+            <a href="https://github.com/GrandMaster142" target="_blank" rel="noopener noreferrer" class="text-[#666] hover:text-accent transition-colors"><i class="fa-brands fa-github mr-1"></i> GitHub</a>
+            <a href="https://www.linkedin.com/in/benjamin-ongom-a2a5672a6/" target="_blank" rel="noopener noreferrer" class="text-[#666] hover:text-accent transition-colors"><i class="fa-brands fa-linkedin mr-1"></i> LinkedIn</a>
           </div>
         </div>
-      </div>
-
-      <div class="work-visual-row" data-animate>
-        <div class="work-visual-media">
-          <img
-            src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1000&q=80"
-            alt="Graphic Design"
-            loading="lazy"
-          />
-        </div>
-        <div class="work-visual-content">
-          <p class="work-visual-number">03</p>
-          <h3 class="work-visual-title">Graphic<br/>Design</h3>
-          <p class="work-visual-desc">Logos, brand identities, social media assets, and print-ready materials. Visual communication that makes your brand stand out from the crowd.</p>
-          <div class="work-visual-tags">
-            <span class="tech-tag">Figma</span>
-            <span class="tech-tag">Branding</span>
-            <span class="tech-tag">Print</span>
+        <!-- 3. Elisha Benjamin -->
+        <div class="card-lift bg-card p-8 md:p-10 flex flex-col group" data-animate="fade-up" data-delay="0.2">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-6 ring-2 ring-transparent group-hover:ring-accent transition-all duration-500">
+            <img src="https://github.com/eliosha.png" alt="Elisha Benjamin" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy"/>
           </div>
-          <div class="work-visual-link">
-            <a href="graphic-design.html" class="btn-ghost">Explore Service <i class="fa-solid fa-arrow-right"></i></a>
+          <p class="text-accent text-[10px] uppercase tracking-[0.2em] font-semibold mb-2">Member</p>
+          <h3 class="text-xl font-bold mb-2">Elisha Benjamin</h3>
+          <p class="text-sm text-[#888] mb-6 flex-1">Creates responsive websites that combine simplicity, performance, and modern design.</p>
+          <div class="flex gap-4 text-xs uppercase tracking-wider font-semibold">
+            <a href="https://github.com/eliosha" target="_blank" rel="noopener noreferrer" class="text-[#666] hover:text-accent transition-colors"><i class="fa-brands fa-github mr-1"></i> GitHub</a>
+            <a href="https://www.linkedin.com/in/elisha-mukisa-5b5963402/" target="_blank" rel="noopener noreferrer" class="text-[#666] hover:text-accent transition-colors"><i class="fa-brands fa-linkedin mr-1"></i> LinkedIn</a>
           </div>
         </div>
-      </div>
-
-      <div class="work-visual-row" data-animate style="direction: rtl;">
-        <div class="work-visual-media" style="direction: ltr;">
-          <img
-            src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1000&q=80"
-            alt="Database Management"
-            loading="lazy"
-          />
-        </div>
-        <div class="work-visual-content" style="direction: ltr;">
-          <p class="work-visual-number">04</p>
-          <h3 class="work-visual-title">Database<br/>Management</h3>
-          <p class="work-visual-desc">Custom database systems designed, built, and managed for your business. Structured storage, fast queries, and reliable data you can trust.</p>
-          <div class="work-visual-tags">
-            <span class="tech-tag">MySQL</span>
-            <span class="tech-tag">PHP</span>
-            <span class="tech-tag">Python</span>
+        <!-- 4. Jonathan Miyingo -->
+        <div class="card-lift bg-card p-8 md:p-10 flex flex-col group" data-animate="fade-up" data-delay="0.3">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-6 ring-2 ring-transparent group-hover:ring-accent transition-all duration-500">
+            <img src="https://github.com/Mrj-1007.png" alt="Jonathan Miyingo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy"/>
           </div>
-          <div class="work-visual-link">
-            <a href="database-management.html" class="btn-ghost">Explore Service <i class="fa-solid fa-arrow-right"></i></a>
+          <p class="text-accent text-[10px] uppercase tracking-[0.2em] font-semibold mb-2">Member</p>
+          <h3 class="text-xl font-bold mb-2">Jonathan Miyingo</h3>
+          <p class="text-sm text-[#888] mb-6 flex-1">A curious developer passionate about designing and building things that make an impact.</p>
+          <div class="flex gap-4 text-xs uppercase tracking-wider font-semibold">
+            <a href="https://github.com/Mrj-1007" target="_blank" rel="noopener noreferrer" class="text-[#666] hover:text-accent transition-colors"><i class="fa-brands fa-github mr-1"></i> GitHub</a>
+            <a href="https://www.linkedin.com/in/jonathan-m-a0818a313/" target="_blank" rel="noopener noreferrer" class="text-[#666] hover:text-accent transition-colors"><i class="fa-brands fa-linkedin mr-1"></i> LinkedIn</a>
           </div>
         </div>
-      </div>
-
-      <div class="work-visual-row" data-animate>
-        <div class="work-visual-media">
-          <img
-            src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80"
-            alt="System Building"
-            loading="lazy"
-          />
-        </div>
-        <div class="work-visual-content">
-          <p class="work-visual-number">05</p>
-          <h3 class="work-visual-title">System<br/>Building</h3>
-          <p class="work-visual-desc">Custom desktop and web-based systems — inventory management, booking platforms, internal tools. Built to the exact spec your business needs.</p>
-          <div class="work-visual-tags">
-            <span class="tech-tag">PHP</span>
-            <span class="tech-tag">MySQL</span>
-            <span class="tech-tag">Python</span>
+        <!-- 5. Mark Lui -->
+        <div class="card-lift bg-card p-8 md:p-10 flex flex-col group" data-animate="fade-up" data-delay="0.1">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-6 ring-2 ring-transparent group-hover:ring-accent transition-all duration-500">
+            <img src="https://github.com/Trojannetwork.png" alt="Mark Lui" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy"/>
           </div>
-          <div class="work-visual-link">
-            <a href="system-building.html" class="btn-ghost">Explore Service <i class="fa-solid fa-arrow-right"></i></a>
+          <p class="text-accent text-[10px] uppercase tracking-[0.2em] font-semibold mb-2">Member</p>
+          <h3 class="text-xl font-bold mb-2">Mark Lui</h3>
+          <p class="text-sm text-[#888] mb-6 flex-1">Software Developer & Cloud Architect building custom desktop apps for small businesses, focused on inventory management and automation.</p>
+          <div class="flex gap-4 text-xs uppercase tracking-wider font-semibold">
+            <a href="https://github.com/Trojannetwork" target="_blank" rel="noopener noreferrer" class="text-[#666] hover:text-accent transition-colors"><i class="fa-brands fa-github mr-1"></i> GitHub</a>
+            <a href="https://www.linkedin.com/in/lui-mark-25259339b/" target="_blank" rel="noopener noreferrer" class="text-[#666] hover:text-accent transition-colors"><i class="fa-brands fa-linkedin mr-1"></i> LinkedIn</a>
           </div>
         </div>
-      </div>
-
-      <div class="work-visual-row" data-animate style="direction: rtl;">
-        <div class="work-visual-media" style="direction: ltr;">
-          <img
-            src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1000&q=80"
-            alt="Got Something Else"
-            loading="lazy"
-          />
-        </div>
-        <div class="work-visual-content" style="direction: ltr;">
-          <p class="work-visual-number">06</p>
-          <h3 class="work-visual-title">Got Something<br/>Else?</h3>
-          <p class="work-visual-desc">Have a project idea that doesn't fit neatly into a box? Reach out — we're always open to a conversation. Let's build something great together.</p>
-          <div class="work-visual-tags">
-            <span class="tech-tag">Let's Talk</span>
+        <!-- 6. Moses Leo -->
+        <div class="card-lift bg-card p-8 md:p-10 flex flex-col group" data-animate="fade-up" data-delay="0.2">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-6 ring-2 ring-transparent group-hover:ring-accent transition-all duration-500">
+            <img src="https://github.com/MOSES-LEO-tech.png" alt="Moses Leo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy"/>
           </div>
-          <div class="work-visual-link">
-            <a href="#contact" class="btn-primary">Contact Us <i class="fa-solid fa-arrow-right"></i></a>
+          <p class="text-accent text-[10px] uppercase tracking-[0.2em] font-semibold mb-2">Member</p>
+          <h3 class="text-xl font-bold mb-2">Moses Leo</h3>
+          <p class="text-sm text-[#888] mb-6 flex-1">Innovative developer combining creativity and AI to build intelligent, real-world digital solutions.</p>
+          <div class="flex gap-4 text-xs uppercase tracking-wider font-semibold">
+            <a href="https://github.com/MOSES-LEO-tech" target="_blank" rel="noopener noreferrer" class="text-[#666] hover:text-accent transition-colors"><i class="fa-brands fa-github mr-1"></i> GitHub</a>
+            <a href="https://www.linkedin.com/in/moses-leo-04477a336/" target="_blank" rel="noopener noreferrer" class="text-[#666] hover:text-accent transition-colors"><i class="fa-brands fa-linkedin mr-1"></i> LinkedIn</a>
           </div>
         </div>
-      </div>
-    </div>
-
-    <div class="container" style="padding-top: 80px;">
-      <div class="stats-row reveal">
-        <div class="stat-card">
-          <div class="stat-card__number">7</div>
-          <div class="stat-card__label">Team Members</div>
-          <div class="stat-card__desc">A tight-knit team of Ugandan developers, designers, and builders.</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card__number">∞</div>
-          <div class="stat-card__label">Projects Shipped</div>
-          <div class="stat-card__desc">From concept to deployment — we ship continuously and learn with every build.</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card__number">∞</div>
-          <div class="stat-card__label">Curiosity</div>
-          <div class="stat-card__desc">We never stop learning. Every project pushes us to explore new technologies and ideas.</div>
+        <!-- 7. Otwiine Olweny -->
+        <div class="card-lift bg-card p-8 md:p-10 flex flex-col group" data-animate="fade-up" data-delay="0.3">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-6 ring-2 ring-transparent group-hover:ring-accent transition-all duration-500">
+            <img src="https://github.com/Otwiine.png" alt="Otwiine Olweny" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy"/>
+          </div>
+          <p class="text-accent text-[10px] uppercase tracking-[0.2em] font-semibold mb-2">Member</p>
+          <h3 class="text-xl font-bold mb-2">Otwiine Olweny</h3>
+          <p class="text-sm text-[#888] mb-6 flex-1">Passionate about geospatial studies, web development, and building impactful solutions through code.</p>
+          <div class="flex gap-4 text-xs uppercase tracking-wider font-semibold">
+            <a href="https://github.com/Otwiine" target="_blank" rel="noopener noreferrer" class="text-[#666] hover:text-accent transition-colors"><i class="fa-brands fa-github mr-1"></i> GitHub</a>
+            <a href="https://www.linkedin.com/in/otwiine-olweny-60b871402/" target="_blank" rel="noopener noreferrer" class="text-[#666] hover:text-accent transition-colors"><i class="fa-brands fa-linkedin mr-1"></i> LinkedIn</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section contact" id="contact">
-    <div class="container">
-      <div class="section-header reveal">
-        <div>
-          <span class="section-label">Contact</span>
+  <!-- ============================ PORTFOLIO ============================ -->
+  <section id="portfolio" class="relative min-h-screen py-24 md:py-32 px-6 md:px-16">
+    <div class="max-w-7xl mx-auto">
+      <span class="text-accent text-xs uppercase tracking-[0.2em] font-medium block mb-4" data-animate="fade-up">[00 — 03]</span>
+      <div class="section-line"></div>
+      <h2 class="text-4xl sm:text-5xl md:text-7xl font-black leading-[0.95] tracking-tighter uppercase mb-16" data-animate="fade-up">Selected<br/>Works</h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Card 1 -->
+        <div class="card-lift group relative overflow-hidden border border-[#1F1F1F]" data-animate="scale-in">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="E-Commerce Platform" class="w-full aspect-[16/10] object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy"/>
+          <div class="overlay-gradient absolute inset-0 flex flex-col justify-end p-8">
+            <p class="text-accent text-[10px] uppercase tracking-[0.2em] font-semibold mb-2">Web Development</p>
+            <h3 class="text-2xl font-bold mb-2">E-Commerce Platform</h3>
+            <div class="flex gap-2 flex-wrap mt-2">
+              <span class="text-[10px] uppercase tracking-wider px-3 py-1 border border-[#333]">HTML</span>
+              <span class="text-[10px] uppercase tracking-wider px-3 py-1 border border-[#333]">CSS</span>
+              <span class="text-[10px] uppercase tracking-wider px-3 py-1 border border-[#333]">JavaScript</span>
+            </div>
+          </div>
         </div>
-        <span class="section-number">[00 - 5]</span>
+        <!-- Card 2 -->
+        <div class="card-lift group relative overflow-hidden border border-[#1F1F1F]" data-animate="scale-in" data-delay="0.15">
+          <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&q=80" alt="Brand Identity Design" class="w-full aspect-[16/10] object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy"/>
+          <div class="overlay-gradient absolute inset-0 flex flex-col justify-end p-8">
+            <p class="text-accent text-[10px] uppercase tracking-[0.2em] font-semibold mb-2">Graphic Design</p>
+            <h3 class="text-2xl font-bold mb-2">Brand Identity Design</h3>
+            <div class="flex gap-2 flex-wrap mt-2">
+              <span class="text-[10px] uppercase tracking-wider px-3 py-1 border border-[#333]">Figma</span>
+              <span class="text-[10px] uppercase tracking-wider px-3 py-1 border border-[#333]">Branding</span>
+              <span class="text-[10px] uppercase tracking-wider px-3 py-1 border border-[#333]">Print</span>
+            </div>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="card-lift group relative overflow-hidden border border-[#1F1F1F]" data-animate="scale-in" data-delay="0.3">
+          <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=800&q=80" alt="Mobile App UI" class="w-full aspect-[16/10] object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy"/>
+          <div class="overlay-gradient absolute inset-0 flex flex-col justify-end p-8">
+            <p class="text-accent text-[10px] uppercase tracking-[0.2em] font-semibold mb-2">UI/UX Design</p>
+            <h3 class="text-2xl font-bold mb-2">Mobile App Interface</h3>
+            <div class="flex gap-2 flex-wrap mt-2">
+              <span class="text-[10px] uppercase tracking-wider px-3 py-1 border border-[#333]">Figma</span>
+              <span class="text-[10px] uppercase tracking-wider px-3 py-1 border border-[#333]">Prototyping</span>
+              <span class="text-[10px] uppercase tracking-wider px-3 py-1 border border-[#333]">Responsive</span>
+            </div>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="card-lift group relative overflow-hidden border border-[#1F1F1F]" data-animate="scale-in" data-delay="0.45">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Analytics Dashboard" class="w-full aspect-[16/10] object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy"/>
+          <div class="overlay-gradient absolute inset-0 flex flex-col justify-end p-8">
+            <p class="text-accent text-[10px] uppercase tracking-[0.2em] font-semibold mb-2">System Building</p>
+            <h3 class="text-2xl font-bold mb-2">Analytics Dashboard</h3>
+            <div class="flex gap-2 flex-wrap mt-2">
+              <span class="text-[10px] uppercase tracking-wider px-3 py-1 border border-[#333]">PHP</span>
+              <span class="text-[10px] uppercase tracking-wider px-3 py-1 border border-[#333]">MySQL</span>
+              <span class="text-[10px] uppercase tracking-wider px-3 py-1 border border-[#333]">Chart.js</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <h2 class="section-title reveal">Say Hello</h2>
+    </div>
+  </section>
 
-      <div class="contact-wrapper" style="margin-top: 60px;">
-        <div class="contact-info reveal reveal-delay-1">
-          <h3>We'd love to hear from you</h3>
-          <p>Whether you want to share a project idea, ask a question, or just say hi, we're always happy to connect with fellow learners.</p>
-          <a href="https://www.instagram.com/thecworks26/" class="contact-link" target="_blank" rel="noopener noreferrer">
-            <i class="fa-brands fa-instagram" aria-hidden="true"></i> Follow us on Instagram
-          </a>
-          <a href="https://www.linkedin.com/company/cworks26/" class="contact-link" target="_blank" rel="noopener noreferrer">
-            <i class="fa-brands fa-linkedin" aria-hidden="true"></i> Follow us on LinkedIn
-          </a>
-          <a href="tel:+256788368997" class="contact-link">
-            <i class="fa-solid fa-phone" aria-hidden="true"></i> Call us: +256 788 368 997
-          </a>
-          <a href="https://wa.me/256788368997" class="contact-link" target="_blank" rel="noopener noreferrer">
-            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Chat on WhatsApp
-          </a>
-          <a href="https://g.page/r/CXH2-fsHKeH0EBM/review" class="contact-link" target="_blank" rel="noopener noreferrer">
-            <i class="fa-solid fa-star" aria-hidden="true"></i> Leave us a Google Review
-          </a>
+  <!-- ============================ WORK / SERVICES ============================ -->
+  <section id="work" class="relative min-h-screen py-24 md:py-32 px-6 md:px-16 bg-card">
+    <div class="max-w-7xl mx-auto">
+      <span class="text-accent text-xs uppercase tracking-[0.2em] font-medium block mb-4" data-animate="fade-up">[00 — 04]</span>
+      <div class="section-line"></div>
+      <h2 class="text-4xl sm:text-5xl md:text-7xl font-black leading-[0.95] tracking-tighter uppercase mb-16" data-animate="fade-up">What We<br/>Build</h2>
+
+      <div class="space-y-1">
+        <!-- 01 Website Building -->
+        <div class="grid md:grid-cols-2 border-t border-[#1F1F1F] group" data-animate="fade-up">
+          <div class="overflow-hidden aspect-[16/9] md:aspect-auto md:h-[400px]">
+            <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=1000&q=80" alt="Website Building" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy"/>
+          </div>
+          <div class="flex flex-col justify-center p-8 md:p-16">
+            <span class="text-accent text-sm font-mono font-bold tracking-tight mb-3">01</span>
+            <h3 class="text-3xl md:text-5xl font-black leading-[0.95] tracking-tighter uppercase mb-4">Website<br/>Building</h3>
+            <p class="text-[#AAAAAA] leading-relaxed mb-6">From design to hosting, we build clean, responsive websites tailored to your needs, and get them live on the web. Fast, modern, and built to perform.</p>
+            <div class="flex gap-2 flex-wrap mb-6">
+              <span class="tech-pill px-3 py-1 border border-[#1F1F1F] text-xs uppercase tracking-wider">HTML</span>
+              <span class="tech-pill px-3 py-1 border border-[#1F1F1F] text-xs uppercase tracking-wider">CSS</span>
+              <span class="tech-pill px-3 py-1 border border-[#1F1F1F] text-xs uppercase tracking-wider">JavaScript</span>
+            </div>
+            <a href="web-development.html" class="inline-flex items-center gap-2 text-accent text-sm uppercase tracking-wider font-semibold hover:gap-4 transition-all duration-300">
+              Explore Service <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+          </div>
+        </div>
+        <!-- 02 UI/UX Design -->
+        <div class="grid md:grid-cols-2 border-t border-[#1F1F1F] group" data-animate="fade-up" data-delay="0.1">
+          <div class="overflow-hidden aspect-[16/9] md:aspect-auto md:h-[400px] md:order-2">
+            <img src="https://images.unsplash.com/photo-1581291518633-83b4efcf3b27?auto=format&fit=crop&w=1000&q=80" alt="UI/UX Design" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy"/>
+          </div>
+          <div class="flex flex-col justify-center p-8 md:p-16 md:order-1">
+            <span class="text-accent text-sm font-mono font-bold tracking-tight mb-3">02</span>
+            <h3 class="text-3xl md:text-5xl font-black leading-[0.95] tracking-tighter uppercase mb-4">UI / UX<br/>Design</h3>
+            <p class="text-[#AAAAAA] leading-relaxed mb-6">Thoughtful interfaces that look great and feel intuitive. Designed with the user in mind from the first sketch to the final prototype.</p>
+            <div class="flex gap-2 flex-wrap mb-6">
+              <span class="tech-pill px-3 py-1 border border-[#1F1F1F] text-xs uppercase tracking-wider">Figma</span>
+              <span class="tech-pill px-3 py-1 border border-[#1F1F1F] text-xs uppercase tracking-wider">Prototyping</span>
+              <span class="tech-pill px-3 py-1 border border-[#1F1F1F] text-xs uppercase tracking-wider">Responsive</span>
+            </div>
+            <a href="ui-ux-design.html" class="inline-flex items-center gap-2 text-accent text-sm uppercase tracking-wider font-semibold hover:gap-4 transition-all duration-300">
+              Explore Service <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+          </div>
+        </div>
+        <!-- 03 Graphic Design -->
+        <div class="grid md:grid-cols-2 border-t border-[#1F1F1F] group" data-animate="fade-up" data-delay="0.2">
+          <div class="overflow-hidden aspect-[16/9] md:aspect-auto md:h-[400px]">
+            <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1000&q=80" alt="Graphic Design" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy"/>
+          </div>
+          <div class="flex flex-col justify-center p-8 md:p-16">
+            <span class="text-accent text-sm font-mono font-bold tracking-tight mb-3">03</span>
+            <h3 class="text-3xl md:text-5xl font-black leading-[0.95] tracking-tighter uppercase mb-4">Graphic<br/>Design</h3>
+            <p class="text-[#AAAAAA] leading-relaxed mb-6">Logos, brand identities, social media assets, and print-ready materials. Visual communication that makes your brand stand out.</p>
+            <div class="flex gap-2 flex-wrap mb-6">
+              <span class="tech-pill px-3 py-1 border border-[#1F1F1F] text-xs uppercase tracking-wider">Figma</span>
+              <span class="tech-pill px-3 py-1 border border-[#1F1F1F] text-xs uppercase tracking-wider">Branding</span>
+              <span class="tech-pill px-3 py-1 border border-[#1F1F1F] text-xs uppercase tracking-wider">Print</span>
+            </div>
+            <a href="graphic-design.html" class="inline-flex items-center gap-2 text-accent text-sm uppercase tracking-wider font-semibold hover:gap-4 transition-all duration-300">
+              Explore Service <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+          </div>
+        </div>
+        <!-- 04 Database -->
+        <div class="grid md:grid-cols-2 border-t border-[#1F1F1F] group" data-animate="fade-up" data-delay="0.3">
+          <div class="overflow-hidden aspect-[16/9] md:aspect-auto md:h-[400px] md:order-2">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1000&q=80" alt="Database Management" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy"/>
+          </div>
+          <div class="flex flex-col justify-center p-8 md:p-16 md:order-1">
+            <span class="text-accent text-sm font-mono font-bold tracking-tight mb-3">04</span>
+            <h3 class="text-3xl md:text-5xl font-black leading-[0.95] tracking-tighter uppercase mb-4">Database<br/>Management</h3>
+            <p class="text-[#AAAAAA] leading-relaxed mb-6">Custom database systems designed, built, and managed for your business. Structured storage, fast queries, and reliable data you can trust.</p>
+            <div class="flex gap-2 flex-wrap mb-6">
+              <span class="tech-pill px-3 py-1 border border-[#1F1F1F] text-xs uppercase tracking-wider">MySQL</span>
+              <span class="tech-pill px-3 py-1 border border-[#1F1F1F] text-xs uppercase tracking-wider">PHP</span>
+              <span class="tech-pill px-3 py-1 border border-[#1F1F1F] text-xs uppercase tracking-wider">Python</span>
+            </div>
+            <a href="database-management.html" class="inline-flex items-center gap-2 text-accent text-sm uppercase tracking-wider font-semibold hover:gap-4 transition-all duration-300">
+              Explore Service <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+          </div>
+        </div>
+        <!-- 05 System Building -->
+        <div class="grid md:grid-cols-2 border-t border-[#1F1F1F] group" data-animate="fade-up" data-delay="0.4">
+          <div class="overflow-hidden aspect-[16/9] md:aspect-auto md:h-[400px]">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80" alt="System Building" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy"/>
+          </div>
+          <div class="flex flex-col justify-center p-8 md:p-16">
+            <span class="text-accent text-sm font-mono font-bold tracking-tight mb-3">05</span>
+            <h3 class="text-3xl md:text-5xl font-black leading-[0.95] tracking-tighter uppercase mb-4">System<br/>Building</h3>
+            <p class="text-[#AAAAAA] leading-relaxed mb-6">Custom desktop and web-based systems — inventory management, booking platforms, internal tools. Built to the exact spec your business needs.</p>
+            <div class="flex gap-2 flex-wrap mb-6">
+              <span class="tech-pill px-3 py-1 border border-[#1F1F1F] text-xs uppercase tracking-wider">PHP</span>
+              <span class="tech-pill px-3 py-1 border border-[#1F1F1F] text-xs uppercase tracking-wider">MySQL</span>
+              <span class="tech-pill px-3 py-1 border border-[#1F1F1F] text-xs uppercase tracking-wider">Python</span>
+            </div>
+            <a href="system-building.html" class="inline-flex items-center gap-2 text-accent text-sm uppercase tracking-wider font-semibold hover:gap-4 transition-all duration-300">
+              Explore Service <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+          </div>
+        </div>
+        <!-- 06 Got Something Else -->
+        <div class="grid md:grid-cols-2 border-t border-[#1F1F1F] group" data-animate="fade-up" data-delay="0.5">
+          <div class="overflow-hidden aspect-[16/9] md:aspect-auto md:h-[400px] md:order-2">
+            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1000&q=80" alt="Got Something Else" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy"/>
+          </div>
+          <div class="flex flex-col justify-center p-8 md:p-16 md:order-1">
+            <span class="text-accent text-sm font-mono font-bold tracking-tight mb-3">06</span>
+            <h3 class="text-3xl md:text-5xl font-black leading-[0.95] tracking-tighter uppercase mb-4">Got Something<br/>Else?</h3>
+            <p class="text-[#AAAAAA] leading-relaxed mb-6">Have a project idea that doesn't fit neatly into a box? Reach out — we're always open to a conversation. Let's build something great together.</p>
+            <div class="flex gap-2 flex-wrap mb-6">
+              <span class="tech-pill px-3 py-1 border border-accent text-accent text-xs uppercase tracking-wider">Let's Talk</span>
+            </div>
+            <a href="#contact" class="magnetic inline-flex items-center gap-3 px-8 py-4 bg-accent text-black font-bold text-sm uppercase tracking-wider hover:shadow-[0_0_40px_rgba(0,230,255,0.3)] transition-shadow duration-300 w-fit">
+              Contact Us <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ CONTACT ============================ -->
+  <section id="contact" class="relative min-h-screen py-24 md:py-32 px-6 md:px-16">
+    <div class="max-w-7xl mx-auto">
+      <span class="text-accent text-xs uppercase tracking-[0.2em] font-medium block mb-4" data-animate="fade-up">[00 — 05]</span>
+      <div class="section-line"></div>
+      <h2 class="text-4xl sm:text-5xl md:text-7xl font-black leading-[0.95] tracking-tighter uppercase mb-16" data-animate="fade-up">Say Hello</h2>
+
+      <div class="grid md:grid-cols-2 gap-16">
+        <div data-animate="fade-up">
+          <h3 class="text-2xl font-bold mb-4">We'd love to hear from you</h3>
+          <p class="text-[#AAAAAA] leading-relaxed mb-10">Whether you want to share a project idea, ask a question, or just say hi, we're always happy to connect with fellow learners.</p>
+          <div class="space-y-0">
+            <a href="https://www.instagram.com/thecworks26/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 py-5 border-b border-[#1F1F1F] text-[#AAAAAA] hover:text-accent hover:pl-2 transition-all duration-300 text-sm">
+              <i class="fa-brands fa-instagram w-5 text-center text-accent"></i> Follow us on Instagram
+            </a>
+            <a href="https://www.linkedin.com/company/cworks26/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 py-5 border-b border-[#1F1F1F] text-[#AAAAAA] hover:text-accent hover:pl-2 transition-all duration-300 text-sm">
+              <i class="fa-brands fa-linkedin w-5 text-center text-accent"></i> Follow us on LinkedIn
+            </a>
+            <a href="tel:+256788368997" class="flex items-center gap-4 py-5 border-b border-[#1F1F1F] text-[#AAAAAA] hover:text-accent hover:pl-2 transition-all duration-300 text-sm">
+              <i class="fa-solid fa-phone w-5 text-center text-accent"></i> Call us: +256 788 368 997
+            </a>
+            <a href="https://wa.me/256788368997" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 py-5 border-b border-[#1F1F1F] text-[#AAAAAA] hover:text-accent hover:pl-2 transition-all duration-300 text-sm">
+              <i class="fa-brands fa-whatsapp w-5 text-center text-accent"></i> Chat on WhatsApp
+            </a>
+            <a href="https://g.page/r/CXH2-fsHKeH0EBM/review" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 py-5 border-b border-[#1F1F1F] text-[#AAAAAA] hover:text-accent hover:pl-2 transition-all duration-300 text-sm">
+              <i class="fa-solid fa-star w-5 text-center text-accent"></i> Leave us a Google Review
+            </a>
+          </div>
         </div>
 
-        <div class="contact-form reveal reveal-delay-2">
-          <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+        <div data-animate="fade-up" data-delay="0.2">
+          <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate class="space-y-6">
             <input type="hidden" name="access_key" value="dd3dd29d-fc75-4ea5-b907-18526ad695c6"/>
             <input type="hidden" name="redirect" value="false"/>
             <input type="hidden" name="subject" value="New message from Cworks website"/>
             <input type="hidden" name="from_name" value="Cworks Website"/>
 
-            <div class="form-group">
-              <label class="form-label" for="contact-name">Your Name</label>
-              <input class="form-input" type="text" id="contact-name" name="name" placeholder="Alex Johnson" autocomplete="name" required/>
-              <span class="form-error" id="name-error" aria-live="polite"></span>
+            <div>
+              <label class="block text-xs uppercase tracking-[0.15em] text-[#666] font-semibold mb-2" for="contact-name">Your Name</label>
+              <input class="w-full bg-transparent border border-[#1F1F1F] px-5 py-4 text-white text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-all duration-300" type="text" id="contact-name" name="name" placeholder="Alex Johnson" autocomplete="name" required/>
+              <span class="text-[10px] text-red-400 mt-1 block" id="name-error" aria-live="polite"></span>
             </div>
-            <div class="form-group">
-              <label class="form-label" for="contact-email">Email Address</label>
-              <input class="form-input" type="email" id="contact-email" name="email" placeholder="alex@example.com" autocomplete="email" required/>
-              <span class="form-error" id="email-error" aria-live="polite"></span>
+            <div>
+              <label class="block text-xs uppercase tracking-[0.15em] text-[#666] font-semibold mb-2" for="contact-email">Email Address</label>
+              <input class="w-full bg-transparent border border-[#1F1F1F] px-5 py-4 text-white text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-all duration-300" type="email" id="contact-email" name="email" placeholder="alex@example.com" autocomplete="email" required/>
+              <span class="text-[10px] text-red-400 mt-1 block" id="email-error" aria-live="polite"></span>
             </div>
-            <div class="form-group">
-              <label class="form-label" for="contact-phone">Phone Number</label>
-              <input class="form-input" type="tel" id="contact-phone" name="phone" placeholder="+256 700 000 000" autocomplete="tel" required/>
-              <span class="form-error" id="phone-error" aria-live="polite"></span>
+            <div>
+              <label class="block text-xs uppercase tracking-[0.15em] text-[#666] font-semibold mb-2" for="contact-phone">Phone Number</label>
+              <input class="w-full bg-transparent border border-[#1F1F1F] px-5 py-4 text-white text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-all duration-300" type="tel" id="contact-phone" name="phone" placeholder="+256 700 000 000" autocomplete="tel" required/>
+              <span class="text-[10px] text-red-400 mt-1 block" id="phone-error" aria-live="polite"></span>
             </div>
-            <div class="form-group">
-              <label class="form-label" for="contact-message">Message</label>
-              <textarea class="form-textarea" id="contact-message" name="message" placeholder="Hey Cworks! I'd love to..." rows="5" required></textarea>
+            <div>
+              <label class="block text-xs uppercase tracking-[0.15em] text-[#666] font-semibold mb-2" for="contact-message">Message</label>
+              <textarea class="w-full bg-transparent border border-[#1F1F1F] px-5 py-4 text-white text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-all duration-300 resize-none" id="contact-message" name="message" placeholder="Hey Cworks! I'd love to..." rows="5" required></textarea>
             </div>
 
-            <div id="form-feedback" class="form-feedback" aria-live="polite" hidden></div>
+            <div id="form-feedback" class="text-sm py-3 px-5 hidden" aria-live="polite"></div>
 
-            <button type="submit" id="form-submit" class="btn-primary">
-              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
-              Send Message
+            <button type="submit" id="form-submit" class="magnetic inline-flex items-center gap-3 px-8 py-4 bg-accent text-black font-bold text-sm uppercase tracking-wider hover:shadow-[0_0_40px_rgba(0,230,255,0.3)] transition-shadow duration-300">
+              <i class="fa-solid fa-paper-plane"></i> Send Message
             </button>
           </form>
         </div>
@@ -944,32 +629,192 @@
     </div>
   </section>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-inner">
-        <div>
-          <a href="#hero" class="footer-logo-link">
-            <img src="logo-icon.svg" alt="Cworks" style="width: 32px; height: 32px; object-fit: cover;"/>
-            Cworks
-          </a>
-          <p class="footer-tagline">Learning, Building, and Growing Together.</p>
-          <p class="footer-origin">🇺🇬 Proudly built in Kampala, Uganda</p>
-        </div>
-
-        <nav>
-          <ul class="footer-links">
-            <li><a href="#about" class="footer-link">About</a></li>
-            <li><a href="#team" class="footer-link">Team</a></li>
-            <li><a href="#portfolio" class="footer-link">Portfolio</a></li>
-            <li><a href="#projects" class="footer-link">Work</a></li>
-            <li><a href="#contact" class="footer-link">Contact</a></li>
-          </ul>
-        </nav>
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="py-16 px-6 md:px-16 border-t border-[#1F1F1F] bg-card">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-10">
+      <div>
+        <a href="#hero" class="flex items-center gap-3 text-white font-bold text-lg tracking-tight uppercase mb-4">
+          <img src="logo-icon.svg" alt="Cworks" class="w-8 h-8 object-cover"/> Cworks
+        </a>
+        <p class="text-[#AAAAAA] text-sm mb-1">Learning, Building, and Growing Together.</p>
+        <p class="text-[#666] text-xs">🇺🇬 Proudly built in Kampala, Uganda</p>
       </div>
-      <p class="footer-copy">Built with · HTML · CSS · JavaScript</p>
+      <nav class="flex gap-6 text-sm uppercase tracking-wider">
+        <a href="#about" class="text-[#666] hover:text-accent transition-colors">About</a>
+        <a href="#team" class="text-[#666] hover:text-accent transition-colors">Team</a>
+        <a href="#portfolio" class="text-[#666] hover:text-accent transition-colors">Portfolio</a>
+        <a href="#work" class="text-[#666] hover:text-accent transition-colors">Work</a>
+        <a href="#contact" class="text-[#666] hover:text-accent transition-colors">Contact</a>
+      </nav>
+    </div>
+    <div class="max-w-7xl mx-auto mt-10 pt-8 border-t border-[#1F1F1F] text-[#444] text-xs uppercase tracking-wider">
+      Built with HTML · CSS · JavaScript
     </div>
   </footer>
 
-  <script src="js/script.js"></script>
+  <!-- ============================ SCRIPTS ============================ -->
+  <script>
+  (function() {
+
+    // ---- CUSTOM CURSOR ----
+    var cursor = document.getElementById('cursor');
+    var follower = document.getElementById('cursor-follower');
+    var mouseX = 0, mouseY = 0, fx = 0, fy = 0;
+
+    if (cursor && follower && window.innerWidth > 768) {
+      document.addEventListener('mousemove', function(e) {
+        mouseX = e.clientX; mouseY = e.clientY;
+      });
+
+      function animateCursor() {
+        fx += (mouseX - fx) * 0.15;
+        fy += (mouseY - fy) * 0.15;
+        cursor.style.left = (fx - 4) + 'px';
+        cursor.style.top  = (fy - 4) + 'px';
+        follower.style.left = (fx - 19) + 'px';
+        follower.style.top  = (fy - 19) + 'px';
+        requestAnimationFrame(animateCursor);
+      }
+      animateCursor();
+
+      var hoverTargets = document.querySelectorAll('a, button, .card-lift, .magnetic');
+      hoverTargets.forEach(function(el) {
+        el.addEventListener('mouseenter', function() { follower.classList.add('cursor-hover'); });
+        el.addEventListener('mouseleave', function() { follower.classList.remove('cursor-hover'); });
+      });
+    }
+
+    // ---- MAGNETIC BUTTONS ----
+    var magnets = document.querySelectorAll('.magnetic');
+    magnets.forEach(function(btn) {
+      btn.addEventListener('mousemove', function(e) {
+        var rect = btn.getBoundingClientRect();
+        var x = e.clientX - rect.left - rect.width / 2;
+        var y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = 'translate(' + x * 0.3 + 'px, ' + y * 0.3 + 'px)';
+      });
+      btn.addEventListener('mouseleave', function() {
+        btn.style.transform = 'translate(0, 0)';
+      });
+    });
+
+    // ---- GSAP SCROLLTRIGGER ANIMATIONS ----
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+    // Animate all [data-animate] elements
+    var animatedEls = document.querySelectorAll('[data-animate]');
+    animatedEls.forEach(function(el) {
+      var animType = el.getAttribute('data-animate');
+      var delay = parseFloat(el.getAttribute('data-delay') || 0);
+      var fromVars = {};
+
+      if (animType === 'fade-up') {
+        fromVars = { y: 60, opacity: 0 };
+      } else if (animType === 'fade-left') {
+        fromVars = { x: -60, opacity: 0 };
+      } else if (animType === 'fade-right') {
+        fromVars = { x: 60, opacity: 0 };
+      } else if (animType === 'scale-in') {
+        fromVars = { scale: 0.9, opacity: 0 };
+      }
+
+      gsap.fromTo(el, fromVars, {
+        y: 0, x: 0, scale: 1, opacity: 1,
+        duration: 1.1,
+        delay: delay,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      });
+    });
+
+    // ---- SMOOTH ANCHOR SCROLL ----
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+      anchor.addEventListener('click', function(e) {
+        var targetId = this.getAttribute('href');
+        if (!targetId || targetId === '#') return;
+        var targetEl = document.querySelector(targetId);
+        if (!targetEl) return;
+        e.preventDefault();
+        gsap.to(window, { duration: 1.2, scrollTo: targetEl, ease: 'power3.inOut' });
+      });
+    });
+
+    // ---- NAVBAR SOLID ON SCROLL ----
+    var nav = document.getElementById('nav');
+    if (nav) {
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 80) {
+          nav.style.background = 'rgba(10,10,10,0.85)';
+          nav.style.backdropFilter = 'blur(20px)';
+          nav.style.borderBottom = '1px solid rgba(0,230,255,0.08)';
+        } else {
+          nav.style.background = 'transparent';
+          nav.style.backdropFilter = 'none';
+          nav.style.borderBottom = 'none';
+        }
+      });
+    }
+
+    // ---- CONTACT FORM ----
+    var contactForm = document.getElementById('contact-form');
+    var formFeedback = document.getElementById('form-feedback');
+    var submitBtn = document.getElementById('form-submit');
+
+    if (contactForm && formFeedback && submitBtn) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Simple validation
+        var name = document.getElementById('contact-name');
+        var email = document.getElementById('contact-email');
+        var phone = document.getElementById('contact-phone');
+        var message = document.getElementById('contact-message');
+        var nameErr = document.getElementById('name-error');
+        var emailErr = document.getElementById('email-error');
+        var phoneErr = document.getElementById('phone-error');
+        var valid = true;
+
+        if (!name.value.trim()) { nameErr.textContent = 'Name is required'; valid = false; } else { nameErr.textContent = ''; }
+        if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) { emailErr.textContent = 'Valid email required'; valid = false; } else { emailErr.textContent = ''; }
+        if (!phone.value.trim()) { phoneErr.textContent = 'Phone is required'; valid = false; } else { phoneErr.textContent = ''; }
+
+        if (!valid) return;
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+        formFeedback.classList.add('hidden');
+
+        var formData = new FormData(contactForm);
+
+        fetch(contactForm.action, { method: 'POST', body: formData })
+          .then(function(res) { return res.json().then(function(data) { return { ok: res.ok, data: data }; }); })
+          .then(function(result) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
+
+            if (result.ok) {
+              formFeedback.className = 'text-sm py-3 px-5 bg-green-500/10 border border-green-500/30 text-green-400';
+              formFeedback.textContent = 'Message sent successfully! We\'ll get back to you soon.';
+              contactForm.reset();
+            } else {
+              formFeedback.className = 'text-sm py-3 px-5 bg-red-500/10 border border-red-500/30 text-red-400';
+              formFeedback.textContent = 'Something went wrong. Please try again or reach us directly.';
+            }
+          })
+          .catch(function() {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
+            formFeedback.className = 'text-sm py-3 px-5 bg-red-500/10 border border-red-500/30 text-red-400';
+            formFeedback.textContent = 'Network error. Please check your connection and try again.';
+          });
+      });
+    }
+
+  })();
+  </script>
 </body>
 </html>
