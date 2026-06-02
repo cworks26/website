@@ -75,10 +75,12 @@
   // 1. NAVBAR - Hide/Show on scroll
   // ----------------------------------------------------------
   var navbar = document.getElementById('navbar');
-  var lastScrollY = window.scrollY;
+  if (!navbar) return;
 
-  window.addEventListener('scroll', function () {
-    var currentScrollY = window.scrollY;
+  var lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
+
+  function updateNavbar() {
+    var currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
 
     if (currentScrollY > lastScrollY && currentScrollY > 100) {
       navbar.classList.add('hidden');
@@ -87,11 +89,13 @@
     }
 
     lastScrollY = currentScrollY;
-  }, { passive: true });
+  }
+
+  window.addEventListener('scroll', updateNavbar, { passive: true });
 
 
   // ----------------------------------------------------------
-  // 2. SCROLL REVEAL ANIMATIONS (enhanced)
+  // 2. SCROLL REVEAL ANIMATIONS — Enhanced with Lenis timing
   // ----------------------------------------------------------
   var revealEls = document.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-right');
 
@@ -104,8 +108,8 @@
         }
       });
     }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -40px 0px'
+      threshold: 0.08,
+      rootMargin: '0px 0px -30px 0px'
     });
 
     revealEls.forEach(function (el) {
@@ -119,7 +123,7 @@
 
 
   // ----------------------------------------------------------
-  // 3. WORK VISUAL ROW — Staggered reveal on scroll
+  // 3. WORK VISUAL ROW — Staggered reveal + parallax images
   // ----------------------------------------------------------
   var workRows = document.querySelectorAll('.work-visual-row[data-animate]');
 
@@ -132,11 +136,19 @@
           els.forEach(function (el) {
             el.classList.add('visible');
           });
+
+          // Scale image on reveal
+          var media = row.querySelector('.work-visual-media img, .work-visual-media video');
+          if (media) {
+            media.classList.add('work-visual-media--revealed');
+          }
+
           workObserver.unobserve(row);
         }
       });
     }, {
-      threshold: 0.25
+      threshold: 0.2,
+      rootMargin: '0px 0px -60px 0px'
     });
 
     workRows.forEach(function (row) {
@@ -144,9 +156,47 @@
     });
   }
 
+  // Parallax on work visual images — subtle shift based on scroll
+  var workMediaEls = document.querySelectorAll('.work-visual-media');
+
+  if (workMediaEls.length > 0) {
+    window.addEventListener('scroll', function () {
+      workMediaEls.forEach(function (el) {
+        var rect = el.getBoundingClientRect();
+        var windowH = window.innerHeight;
+        var center = rect.top + rect.height / 2;
+        var progress = (center - windowH * 0.5) / (windowH * 0.5);
+        progress = Math.max(-1, Math.min(1, progress));
+
+        var img = el.querySelector('img, video');
+        if (img) {
+          var offset = progress * 30; // max 30px parallax
+          img.style.transform = 'translateY(' + offset + 'px) scale(1.02)';
+        }
+      });
+    }, { passive: true });
+  }
+
 
   // ----------------------------------------------------------
-  // 4. ACTIVE NAV LINK HIGHLIGHTING
+  // 4. SECTION PARALLAX — Subtle section background movement
+  // ----------------------------------------------------------
+  var parallaxSections = document.querySelectorAll('.section-parallax');
+
+  if (parallaxSections.length > 0) {
+    window.addEventListener('scroll', function () {
+      parallaxSections.forEach(function (section) {
+        var rect = section.getBoundingClientRect();
+        var windowH = window.innerHeight;
+        var offset = (rect.top / windowH) * 40;
+        section.style.setProperty('--parallax-y', offset + 'px');
+      });
+    }, { passive: true });
+  }
+
+
+  // ----------------------------------------------------------
+  // 5. ACTIVE NAV LINK HIGHLIGHTING
   // ----------------------------------------------------------
   var sections = document.querySelectorAll('section[id]');
   var navItems = document.querySelectorAll('.nav-links .nav-link');
@@ -165,7 +215,8 @@
         }
       });
     }, {
-      threshold: 0.4
+      threshold: 0.35,
+      rootMargin: '-10% 0px -10% 0px'
     });
 
     sections.forEach(function (section) {
@@ -175,9 +226,42 @@
 
 
   // ----------------------------------------------------------
-  // 5. SMOOTH SCROLL
+  // 6. ANCHOR LINK SMOOTH SCROLL — Manual navigation between sections
   // ----------------------------------------------------------
-  document.documentElement.classList.add('smooth-scroll');
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener('click', function (e) {
+      var targetId = this.getAttribute('href');
+      if (!targetId || targetId === '#') return;
+
+      var targetEl = document.querySelector(targetId);
+      if (!targetEl) return;
+
+      e.preventDefault();
+
+      var startY = window.pageYOffset || document.documentElement.scrollTop;
+      var endY = targetEl.getBoundingClientRect().top + startY;
+      var distance = endY - startY;
+      var duration = Math.min(Math.abs(distance) * 0.8, 1200);
+      var startTime = null;
+
+      function animateScroll(timestamp) {
+        if (!startTime) startTime = timestamp;
+        var elapsed = timestamp - startTime;
+        var progress = Math.min(elapsed / duration, 1);
+
+        // Ease out cubic
+        var ease = 1 - Math.pow(1 - progress, 3);
+
+        window.scrollTo(0, startY + distance * ease);
+
+        if (progress < 1) {
+          requestAnimationFrame(animateScroll);
+        }
+      }
+
+      requestAnimationFrame(animateScroll);
+    });
+  });
 
 })();
 
