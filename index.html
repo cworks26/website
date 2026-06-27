@@ -62,7 +62,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -71,16 +71,16 @@
       theme: {
         extend: {
           colors: {
-            bg: '#050505',
-            card: '#0D0D0D',
+            bg: '#0A0A0A',
+            card: '#0F0F0F',
             border: '#1A1A1A',
-            muted: '#666666',
-            body: '#AAAAAA',
+            muted: '#64748B',
+            body: '#A0A0A0',
             accent: '#00F0FF',
           },
           fontFamily: {
-            display: ['Syne', 'sans-serif'],
-            sans: ['DM Sans', 'sans-serif'],
+            display: ['Inter', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
           },
         }
       }
@@ -100,26 +100,25 @@
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { background: #050505; }
+    html { background: #0A0A0A; }
     html.lenis { height: auto; }
     .lenis.lenis-smooth { scroll-behavior: auto; }
     .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
     .lenis.lenis-stopped { overflow: hidden; }
     .lenis.lenis-scrolling iframe { pointer-events: none; }
-    body { font-family: 'DM Sans', sans-serif; background: #050505; color: #AAAAAA; overflow-x: hidden; }
+    body { font-family: 'Inter', sans-serif; background: #0A0A0A; color: #A0A0A0; overflow-x: hidden; }
 
-    /* ---- CURSOR ---- */
-    #cursor { width: 8px; height: 8px; background: #00F0FF; border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 99999; mix-blend-mode: difference; transform: translate(-50%, -50%); transition: width 0.25s, height 0.25s; }
-    #cursor-follower { width: 40px; height: 40px; border: 1px solid rgba(0,240,255,0.3); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 99998; transform: translate(-50%, -50%); transition: width 0.3s, height 0.3s, border-color 0.3s, background 0.3s; }
-    #cursor-hover #cursor-follower { width: 64px; height: 64px; border-color: #00F0FF; background: rgba(0,240,255,0.06); }
-    #cursor-hover #cursor { width: 12px; height: 12px; }
-    @media (max-width: 768px) { #cursor, #cursor-follower { display: none; } }
+    /* ---- CURSOR (disabled) ---- */
+    #cursor, #cursor-follower { display: none !important; }
 
     /* ---- KEYFRAMES ---- */
     @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-24px); } }
     @keyframes gradientFlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
     @keyframes scrollWheel { 0% { top: 6px; opacity: 1; } 100% { top: 20px; opacity: 0; } }
     @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    /* Cinematic entrance keyframes */
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
     .animate-float { animation: float 7s ease-in-out infinite; }
     .animate-float-delayed { animation: float 7s ease-in-out 2s infinite; }
@@ -137,9 +136,34 @@
     .scroll-mouse::after { content: ''; width: 3px; height: 7px; background: #00F0FF; border-radius: 2px; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); animation: scrollWheel 1.8s ease-in-out infinite; }
 
     /* ---- SECTIONS ---- */
-    .section-tag { font-family: 'Syne', sans-serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: #00F0FF; font-weight: 600; }
-    .section-title { font-family: 'Syne', sans-serif; font-weight: 800; line-height: 0.98; text-transform: uppercase; letter-spacing: -0.02em; }
+    .section-tag { font-family: 'Inter', sans-serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: #00F0FF; font-weight: 600; }
+    .section-title { font-family: 'Inter', sans-serif; font-weight: 800; line-height: 0.98; text-transform: uppercase; letter-spacing: -0.02em; }
     .accent-line { width: 72px; height: 1px; background: #00F0FF; }
+
+    /* Alternating backgrounds */
+    .bg-black-section { background: #0A0A0A; }
+    .bg-silver-section { background: linear-gradient(135deg, #C8C8C8 0%, #D8D8D8 30%, #BFBFBF 60%, #D0D0D0 100%); color: #111; }
+    .bg-silver-section .section-tag { color: #333; }
+    .bg-silver-section .section-title { color: #0A0A0A; }
+    .bg-silver-section h2, .bg-silver-section h3, .bg-silver-section h4 { color: #0A0A0A; }
+    .bg-silver-section .accent-line { background: #333; }
+    .bg-silver-section p, .bg-silver-section .text-body { color: #222; }
+    .bg-silver-section .text-muted { color: #555; }
+    .bg-silver-section a { color: #222; }
+    .bg-silver-section a:hover { color: #00F0FF; }
+    .bg-silver-section .tech-pill { border-color: #999; color: #222; }
+    .bg-silver-section .tech-pill:hover { border-color: #00F0FF; color: #00F0FF; }
+    .bg-silver-section .service-row { border-top-color: #aaa; }
+    .bg-silver-section .service-row:hover { border-top-color: #00F0FF; }
+    .bg-silver-section .portfolio-card { background: rgba(255,255,255,0.4); }
+    .bg-silver-section .portfolio-card:hover { background: rgba(255,255,255,0.6); }
+    .bg-silver-section .team-card { background: rgba(255,255,255,0.4); border-color: #aaa; }
+    .bg-silver-section input, .bg-silver-section textarea { background: rgba(255,255,255,0.7); color: #111; border-color: #aaa; }
+    .bg-silver-section input::placeholder, .bg-silver-section textarea::placeholder { color: #666; }
+    .bg-silver-section button[type="submit"], .bg-silver-section .btn-primary { color: #fff; }
+    .bg-silver-section .border-border { border-color: #aaa; }
+    .bg-silver-section .text-white { color: #0A0A0A !important; }
+    .bg-silver-section .text-white\/5 { color: rgba(0,0,0,0.08) !important; }
 
     /* ---- SERVICE ROW ---- */
     .service-row { border-top: 1px solid #1A1A1A; transition: all 0.5s ease; }
@@ -158,7 +182,7 @@
     .tech-pill:hover { border-color: #00F0FF; color: #00F0FF; box-shadow: 0 0 24px rgba(0,240,255,0.1); transform: translateY(-2px); }
 
     /* ---- TEAM CARD ---- */
-    .team-card { transition: all 0.5s ease; background: #0D0D0D; }
+    .team-card { transition: all 0.5s ease; background: #0F0F0F; }
     .team-card:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(0,240,255,0.05); }
     .team-card img { transition: transform 0.6s ease; }
     .team-card:hover img { transform: scale(1.08); }
@@ -170,9 +194,9 @@
     .hover-slide:hover { padding-left: 8px; }
 
     /* ---- BUTTONS ---- */
-    .btn-primary { font-family: 'Syne', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.4s ease; }
-    .btn-primary:hover { box-shadow: 0 0 60px rgba(0,240,255,0.25); transform: translateY(-2px); }
-    .btn-outline { font-family: 'Syne', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid #333; transition: all 0.4s ease; }
+    .btn-primary { font-family: 'Inter', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.4s ease; }
+    .btn-primary:hover { box-shadow: 0 0 60px rgba(59,1359,160,0.25); transform: translateY(-2px); }
+    .btn-outline { font-family: 'Inter', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid #333; transition: all 0.4s ease; }
     .btn-outline:hover { border-color: #00F0FF; color: #00F0FF; transform: translateY(-2px); }
 
     /* ---- BACKGROUND NOISE ---- */
@@ -195,11 +219,28 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
     }
+
+    /* ---- PAGE LOADER ---- */
+    .page-loader { position: fixed; inset: 0; z-index: 99999; background: #0A0A0A; display: flex; align-items: center; justify-content: center; transition: opacity 0.6s var(--ease-spring-gentle, ease-out), visibility 0.6s ease-out; }
+    .page-loader--done { opacity: 0; visibility: hidden; pointer-events: none; }
+    .page-loader__inner { text-align: center; }
+    .page-loader__logo { width: 60px; height: 60px; object-fit: cover; animation: loaderPulse 1.2s ease-in-out infinite; margin-bottom: 24px; }
+    @keyframes loaderPulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.15); opacity: 0.7; } }
+    .page-loader__bar { width: 120px; height: 2px; background: #1A1A1A; border-radius: 9999px; overflow: hidden; margin: 0 auto; }
+    .page-loader__bar-fill { height: 100%; background: #00F0FF; border-radius: 9999px; width: 0; animation: loaderBar 1.5s ease-out forwards; }
+    @keyframes loaderBar { 0% { width: 0; } 100% { width: 100%; } }
   </style>
 </head>
 <body>
-  <div id="cursor"></div>
-  <div id="cursor-follower"></div>
+  <!-- Page Loader -->
+  <div id="page-loader" class="page-loader" role="status" aria-label="Loading">
+    <div class="page-loader__inner">
+      <img src="logo-icon.svg" alt="Cworks" class="page-loader__logo"/>
+      <div class="page-loader__bar"><div class="page-loader__bar-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- Cursor disabled -->
 
   <!-- =====================================================================
        NAVIGATION
@@ -218,39 +259,21 @@
     </div>
   </nav>
 
-  <!-- =====================================================================
-       HERO
-       ===================================================================== -->
-  <section id="hero" class="relative min-h-screen flex flex-col justify-center items-center text-center px-6 overflow-hidden noise-bg">
-    <!-- Ambient glows -->
-    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[900px] h-[900px] rounded-full opacity-15 animate-float" style="background: radial-gradient(circle, rgba(0,240,255,0.18) 0%, transparent 70%);"></div>
-    <div class="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full opacity-10 animate-float-delayed" style="background: radial-gradient(circle, rgba(0,240,255,0.12) 0%, transparent 70%);"></div>
+  <section id="hero" class="relative min-h-screen flex items-end overflow-hidden bg-black-section">
+    <!-- Subtle grid overlay -->
+    <div class="absolute inset-0 z-[1] opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px); background-size: 60px 60px;"></div>
 
-    <!-- Grid overlay -->
-    <div class="absolute inset-0 opacity-[0.025]" style="background-image: linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px); background-size: 60px 60px;"></div>
-
-    <div class="relative z-10 max-w-6xl mx-auto">
-      <p class="section-tag mb-6 md:mb-8" data-reveal="up">Kampala, Uganda &middot; Digital Agency</p>
-      <h1 class="section-title text-white text-[clamp(3rem,10vw,10rem)] mb-8" data-reveal="up">
-        <span class="text-gradient">Building Digital<br/>Solutions Without<br/>Limits</span>
+    <!-- Hero content — bottom-left -->
+    <div class="relative z-10 w-full pb-16 md:pb-20 px-6 md:px-12">
+      <p class="text-[#00F0FF] text-xs md:text-sm uppercase tracking-[0.2em] font-semibold mb-3 md:mb-4" data-reveal="up">Kampala, Uganda</p>
+      <h1 class="text-white font-display font-extrabold leading-[0.88] tracking-tight max-w-3xl" style="font-size: clamp(2.5rem,8vw,7rem);" data-reveal="up">
+        We build digital.<br/>We ship results.
       </h1>
-      <p class="text-lg md:text-xl text-body max-w-2xl mx-auto leading-relaxed mb-10" data-reveal="up">
-        Learning by Building. Shipping Side Projects.<br class="hidden sm:block"/>Turning Ideas into Reality.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center" data-reveal="up">
-        <a href="#services" class="btn-primary inline-flex items-center gap-3 px-8 py-4 bg-accent text-black text-sm">
-          Explore Our Work <i class="fa-solid fa-arrow-right text-xs"></i>
-        </a>
-        <a href="#contact" class="btn-outline inline-flex items-center gap-3 px-8 py-4 text-white text-sm">
-          Get in Touch
-        </a>
+      <p class="text-[#A0A0A0] text-sm md:text-base max-w-lg mt-4 md:mt-5 leading-relaxed" data-reveal="up">Websites, brands, and products — crafted in Kampala, delivered to the world.</p>
+      <div class="flex gap-4 mt-6 md:mt-8" data-reveal="up">
+        <a href="#portfolio" class="inline-flex items-center gap-2 px-6 py-3 bg-[#00F0FF] text-black text-sm font-semibold uppercase tracking-wide rounded-md hover:shadow-[0_0_30px_rgba(0,240,255,0.3)] hover:-translate-y-0.5 transition-all duration-300">View our work <i class="fa-solid fa-arrow-right text-xs"></i></a>
+        <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 border border-white/20 text-white text-sm font-semibold uppercase tracking-wide rounded-md hover:border-[#00F0FF] hover:text-[#00F0FF] hover:-translate-y-0.5 transition-all duration-300">Start a project</a>
       </div>
-    </div>
-
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
-      <span class="text-[10px] uppercase tracking-[0.2em] text-muted font-semibold">Scroll</span>
-      <div class="scroll-mouse"></div>
     </div>
   </section>
 
@@ -269,7 +292,7 @@
   <!-- =====================================================================
        ABOUT / STATEMENT
        ===================================================================== -->
-  <section id="about" class="py-32 md:py-48 px-6 md:px-12 noise-bg">
+  <section id="about" class="py-32 md:py-48 px-6 md:px-12 bg-silver-section">
     <div class="max-w-7xl mx-auto">
       <p class="section-tag mb-4" data-reveal="up">About Cworks</p>
       <div class="accent-line mb-8"></div>
@@ -347,7 +370,7 @@
   <!-- =====================================================================
        SERVICES — Alternating Image-Text Rows
        ===================================================================== -->
-  <section id="services" class="py-32 md:py-48 px-6 md:px-12">
+  <section id="services" class="py-32 md:py-48 px-6 md:px-12 bg-black-section">
     <div class="max-w-7xl mx-auto">
       <p class="section-tag mb-4" data-reveal="up">What We Build</p>
       <div class="accent-line mb-8"></div>
@@ -476,7 +499,7 @@
   <!-- =====================================================================
        PORTFOLIO
        ===================================================================== -->
-  <section id="portfolio" class="py-32 md:py-48 px-6 md:px-12 noise-bg">
+  <section id="portfolio" class="py-32 md:py-48 px-6 md:px-12 bg-silver-section">
     <div class="max-w-7xl mx-auto">
       <p class="section-tag mb-4" data-reveal="up">Selected Works</p>
       <div class="accent-line mb-8"></div>
@@ -542,7 +565,7 @@
   <!-- =====================================================================
        TEAM
        ===================================================================== -->
-  <section id="team" class="py-32 md:py-48 px-6 md:px-12">
+  <section id="team" class="py-32 md:py-48 px-6 md:px-12 bg-black-section">
     <div class="max-w-7xl mx-auto">
       <p class="section-tag mb-4" data-reveal="up">Our Team</p>
       <div class="accent-line mb-8"></div>
@@ -647,7 +670,7 @@
   <!-- =====================================================================
        CONTACT
        ===================================================================== -->
-  <section id="contact" class="py-32 md:py-48 px-6 md:px-12 noise-bg">
+  <section id="contact" class="py-32 md:py-48 px-6 md:px-12 bg-silver-section">
     <div class="max-w-7xl mx-auto">
       <p class="section-tag mb-4" data-reveal="up">Get in Touch</p>
       <div class="accent-line mb-8"></div>
@@ -741,6 +764,18 @@
        ===================================================================== -->
   <script>
   (function() {
+    /* ---- PAGE LOADER ---- */
+    var loader = document.getElementById('page-loader');
+    if (loader) {
+      function hideLoader() {
+        if (loader.classList.contains('page-loader--done')) return;
+        loader.classList.add('page-loader--done');
+        setTimeout(function() { if (loader.parentNode) loader.parentNode.removeChild(loader); }, 700);
+      }
+      window.addEventListener('load', function() { hideLoader(); });
+      setTimeout(hideLoader, 2500);
+    }
+
     /* ---- LENIS SMOOTH SCROLL ---- */
     var lenis;
     if (typeof Lenis !== 'undefined') {
@@ -774,7 +809,7 @@
     var body = document.body;
     var mx = 0, my = 0, cx = 0, cy = 0;
 
-    if (cursor && follower && window.innerWidth > 768) {
+    if (cursor && follower && window.innerWidth > 768 && !prefersReducedMotion) {
       document.addEventListener('mousemove', function(e) {
         mx = e.clientX; my = e.clientY;
       });
@@ -796,30 +831,109 @@
     }
 
     /* ---- GSAP SCROLLTRIGGER REVEALS ---- */
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-    var revealEls = document.querySelectorAll('[data-reveal]');
-    revealEls.forEach(function(el) {
-      var dir = el.getAttribute('data-reveal');
-      var fromVars = { opacity: 0 };
+    if (!prefersReducedMotion) {
+      /* ---- CINEMATIC SCROLL REVEALS ---- */
+      var revealEls = document.querySelectorAll('[data-reveal]');
+      revealEls.forEach(function(el) {
+        var dir = el.getAttribute('data-reveal');
+        var fromVars = { opacity: 0 };
 
-      if (dir === 'up') fromVars.y = 80;
-      else if (dir === 'left') fromVars.x = -60;
-      else if (dir === 'right') fromVars.x = 60;
-      else if (dir === 'scale') { fromVars.scale = 0.85; fromVars.y = 40; }
+        if (dir === 'up') fromVars.y = 80;
+        else if (dir === 'left') fromVars.x = -80;
+        else if (dir === 'right') fromVars.x = 80;
+        else if (dir === 'scale') { fromVars.scale = 0.85; fromVars.y = 50; }
 
-      gsap.to(el, {
-        opacity: 1, y: 0, x: 0, scale: 1,
-        duration: 1.2,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 88%',
-          toggleActions: 'play none none none',
-          once: true,
-        }
+        gsap.to(el, {
+          opacity: 1, y: 0, x: 0, scale: 1,
+          duration: 1.2,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 88%',
+            toggleActions: 'play none none none',
+            once: true,
+          }
+        });
       });
-    });
+
+      /* ---- CINEMATIC PARALLAX ON SERVICE IMAGES ---- */
+      gsap.utils.toArray('.service-img').forEach(function(img) {
+        gsap.to(img, {
+          y: -40,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: img.closest('.service-row'),
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1,
+          }
+        });
+      });
+
+      /* ---- PORTFOLIO CARDS STAGGER ---- */
+      gsap.utils.toArray('.portfolio-card').forEach(function(card, i) {
+        gsap.to(card, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.9,
+          delay: i * 0.1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 90%',
+            toggleActions: 'play none none none',
+            once: true,
+          }
+        });
+      });
+
+      /* ---- TEAM CARDS STAGGERED REVEAL ---- */
+      gsap.utils.toArray('.team-card').forEach(function(card, i) {
+        var rowOffset = Math.floor(i / 4) * 0.1;
+        gsap.to(card, {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          delay: (i % 4) * 0.08 + rowOffset,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: card.closest('#team'),
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+            once: true,
+          }
+        });
+      });
+
+      /* ---- SECTION TAG REVEAL STAGGER ---- */
+      gsap.utils.toArray('.section-tag').forEach(function(tag, i) {
+        gsap.to(tag, {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          delay: i * 0.05,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: tag,
+            start: 'top 92%',
+            toggleActions: 'play none none none',
+            once: true,
+          }
+        });
+      });
+
+    } else {
+      // Show all elements immediately if reduced motion preferred
+      document.querySelectorAll('[data-reveal], .portfolio-card, .team-card').forEach(function(el) {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+    }
 
     /* ---- SMOOTH ANCHOR SCROLL ---- */
     document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
@@ -839,7 +953,7 @@
     if (nav) {
       function updateNav() {
         var scrolled = window.scrollY > 60;
-        nav.style.background = scrolled ? 'rgba(5,5,5,0.9)' : 'transparent';
+        nav.style.background = scrolled ? 'rgba(10,10,10,0.92)' : 'transparent';
         nav.style.backdropFilter = scrolled ? 'blur(20px)' : 'none';
         nav.style.borderBottom = scrolled ? '1px solid rgba(0,240,255,0.06)' : 'none';
       }

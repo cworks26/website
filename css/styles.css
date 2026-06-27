@@ -1,6 +1,6 @@
 /* ============================================================
    CWORKS — DARK MODE DESIGN SYSTEM
-   Brand Accent: Red (#ef4444)
+   Brand Accent: Professional Blue (#3B82F6)
    WCAG 2.1 AA Compliant
    ============================================================ */
 
@@ -18,14 +18,14 @@
   --text-muted: #64748b;
   --text-on-accent: #ffffff;
 
-  /* Brand Accent — Red */
-  --accent: #ef4444;
-  --accent-dark: #dc2626;
-  --accent-darker: #b91c1c;
-  --accent-light: #7f1d1d;
-  --accent-glow: rgba(239, 68, 68, 0.12);
-  --accent-glow-medium: rgba(239, 68, 68, 0.18);
-  --accent-glow-strong: rgba(239, 68, 68, 0.28);
+  /* Brand Accent — Professional Blue */
+  --accent: #3B82F6;
+  --accent-dark: #2563EB;
+  --accent-darker: #1D4ED8;
+  --accent-light: rgba(59, 130, 246, 0.12);
+  --accent-glow: rgba(59, 130, 246, 0.12);
+  --accent-glow-medium: rgba(59, 130, 246, 0.18);
+  --accent-glow-strong: rgba(59, 130, 246, 0.28);
 
   /* Status Colors */
   --success: #22c55e;
@@ -38,7 +38,7 @@
   --border: #1e1e2e;
   --border-light: #27273a;
   --border-hover: #3f3f5a;
-  --border-accent: rgba(239, 68, 68, 0.3);
+  --border-accent: rgba(59, 130, 246, 0.3);
 
   /* Shadows */
   --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -57,10 +57,15 @@
   --radius-xl: 24px;
   --radius-full: 9999px;
 
-  /* Transitions */
-  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Transitions — spring-like easing (Motion Design Framework) */
+  --ease-spring-snappy: cubic-bezier(0.16, 1, 0.3, 1);      /* responsive, snappy — modals, overlays */
+  --ease-spring-gentle: cubic-bezier(0.25, 1, 0.5, 1);       /* gentle — hovers, reveals */
+  --ease-spring-bouncy: cubic-bezier(0.34, 1.56, 0.64, 1);   /* bouncy — hero elements */
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);           /* expo-out — scroll reveals */
+  --transition-fast: 0.15s var(--ease-spring-snappy);
+  --transition: 0.3s var(--ease-spring-snappy);
+  --transition-slow: 0.5s var(--ease-spring-gentle);
+  --transition-reveal: 0.8s var(--ease-spring-gentle);
 
   /* Typography Scale */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -380,8 +385,8 @@ button {
   inset: 0;
   z-index: 1;
   background:
-    radial-gradient(ellipse at 70% 20%, rgba(239, 68, 68, 0.08) 0%, transparent 60%),
-    radial-gradient(ellipse at 30% 80%, rgba(239, 68, 68, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 30% 80%, rgba(59, 130, 246, 0.04) 0%, transparent 50%),
     linear-gradient(180deg, rgba(5, 5, 8, 0.4) 0%, rgba(5, 5, 8, 0.65) 40%, var(--bg-primary) 100%);
   pointer-events: none;
 }
@@ -392,7 +397,7 @@ button {
   z-index: 0;
   background:
     radial-gradient(circle at 70% 20%, var(--accent-glow) 0%, transparent 60%),
-    radial-gradient(circle at 30% 70%, rgba(239, 68, 68, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 30% 70%, rgba(59, 130, 246, 0.04) 0%, transparent 50%),
     var(--bg-primary);
 }
 
@@ -500,7 +505,7 @@ button {
 
 .hero-preview-card__line--accent {
   width: 40%;
-  background: rgba(239, 68, 68, 0.3);
+  background: rgba(59, 130, 246, 0.3);
 }
 
 .hero-preview-card__image-placeholder {
@@ -750,7 +755,7 @@ button {
 .team-card {
   background: var(--bg-card);
   padding: 48px 32px;
-  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  transition: background var(--transition), transform 0.4s var(--ease-spring-snappy), box-shadow 0.4s var(--ease-spring-snappy);
   position: relative;
   overflow: hidden;
 }
@@ -1071,8 +1076,8 @@ button {
   align-items: center;
   gap: 12px;
   border-radius: var(--radius-md);
-  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
-  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.25);
+  transition: background var(--transition-fast), transform 0.2s var(--ease-spring-snappy), box-shadow 0.2s var(--ease-spring-snappy);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.25);
   position: relative;
   overflow: hidden;
 }
@@ -1088,12 +1093,12 @@ button {
 .btn-primary:hover {
   background: var(--accent-dark);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.35);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.35);
 }
 
 .btn-primary:active {
   transform: translateY(0);
-  box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
 }
 
 .btn-primary:focus-visible {
@@ -1121,7 +1126,7 @@ button {
   gap: 12px;
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
-  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform 0.2s var(--ease-spring-snappy), box-shadow 0.2s var(--ease-spring-snappy);
 }
 
 .btn-secondary:hover {
@@ -1499,7 +1504,7 @@ button {
   padding: 48px 36px;
   display: flex;
   flex-direction: column;
-  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  transition: transform 0.4s var(--ease-spring-snappy), box-shadow 0.4s var(--ease-spring-snappy), border-color var(--transition);
   position: relative;
   overflow: hidden;
 }
@@ -1560,7 +1565,7 @@ button {
   border-radius: var(--radius-full);
   margin-bottom: 16px;
   width: fit-content;
-  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
 }
 
 .pricing-name {
@@ -1839,7 +1844,7 @@ button {
 .reveal {
   opacity: 0;
   transform: translateY(60px);
-  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1), transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity var(--transition-reveal), transform var(--transition-reveal);
 }
 
 .reveal.visible {
@@ -1847,16 +1852,16 @@ button {
   transform: translateY(0);
 }
 
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
-.reveal-delay-5 { transition-delay: 0.5s; }
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+.reveal-delay-3 { transition-delay: 0.24s; }
+.reveal-delay-4 { transition-delay: 0.32s; }
+.reveal-delay-5 { transition-delay: 0.40s; }
 
 .reveal-scale {
   opacity: 0;
   transform: scale(0.92);
-  transition: opacity 1.0s cubic-bezier(0.16, 1, 0.3, 1), transform 1.0s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity var(--transition-reveal), transform var(--transition-reveal);
 }
 
 .reveal-scale.visible {
@@ -1867,7 +1872,7 @@ button {
 .reveal-left {
   opacity: 0;
   transform: translateX(-60px);
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity var(--transition-reveal), transform var(--transition-reveal);
 }
 
 .reveal-left.visible {
@@ -1878,7 +1883,7 @@ button {
 .reveal-right {
   opacity: 0;
   transform: translateX(60px);
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity var(--transition-reveal), transform var(--transition-reveal);
 }
 
 .reveal-right.visible {
@@ -1896,7 +1901,7 @@ button {
   display: inline-block;
   opacity: 0;
   transform: translateY(40px);
-  animation: charReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: charReveal 0.5s var(--ease-spring-snappy) forwards;
 }
 
 @keyframes charReveal {
@@ -1910,7 +1915,7 @@ button {
   display: inline-block;
   opacity: 0;
   transform: translateY(30px);
-  animation: wordReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: wordReveal 0.6s var(--ease-spring-snappy) forwards;
 }
 
 @keyframes wordReveal {
@@ -2429,5 +2434,76 @@ button {
 
   .hero {
     padding-bottom: 120px;
+  }
+}
+
+/* ============================================================
+   ACCESSIBILITY — prefers-reduced-motion (WCAG 2.2)
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero-preview-track {
+    animation-play-state: paused;
+  }
+
+  /* Disable parallax shifts */
+  .work-visual-media img,
+  .work-visual-media video {
+    transform: none !important;
+  }
+
+  .parallax-bg {
+    transform: none !important;
+  }
+
+  .section-parallax {
+    --parallax-y: 0px !important;
+  }
+}
+
+/* ============================================================
+   PERFORMANCE — GPU-composited property enforcement
+   ============================================================ */
+
+/* Cards and interactive elements use only GPU-composited transforms */
+.team-card,
+.portfolio-card,
+.portfolio-item,
+.pricing-card,
+.project-card,
+.process-step {
+  will-change: transform;
+}
+
+.team-card:hover,
+.portfolio-card:hover,
+.portfolio-item:hover,
+.pricing-card:hover {
+  will-change: transform;
+}
+
+/* Remove will-change after animation settles */
+.team-card:not(:hover),
+.portfolio-card:not(:hover),
+.portfolio-item:not(:hover),
+.pricing-card:not(:hover) {
+  will-change: auto;
+}
+
+@media (max-width: 640px) {
+  /* Reduce simultaneous animated elements on mobile */
+  .team-card,
+  .portfolio-card,
+  .portfolio-item {
+    will-change: auto;
   }
 }
