@@ -3,18 +3,31 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('cworks-theme');
+        if (t === 'dark' || t === 'light') {
+          document.documentElement.setAttribute('data-theme', t);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
   <title>UI/UX Design in Uganda — Intuitive Interface Design | Cworks Kampala</title>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="logo-icon.svg"/>
-  <link rel="apple-touch-icon" href="logo-icon.svg"/>
+  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="apple-touch-icon" href="favicon.png"/>
 
   <!-- Primary SEO -->
   <meta name="description" content="Cworks designs thoughtful, user-centred interfaces for apps and websites — from wireframes to polished, responsive layouts. UI/UX design services based in Kampala, Uganda."/>
   <meta name="keywords" content="UI UX design Uganda, user interface design Kampala, Figma designer Uganda, app design Uganda, wireframing Uganda, UX research Uganda, responsive design Uganda, product design Kampala"/>
   <meta name="author" content="Cworks — The Runner Team"/>
   <meta name="robots" content="index, follow"/>
-  <meta name="theme-color" content="#050508"/>
+  <meta name="theme-color" content="#12B6F8"/>
   <link rel="canonical" href="https://the-runner-team.github.io/website/ui-ux-design.html"/>
 
   <!-- Geo targeting -->
@@ -74,7 +87,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
@@ -92,10 +105,8 @@
     <div class="container nav-inner">
 
       <a href="index.html" class="nav-logo" aria-label="Cworks home">
-        <span class="nav-logo-icon" aria-hidden="true">
-          <img src="favicon.png" alt="Cworks" class="nav-logo-img"/>
-        </span>
-        Cworks
+        <img src="logo.png" alt="Cworks" class="nav-logo-img logo-light"/>
+        <img src="logo-dark.png" alt="Cworks" class="nav-logo-img logo-dark"/>
       </a>
 
       <div class="nav-links-wrapper">
@@ -106,10 +117,29 @@
           <li><a href="#contact"  class="nav-link">Contact</a></li>
         </ul>
 
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fa-solid fa-moon" aria-hidden="true"></i>
+          <i class="fa-solid fa-sun" aria-hidden="true"></i>
+        </button>
+
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
 
     </div>
   </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="#includes" class="nav-link">What's Included</a></li>
+      <li><a href="#process" class="nav-link">Process</a></li>
+      <li><a href="#pricing" class="nav-link">Pricing</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+  </div>
 
 
   <!-- ============================================================
@@ -388,7 +418,7 @@
 
       <!-- Pricing notes -->
       <div class="pricing-notes reveal">
-        <p style="color: var(--text-muted); font-size: 0.8rem; text-align: center; margin-top: 32px;">
+        <p style="color: var(--color-text-muted); font-size: 0.8rem; text-align: center; margin-top: 32px;">
           All prices are in Ugandan Shillings (UGX). A 50% deposit is required to begin work, with the remaining balance due on delivery. For complex or multi-platform projects, select "Consultation" for a custom quote.
         </p>
       </div>
@@ -551,14 +581,10 @@
       <div class="footer-inner">
 
         <div>
-          <div class="footer-logo">
-            <a href="index.html" class="footer-logo-link" aria-label="Back to Cworks home">
-              <span class="footer-logo-icon" aria-hidden="true">
-                <i class="fa-solid fa-code" style="color:#fff; font-size:0.8rem;"></i>
-              </span>
-              Cworks
-            </a>
-          </div>
+          <a href="index.html" class="footer-logo-link" aria-label="Back to Cworks home">
+            <img src="logo.png" alt="Cworks" class="logo-light"/>
+            <img src="logo-dark.png" alt="Cworks" class="logo-dark"/>
+          </a>
           <p class="footer-tagline">Learning, Building, and Growing Together.</p>
         </div>
 

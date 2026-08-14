@@ -3,17 +3,29 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('cworks-theme');
+        if (t === 'dark' || t === 'light') {
+          document.documentElement.setAttribute('data-theme', t);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
   <title>Cworks — Web Development & Design Agency in Kampala, Uganda</title>
 
-  <link rel="icon" type="image/svg+xml" href="logo-icon.svg"/>
   <link rel="icon" type="image/png" href="favicon.png"/>
-  <link rel="apple-touch-icon" href="logo-icon.svg"/>
+  <link rel="apple-touch-icon" href="favicon.png"/>
 
   <meta name="description" content="Cworks is a Kampala-based web development and design agency. We build responsive websites, intuitive UI/UX interfaces, and bold brand identities for clients across Uganda and beyond."/>
   <meta name="keywords" content="web development Uganda, web design Kampala, UI UX design Uganda, website builder Kampala, graphic design Uganda, affordable websites Uganda, Ugandan developers, Cworks, responsive websites Uganda, hire developer Uganda"/>
   <meta name="author" content="Cworks — The Runner Team"/>
   <meta name="robots" content="index, follow"/>
-  <meta name="theme-color" content="#050508"/>
+  <meta name="theme-color" content="#12B6F8"/>
   <link rel="canonical" href="https://the-runner-team.github.io/website/"/>
 
   <meta name="geo.region" content="UG-C"/>
@@ -77,7 +89,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="css/styles.css"/>
@@ -87,18 +99,19 @@
 
   <div class="page-loader" id="page-loader">
     <div class="page-loader__inner">
-      <img src="logo-icon.svg" alt="Cworks" class="page-loader__logo" />
+      <img src="logo.png" alt="Cworks" class="page-loader__logo logo-light" />
+      <img src="logo-dark.png" alt="Cworks" class="page-loader__logo logo-dark" />
       <div class="page-loader__bar">
         <div class="page-loader__bar-fill"></div>
       </div>
     </div>
   </div>
 
-  <nav class="navbar" id="navbar">
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
     <div class="container nav-inner">
-      <a href="#hero" class="nav-logo">
-        <img src="logo-icon.svg" alt="Cworks" class="nav-logo-img" style="width: 32px; height: 32px; object-fit: cover;"/>
-        Cworks
+      <a href="#hero" class="nav-logo" aria-label="Cworks home">
+        <img src="logo.png" alt="Cworks" class="nav-logo-img logo-light"/>
+        <img src="logo-dark.png" alt="Cworks" class="nav-logo-img logo-dark"/>
       </a>
 
       <div class="nav-links-wrapper">
@@ -110,342 +123,73 @@
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
 
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fa-solid fa-moon" aria-hidden="true"></i>
+          <i class="fa-solid fa-sun" aria-hidden="true"></i>
+        </button>
+
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </div>
   </nav>
 
-  <section class="hero" id="hero">
-    <div class="hero-bg-fallback" aria-hidden="true"></div>
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#team" class="nav-link">Team</a></li>
+      <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+      <li><a href="#projects" class="nav-link">Work</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+  </div>
 
-    <div class="hero-bg-scene" aria-hidden="true">
-      <div class="hero-preview-grid">
-        <div class="hero-preview-track">
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--short"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--long"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--med"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--accent"></span>
-            </div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--long"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--med"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--short"></span>
-            </div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--med"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--accent"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--long"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--short"></span>
-            </div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-        </div>
-        <div class="hero-preview-track">
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--long"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--short"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--accent"></span>
-            </div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--med"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--long"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--accent"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--short"></span>
-            </div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--short"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--med"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--long"></span>
-            </div>
-          </div>
-        </div>
-        <div class="hero-preview-track">
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--long"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--accent"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--short"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--med"></span>
-            </div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--med"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--short"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--accent"></span>
-            </div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--short"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--long"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--med"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--accent"></span>
-            </div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-        </div>
-        <div class="hero-preview-track">
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--accent"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--long"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--med"></span>
-            </div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--long"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--short"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--med"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--accent"></span>
-            </div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--med"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--accent"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--short"></span>
-            </div>
-          </div>
-        </div>
-        <div class="hero-preview-track">
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--short"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--long"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--accent"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--med"></span>
-            </div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--long"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--med"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--short"></span>
-            </div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__body">
-              <span class="hero-preview-card__line hero-preview-card__line--med"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--accent"></span>
-              <span class="hero-preview-card__line hero-preview-card__line--long"></span>
-            </div>
-          </div>
-          <div class="hero-preview-card">
-            <div class="hero-preview-card__header">
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-              <span class="hero-preview-card__dot"></span>
-            </div>
-            <div class="hero-preview-card__image-placeholder"></div>
-          </div>
+  <section class="hero hero--home" id="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <span class="hero-orb"></span>
+      <span class="hero-orb hero-orb--ring"></span>
+      <span class="hero-ghost-mark" aria-hidden="true">C</span>
+      <span class="hero-grid-lines"></span>
+    </div>
+
+    <div class="container">
+      <div class="hero-content">
+        <p class="hero-eyebrow" id="hero-eyebrow">
+          <span class="hero-eyebrow__dot" aria-hidden="true"></span>
+          Kampala &mdash; Web &amp; Design Studio
+        </p>
+        <h1 class="hero-title" id="hero-title">Cworks</h1>
+        <div class="hero-foot">
+          <p class="hero-subtitle" id="hero-subtitle">Learning by Building. Shipping Side Projects. Turning Ideas into Reality.</p>
+          <p class="hero-location">📍 Based in Kampala, Uganda · Proudly Ugandan 🇺🇬</p>
         </div>
       </div>
     </div>
 
-    <div class="hero-bg-overlay" aria-hidden="true"></div>
+    <a class="hero-scroll-cue" href="#about" aria-label="Scroll to about">
+      <span class="hero-scroll-cue__label">Scroll</span>
+      <span class="hero-scroll-cue__track"><span class="hero-scroll-cue__line"></span></span>
+    </a>
 
-    <div class="container">
-      <div class="hero-content">
-        <h1 class="hero-title" id="hero-title">Cworks</h1>
-        <p class="hero-subtitle" id="hero-subtitle">Learning by Building. Shipping Side Projects. Turning Ideas into Reality.</p>
-        <p class="hero-location">📍 Based in Kampala, Uganda · Proudly Ugandan 🇺🇬</p>
+    <div class="hero-ticker" aria-hidden="true">
+      <div class="hero-ticker__track">
+        <span class="hero-ticker__group">
+          <span>Website Building</span><i>·</i>
+          <span>UI / UX Design</span><i>·</i>
+          <span>Graphic Design</span><i>·</i>
+          <span>System Building</span><i>·</i>
+          <span>Database Management</span><i>·</i>
+        </span>
+        <span class="hero-ticker__group" aria-hidden="true">
+          <span>Website Building</span><i>·</i>
+          <span>UI / UX Design</span><i>·</i>
+          <span>Graphic Design</span><i>·</i>
+          <span>System Building</span><i>·</i>
+          <span>Database Management</span><i>·</i>
+        </span>
       </div>
     </div>
   </section>
@@ -458,7 +202,7 @@
         </div>
         <span class="section-number">[00 - 1]</span>
       </div>
-      <h2 class="section-title reveal">We Build. We Ship.</h2>
+      <h2 class="section-title reveal-mask">We Build. We Ship.</h2>
       <div class="about-grid" style="margin-top: 60px;">
         <div class="about-text reveal reveal-delay-1">
           <div class="about-body">
@@ -509,111 +253,146 @@
         </div>
         <span class="section-number">[00 - 2]</span>
       </div>
-      <h2 class="section-title reveal">The People Behind<br/>Cworks</h2>
+      <h2 class="section-title reveal-mask">The People Behind<br/>Cworks</h2>
 
-      <div class="team-grid" style="margin-top: 60px;">
-        <article class="team-card reveal reveal-delay-1">
-          <img class="team-avatar" src="https://github.com/FrostyDot512.png" alt="Avatar for Anwaar Batala" width="120" height="120" loading="lazy"/>
-          <p class="team-role">Member</p>
-          <h3 class="team-name">Anwaar Batala</h3>
+      <div class="team-list">
+        <article class="team-row reveal" tabindex="0">
+          <span class="team-row__index">01</span>
+          <div class="team-row__main">
+            <h3 class="team-name">Anwaar Batala</h3>
+            <p class="team-role">Member</p>
+            <div class="team-social">
+              <a href="https://github.com/FrostyDot512" class="team-github" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
+              </a>
+              <a href="https://www.linkedin.com/in/anwaar-batala-46069a362/" class="team-linkedin" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
+              </a>
+            </div>
+          </div>
           <p class="team-bio">Passionate about coding. He loves turning ideas into real-life solutions.</p>
-          <div class="team-social">
-            <a href="https://github.com/FrostyDot512" class="team-github" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/anwaar-batala-46069a362/" class="team-linkedin" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
-            </a>
+          <div class="team-row__portrait">
+            <img src="https://github.com/FrostyDot512.png" alt="Anwaar Batala" loading="lazy"/>
           </div>
         </article>
 
-        <article class="team-card reveal reveal-delay-2">
-          <img class="team-avatar" src="https://github.com/GrandMaster142.png" alt="Avatar for Benjamin Ongom" width="120" height="120" loading="lazy"/>
-          <p class="team-role">Member</p>
-          <h3 class="team-name">Benjamin Ongom</h3>
+        <article class="team-row reveal" tabindex="0">
+          <span class="team-row__index">02</span>
+          <div class="team-row__main">
+            <h3 class="team-name">Benjamin Ongom</h3>
+            <p class="team-role">Member</p>
+            <div class="team-social">
+              <a href="https://github.com/GrandMaster142" class="team-github" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
+              </a>
+              <a href="https://www.linkedin.com/in/benjamin-ongom-a2a5672a6/" class="team-linkedin" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
+              </a>
+            </div>
+          </div>
           <p class="team-bio">UI/UX designer focused on creating simple, intuitive, and meaningful digital experiences.</p>
-          <div class="team-social">
-            <a href="https://github.com/GrandMaster142" class="team-github" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/benjamin-ongom-a2a5672a6/" class="team-linkedin" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
-            </a>
+          <div class="team-row__portrait">
+            <img src="https://github.com/GrandMaster142.png" alt="Benjamin Ongom" loading="lazy"/>
           </div>
         </article>
 
-        <article class="team-card reveal reveal-delay-3">
-          <img class="team-avatar" src="https://github.com/eliosha.png" alt="Avatar for Elisha Benjamin" width="120" height="120" loading="lazy"/>
-          <p class="team-role">Member</p>
-          <h3 class="team-name">Elisha Benjamin</h3>
+        <article class="team-row reveal" tabindex="0">
+          <span class="team-row__index">03</span>
+          <div class="team-row__main">
+            <h3 class="team-name">Elisha Benjamin</h3>
+            <p class="team-role">Member</p>
+            <div class="team-social">
+              <a href="https://github.com/eliosha" class="team-github" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
+              </a>
+              <a href="https://www.linkedin.com/in/elisha-mukisa-5b5963402/" class="team-linkedin" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
+              </a>
+            </div>
+          </div>
           <p class="team-bio">Creates responsive websites that combine simplicity, performance, and modern design.</p>
-          <div class="team-social">
-            <a href="https://github.com/eliosha" class="team-github" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/elisha-mukisa-5b5963402/" class="team-linkedin" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
-            </a>
+          <div class="team-row__portrait">
+            <img src="https://github.com/eliosha.png" alt="Elisha Benjamin" loading="lazy"/>
           </div>
         </article>
 
-        <article class="team-card reveal reveal-delay-4">
-          <img class="team-avatar" src="https://github.com/Mrj-1007.png" alt="Avatar for Jonathan Miyingo" width="120" height="120" loading="lazy"/>
-          <p class="team-role">Member</p>
-          <h3 class="team-name">Jonathan Miyingo</h3>
+        <article class="team-row reveal" tabindex="0">
+          <span class="team-row__index">04</span>
+          <div class="team-row__main">
+            <h3 class="team-name">Jonathan Miyingo</h3>
+            <p class="team-role">Member</p>
+            <div class="team-social">
+              <a href="https://github.com/Mrj-1007" class="team-github" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
+              </a>
+              <a href="https://www.linkedin.com/in/jonathan-m-a0818a313/" class="team-linkedin" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
+              </a>
+            </div>
+          </div>
           <p class="team-bio">A curious developer passionate about designing and building things that make an impact.</p>
-          <div class="team-social">
-            <a href="https://github.com/Mrj-1007" class="team-github" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/jonathan-m-a0818a313/" class="team-linkedin" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
-            </a>
+          <div class="team-row__portrait">
+            <img src="https://github.com/Mrj-1007.png" alt="Jonathan Miyingo" loading="lazy"/>
           </div>
         </article>
 
-        <article class="team-card reveal reveal-delay-1">
-          <img class="team-avatar" src="https://github.com/Trojannetwork.png" alt="Avatar for Mark Lui" width="120" height="120" loading="lazy"/>
-          <p class="team-role">Member</p>
-          <h3 class="team-name">Mark Lui</h3>
+        <article class="team-row reveal" tabindex="0">
+          <span class="team-row__index">05</span>
+          <div class="team-row__main">
+            <h3 class="team-name">Mark Lui</h3>
+            <p class="team-role">Member</p>
+            <div class="team-social">
+              <a href="https://github.com/Trojannetwork" class="team-github" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
+              </a>
+              <a href="https://www.linkedin.com/in/lui-mark-25259339b/" class="team-linkedin" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
+              </a>
+            </div>
+          </div>
           <p class="team-bio">Software Developer & Cloud Architect building custom desktop apps for small businesses, focused on inventory management and automation.</p>
-          <div class="team-social">
-            <a href="https://github.com/Trojannetwork" class="team-github" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/lui-mark-25259339b/" class="team-linkedin" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
-            </a>
+          <div class="team-row__portrait">
+            <img src="https://github.com/Trojannetwork.png" alt="Mark Lui" loading="lazy"/>
           </div>
         </article>
 
-        <article class="team-card reveal reveal-delay-2">
-          <img class="team-avatar" src="https://github.com/MOSES-LEO-tech.png" alt="Avatar for Moses Leo" width="120" height="120" loading="lazy"/>
-          <p class="team-role">Member</p>
-          <h3 class="team-name">Moses Leo</h3>
+        <article class="team-row reveal" tabindex="0">
+          <span class="team-row__index">06</span>
+          <div class="team-row__main">
+            <h3 class="team-name">Moses Leo</h3>
+            <p class="team-role">Member</p>
+            <div class="team-social">
+              <a href="https://github.com/MOSES-LEO-tech" class="team-github" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
+              </a>
+              <a href="https://www.linkedin.com/in/moses-leo-04477a336/" class="team-linkedin" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
+              </a>
+            </div>
+          </div>
           <p class="team-bio">Innovative developer combining creativity and AI to build intelligent, real-world digital solutions.</p>
-          <div class="team-social">
-            <a href="https://github.com/MOSES-LEO-tech" class="team-github" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/moses-leo-04477a336/" class="team-linkedin" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
-            </a>
+          <div class="team-row__portrait">
+            <img src="https://github.com/MOSES-LEO-tech.png" alt="Moses Leo" loading="lazy"/>
           </div>
         </article>
 
-        <article class="team-card reveal reveal-delay-3">
-          <img class="team-avatar" src="https://github.com/Otwiine.png" alt="Avatar for Otwiine Olweny" width="120" height="120" loading="lazy"/>
-          <p class="team-role">Member</p>
-          <h3 class="team-name">Otwiine Olweny</h3>
+        <article class="team-row reveal" tabindex="0">
+          <span class="team-row__index">07</span>
+          <div class="team-row__main">
+            <h3 class="team-name">Otwiine Olweny</h3>
+            <p class="team-role">Member</p>
+            <div class="team-social">
+              <a href="https://github.com/Otwiine" class="team-github" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
+              </a>
+              <a href="https://www.linkedin.com/in/otwiine-olweny-60b871402/" class="team-linkedin" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
+              </a>
+            </div>
+          </div>
           <p class="team-bio">Passionate about geospatial studies, web development, and building impactful solutions through code.</p>
-          <div class="team-social">
-            <a href="https://github.com/Otwiine" class="team-github" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/otwiine-olweny-60b871402/" class="team-linkedin" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
-            </a>
+          <div class="team-row__portrait">
+            <img src="https://github.com/Otwiine.png" alt="Otwiine Olweny" loading="lazy"/>
           </div>
         </article>
       </div>
@@ -628,92 +407,108 @@
         </div>
         <span class="section-number">[00 - 3]</span>
       </div>
-      <h2 class="section-title reveal">Selected<br/>Works</h2>
+      <h2 class="section-title reveal-mask">Selected<br/>Works</h2>
 
-      <div class="portfolio-grid--visual">
-        <div class="portfolio-card reveal-scale reveal-delay-1">
-          <img
-            class="portfolio-card__image"
-            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
-            alt="E-Commerce Platform"
-            loading="lazy"
-          />
-          <div class="portfolio-card__overlay">
-            <p class="portfolio-card__category">Web Development</p>
-            <h3 class="portfolio-card__title">E-Commerce Platform</h3>
-            <div class="portfolio-card__tags">
-              <span class="portfolio-card__tag">HTML</span>
-              <span class="portfolio-card__tag">CSS</span>
-              <span class="portfolio-card__tag">JavaScript</span>
+      <div class="portfolio-editorial">
+        <article class="portfolio-item portfolio-item--feature reveal-scale">
+          <figure class="portfolio-item__media">
+            <img
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80"
+              alt="E-Commerce Platform"
+              loading="lazy"
+            />
+          </figure>
+          <div class="portfolio-item__meta">
+            <span class="portfolio-item__index">01</span>
+            <div class="portfolio-item__text">
+              <h3 class="portfolio-item__title">E-Commerce Platform</h3>
+              <p class="portfolio-item__category">Web Development</p>
+            </div>
+            <div class="portfolio-item__tags">
+              <span class="portfolio-item__tag">HTML</span>
+              <span class="portfolio-item__tag">CSS</span>
+              <span class="portfolio-item__tag">JavaScript</span>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="portfolio-card reveal-scale reveal-delay-2">
-          <img
-            class="portfolio-card__image"
-            src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&q=80"
-            alt="Brand Identity Design"
-            loading="lazy"
-          />
-          <div class="portfolio-card__overlay">
-            <p class="portfolio-card__category">Graphic Design</p>
-            <h3 class="portfolio-card__title">Brand Identity Design</h3>
-            <div class="portfolio-card__tags">
-              <span class="portfolio-card__tag">Figma</span>
-              <span class="portfolio-card__tag">Branding</span>
-              <span class="portfolio-card__tag">Print</span>
+        <article class="portfolio-item portfolio-item--tall reveal-scale">
+          <figure class="portfolio-item__media">
+            <img
+              src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&q=80"
+              alt="Brand Identity Design"
+              loading="lazy"
+            />
+          </figure>
+          <div class="portfolio-item__meta">
+            <span class="portfolio-item__index">02</span>
+            <div class="portfolio-item__text">
+              <h3 class="portfolio-item__title">Brand Identity Design</h3>
+              <p class="portfolio-item__category">Graphic Design</p>
+            </div>
+            <div class="portfolio-item__tags">
+              <span class="portfolio-item__tag">Figma</span>
+              <span class="portfolio-item__tag">Branding</span>
+              <span class="portfolio-item__tag">Print</span>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="portfolio-card reveal-scale reveal-delay-3">
-          <img
-            class="portfolio-card__image"
-            src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=800&q=80"
-            alt="Mobile App UI"
-            loading="lazy"
-          />
-          <div class="portfolio-card__overlay">
-            <p class="portfolio-card__category">UI/UX Design</p>
-            <h3 class="portfolio-card__title">Mobile App Interface</h3>
-            <div class="portfolio-card__tags">
-              <span class="portfolio-card__tag">Figma</span>
-              <span class="portfolio-card__tag">Prototyping</span>
-              <span class="portfolio-card__tag">Responsive</span>
+        <article class="portfolio-item portfolio-item--square reveal-scale">
+          <figure class="portfolio-item__media">
+            <img
+              src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=800&q=80"
+              alt="Mobile App UI"
+              loading="lazy"
+            />
+          </figure>
+          <div class="portfolio-item__meta">
+            <span class="portfolio-item__index">03</span>
+            <div class="portfolio-item__text">
+              <h3 class="portfolio-item__title">Mobile App Interface</h3>
+              <p class="portfolio-item__category">UI/UX Design</p>
+            </div>
+            <div class="portfolio-item__tags">
+              <span class="portfolio-item__tag">Figma</span>
+              <span class="portfolio-item__tag">Prototyping</span>
+              <span class="portfolio-item__tag">Responsive</span>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="portfolio-card reveal-scale reveal-delay-4">
-          <img
-            class="portfolio-card__image"
-            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
-            alt="Analytics Dashboard"
-            loading="lazy"
-          />
-          <div class="portfolio-card__overlay">
-            <p class="portfolio-card__category">System Building</p>
-            <h3 class="portfolio-card__title">Analytics Dashboard</h3>
-            <div class="portfolio-card__tags">
-              <span class="portfolio-card__tag">PHP</span>
-              <span class="portfolio-card__tag">MySQL</span>
-              <span class="portfolio-card__tag">Chart.js</span>
+        <article class="portfolio-item portfolio-item--wide reveal-scale">
+          <figure class="portfolio-item__media">
+            <img
+              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
+              alt="Analytics Dashboard"
+              loading="lazy"
+            />
+          </figure>
+          <div class="portfolio-item__meta">
+            <span class="portfolio-item__index">04</span>
+            <div class="portfolio-item__text">
+              <h3 class="portfolio-item__title">Analytics Dashboard</h3>
+              <p class="portfolio-item__category">System Building</p>
+            </div>
+            <div class="portfolio-item__tags">
+              <span class="portfolio-item__tag">PHP</span>
+              <span class="portfolio-item__tag">MySQL</span>
+              <span class="portfolio-item__tag">Chart.js</span>
             </div>
           </div>
-        </div>
+        </article>
       </div>
     </div>
   </section>
 
   <section class="section work-visual-section" id="projects">
-    <div class="section-header reveal" style="padding: 120px 40px 80px 40px; max-width: 1400px; margin: 0 auto;">
+    <div class="section-header reveal" style="padding: 120px 40px 80px 40px; max-width: 1200px; margin: 0 auto;">
       <div>
         <span class="section-label">Work</span>
       </div>
       <span class="section-number">[00 - 4]</span>
     </div>
-    <h2 class="section-title reveal" style="max-width: 1400px; margin: 0 auto 0 auto; padding: 0 40px;">What We<br/>Build</h2>
+    <h2 class="section-title reveal-mask" style="max-width: 1200px; margin: 0 auto 0 auto; padding: 0 40px;">What We<br/>Build</h2>
 
     <div style="margin-top: 80px;">
       <div class="work-visual-row" data-animate>
@@ -742,7 +537,7 @@
       <div class="work-visual-row" data-animate style="direction: rtl;">
         <div class="work-visual-media" style="direction: ltr;">
           <img
-            src="https://images.unsplash.com/photo-1581291518633-83b4efcf3b27?auto=format&fit=crop&w=1000&q=80"
+            src="https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=1000&q=80"
             alt="UI/UX Design"
             loading="lazy"
           />
@@ -854,21 +649,21 @@
     </div>
 
     <div class="container" style="padding-top: 80px;">
-      <div class="stats-row reveal">
-        <div class="stat-card">
-          <div class="stat-card__number">7</div>
-          <div class="stat-card__label">Team Members</div>
-          <div class="stat-card__desc">A tight-knit team of Ugandan developers, designers, and builders.</div>
+      <div class="stats-band reveal">
+        <div class="stats-band__item">
+          <span class="stats-band__number">7</span>
+          <span class="stats-band__label">Team Members</span>
+          <span class="stats-band__desc">A tight-knit team of Ugandan developers, designers, and builders.</span>
         </div>
-        <div class="stat-card">
-          <div class="stat-card__number">∞</div>
-          <div class="stat-card__label">Projects Shipped</div>
-          <div class="stat-card__desc">From concept to deployment — we ship continuously and learn with every build.</div>
+        <div class="stats-band__item">
+          <span class="stats-band__number">∞</span>
+          <span class="stats-band__label">Projects Shipped</span>
+          <span class="stats-band__desc">From concept to deployment — we ship continuously and learn with every build.</span>
         </div>
-        <div class="stat-card">
-          <div class="stat-card__number">∞</div>
-          <div class="stat-card__label">Curiosity</div>
-          <div class="stat-card__desc">We never stop learning. Every project pushes us to explore new technologies and ideas.</div>
+        <div class="stats-band__item">
+          <span class="stats-band__number">∞</span>
+          <span class="stats-band__label">Curiosity</span>
+          <span class="stats-band__desc">We never stop learning. Every project pushes us to explore new technologies and ideas.</span>
         </div>
       </div>
     </div>
@@ -882,7 +677,7 @@
         </div>
         <span class="section-number">[00 - 5]</span>
       </div>
-      <h2 class="section-title reveal">Say Hello</h2>
+      <h2 class="section-title reveal-mask">Say Hello</h2>
 
       <div class="contact-wrapper" style="margin-top: 60px;">
         <div class="contact-info reveal reveal-delay-1">
@@ -949,8 +744,8 @@
       <div class="footer-inner">
         <div>
           <a href="#hero" class="footer-logo-link">
-            <img src="logo-icon.svg" alt="Cworks" style="width: 32px; height: 32px; object-fit: cover;"/>
-            Cworks
+            <img src="logo.png" alt="Cworks" class="logo-light"/>
+            <img src="logo-dark.png" alt="Cworks" class="logo-dark"/>
           </a>
           <p class="footer-tagline">Learning, Building, and Growing Together.</p>
           <p class="footer-origin">🇺🇬 Proudly built in Kampala, Uganda</p>

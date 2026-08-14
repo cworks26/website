@@ -97,7 +97,7 @@
   // ----------------------------------------------------------
   // 2. SCROLL REVEAL ANIMATIONS — Enhanced with Lenis timing
   // ----------------------------------------------------------
-  var revealEls = document.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-right');
+  var revealEls = document.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-right, .reveal-mask');
 
   if (revealEls.length > 0 && ('IntersectionObserver' in window)) {
     var observer = new IntersectionObserver(function (entries) {
@@ -191,6 +191,45 @@
         var offset = (rect.top / windowH) * 40;
         section.style.setProperty('--parallax-y', offset + 'px');
       });
+    }, { passive: true });
+  }
+
+
+  // ----------------------------------------------------------
+  // 4b. HERO SCROLL — editorial drift as the visitor scrolls in
+  // ----------------------------------------------------------
+  var heroHome = document.querySelector('.hero--home');
+  var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (heroHome && !prefersReducedMotion) {
+    var heroContent = heroHome.querySelector('.hero-content');
+    var heroGhost = heroHome.querySelector('.hero-ghost-mark');
+    var heroTicking = false;
+
+    function updateHeroScroll() {
+      heroTicking = false;
+      var scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      var vh = window.innerHeight || 1;
+
+      if (scrollY > vh) return;
+
+      var progress = scrollY / vh;
+
+      if (heroContent) {
+        heroContent.style.transform = 'translateY(' + (progress * 70) + 'px)';
+        heroContent.style.opacity = String(Math.max(0, 1 - progress * 1.1));
+      }
+
+      if (heroGhost) {
+        heroGhost.style.transform = 'translateY(' + (progress * 100) + 'px)';
+      }
+    }
+
+    window.addEventListener('scroll', function () {
+      if (!heroTicking) {
+        heroTicking = true;
+        window.requestAnimationFrame(updateHeroScroll);
+      }
     }, { passive: true });
   }
 
@@ -401,4 +440,49 @@
       submitBtn.disabled = false;
     });
   });
+})();
+
+
+// ----------------------------------------------------------
+// THEME TOGGLE + MOBILE MENU
+// ----------------------------------------------------------
+(function () {
+  var root = document.documentElement;
+  var toggle = document.getElementById('theme-toggle');
+
+  if (toggle) {
+    toggle.addEventListener('click', function () {
+      var current = root.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try {
+        localStorage.setItem('cworks-theme', next);
+      } catch (e) {}
+    });
+  }
+
+  var hamburger = document.getElementById('hamburger');
+  var mobileMenu = document.getElementById('mobile-menu');
+
+  if (hamburger && mobileMenu) {
+    function setMenu(open) {
+      hamburger.classList.toggle('open', open);
+      mobileMenu.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
+    hamburger.addEventListener('click', function () {
+      setMenu(!mobileMenu.classList.contains('open'));
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        setMenu(false);
+      });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setMenu(false);
+    });
+  }
 })();

@@ -3,18 +3,31 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('cworks-theme');
+        if (t === 'dark' || t === 'light') {
+          document.documentElement.setAttribute('data-theme', t);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
   <title>System Building in Uganda — Custom Software &amp; Management Systems | Cworks Kampala</title>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="logo-icon.svg"/>
-  <link rel="apple-touch-icon" href="logo-icon.svg"/>
+  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="apple-touch-icon" href="favicon.png"/>
 
   <!-- Primary SEO -->
   <meta name="description" content="Cworks builds custom desktop and web-based systems for businesses in Uganda — inventory management, booking platforms, payroll tools, and internal software. Based in Kampala."/>
   <meta name="keywords" content="system building Uganda, custom software Uganda, inventory management system Kampala, booking system Uganda, PHP MySQL Uganda, desktop application Uganda, business software Kampala, internal tools Uganda"/>
   <meta name="author" content="Cworks — The Runner Team"/>
   <meta name="robots" content="index, follow"/>
-  <meta name="theme-color" content="#050508"/>
+  <meta name="theme-color" content="#12B6F8"/>
   <link rel="canonical" href="https://the-runner-team.github.io/website/system-building.html"/>
 
   <!-- Geo targeting -->
@@ -92,8 +105,8 @@
     <div class="container nav-inner">
 
       <a href="index.html" class="nav-logo" aria-label="Cworks home">
-        <img src="logo-icon.svg" alt="Cworks" class="nav-logo-img" style="width: 32px; height: 32px; object-fit: cover;"/>
-        Cworks
+        <img src="logo.png" alt="Cworks" class="nav-logo-img logo-light"/>
+        <img src="logo-dark.png" alt="Cworks" class="nav-logo-img logo-dark"/>
       </a>
 
       <div class="nav-links-wrapper">
@@ -104,10 +117,29 @@
           <li><a href="#contact"  class="nav-link">Contact</a></li>
         </ul>
 
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+          <i class="fa-solid fa-moon" aria-hidden="true"></i>
+          <i class="fa-solid fa-sun" aria-hidden="true"></i>
+        </button>
+
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
 
     </div>
   </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="#includes" class="nav-link">What's Included</a></li>
+      <li><a href="#process" class="nav-link">Process</a></li>
+      <li><a href="#pricing" class="nav-link">Pricing</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+  </div>
 
 
   <!-- ============================================================
@@ -222,7 +254,7 @@
   <!-- ============================================================
        EXAMPLES OF WHAT WE BUILD
        ============================================================ -->
-  <section class="section about" id="examples" aria-label="Examples of systems we build" style="background: var(--bg-primary);">
+  <section class="section about" id="examples" aria-label="Examples of systems we build">
     <div class="container">
       <div class="section-header reveal">
         <span class="section-label">What We Can Build</span>
@@ -487,7 +519,7 @@
 
       <!-- Pricing notes -->
       <div class="pricing-notes reveal">
-        <p style="color: var(--text-muted); font-size: 0.8rem; text-align: center; margin-top: 32px;">
+        <p style="color: var(--color-text-muted); font-size: 0.8rem; text-align: center; margin-top: 32px;">
           All prices are in Ugandan Shillings (UGX). A 50% deposit is required to begin work, with the remaining balance due on delivery. System builds are scoped individually — the tiers above are starting points. Select "Consultation" for a detailed quote based on your exact requirements.
         </p>
       </div>
@@ -650,8 +682,8 @@
 
         <div>
           <a href="index.html" class="footer-logo-link" aria-label="Back to Cworks home">
-            <img src="logo-icon.svg" alt="Cworks" style="width: 32px; height: 32px; object-fit: cover;"/>
-            Cworks
+            <img src="logo.png" alt="Cworks" class="logo-light"/>
+            <img src="logo-dark.png" alt="Cworks" class="logo-dark"/>
           </a>
           <p class="footer-tagline">We Build. We Ship.</p>
           <p class="footer-origin">Proudly built in Kampala, Uganda</p>
@@ -680,17 +712,6 @@
 
   <!-- Page script -->
   <script src="js/script.js"></script>
-
-  <script>
-    // Typing phrases for this page
-    window._typingOverride = [
-      'Built exactly for your business.',
-      'Inventory. Bookings. Payroll. More.',
-      'Custom systems that actually fit.',
-      'Off-the-shelf never quite fits.',
-      'Your workflow, in software.'
-    ];
-  </script>
 
 </body>
 </html>
